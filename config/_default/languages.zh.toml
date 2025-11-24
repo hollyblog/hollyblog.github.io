@@ -1,0 +1,104 @@
+# 中文语言配置
+languageCode = "zh-CN"
+languageName = "简体中文"
+weight = 1
+
+# 网站信息
+title = "永远天真烂漫"
+description = "永远保持好奇心，永远天真烂漫"
+
+[params]
+  # 主题设置
+  theme = "blowfish"
+  displayName = "简体中文"
+
+  # 描述信息
+  description = "深耕分布式系统设计、中间件性能优化、云计算和大模型"
+
+  # 作者信息
+  [params.author]
+    name = "Holly"
+    image = "img/avatar.jpg"
+    headline = "欢迎你～愿永远天真，永远烂漫～"
+    bio = "专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享"
+    
+    links = [
+      { github = "https://github.com/hollyblog/" },
+      { gitee = "https://gitee.com/hollyblog/" },
+      { email = "mailto:2285549633@qq.com" },
+    ]
+  
+# 菜单配置
+[menu]
+  [[menu.main]]
+    name = "首页"
+    pageRef = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "关于我"
+    pageRef = "about"
+    weight = 2
+
+  [[menu.main]]
+    name = "分布式"
+    pageRef = "categories/Distributed"
+    weight = 3
+
+  [[menu.main]]
+    name = "云计算"
+    pageRef = "categories/Cloud"
+    weight = 4
+
+  [[menu.main]]
+    name = "大模型"
+    pageRef = "categories/LLM"
+    weight = 5
+
+  # 项目专栏下拉菜单
+  [[menu.main]]
+    name = "项目"
+    weight = 6
+  [[menu.main]]
+    name = "智能餐饮"
+    url = "https://gitee.com/hollyblog/smart-dining"
+    parent = "项目"
+    weight = 1
+  [[menu.main]]
+    name = "寻环小程序"
+    url = "https://gitee.com/hollyblog/xunhuan-miniapp"
+    parent = "项目"
+    weight = 2
+
+  # 面试专栏下拉菜单
+  [[menu.main]]
+    name = "面试"
+    weight = 7
+  [[menu.main]]
+    name = "Java"
+    pageRef = "categories/Java-interview"
+    parent = "面试"
+    weight = 1
+  [[menu.main]]
+    name = "数据库"
+    pageRef = "categories/Database-interview"
+    parent = "面试"
+    weight = 2
+  [[menu.main]]
+    name = "中间件"
+    pageRef = "categories/Middleware-interview"
+    parent = "面试"
+    weight = 3
+    
+  # 简历
+  [[menu.main]]
+    name = "我的简历"
+    pageRef = "resume"
+    weight = 8
+
+# 日期格式
+[params.format]
+  date = "2006年1月2日"
+  dateFull = "2006年1月2日 星期一"
+  time = "15:04"
+

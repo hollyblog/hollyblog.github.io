@@ -1,0 +1,6 @@
+<!-- Custom CSS -->
+{{ $customCSS := resources.Get "css/custom.css" }}
+{{ if $customCSS }}
+  {{ $customCSSMinified := $customCSS | resources.Minify | resources.Fingerprint "sha512" }}
+  <link rel="stylesheet" href="{{ $customCSSMinified.RelPermalink }}" integrity="{{ $customCSSMinified.Data.Integrity }}" />
+{{ end }}

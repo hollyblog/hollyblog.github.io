@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dis on 永远天真烂漫</title>
+    <link>http://localhost:1313/categories/dis/</link>
+    <description>Recent content in Dis on 永远天真烂漫</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Mon, 20 Jan 2025 10:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/dis/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>分布式系统设计实践</title>
+      <link>http://localhost:1313/posts/distributed-system-design/</link>
+      <pubDate>Mon, 20 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/distributed-system-design/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

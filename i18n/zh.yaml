@@ -1,0 +1,14 @@
+article:
+  date: "{{ .Date }}"
+  reading_time:
+    one: "{{ .Count }} 分钟"
+    other: "{{ .Count }} 分钟"
+  word_count:
+    one: "{{ .Count }} 字"
+    other: "{{ .Count }} 字"
+
+shortcode:
+  recent_articles: "最新文章"
+
+recent:
+  show_more: "更多文章"

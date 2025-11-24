@@ -1,0 +1,6 @@
+<!-- Custom JavaScript -->
+{{ $customJS := resources.Get "js/custom.js" }}
+{{ if $customJS }}
+  {{ $customJSMinified := $customJS | resources.Minify | resources.Fingerprint "sha512" }}
+  <script defer src="{{ $customJSMinified.RelPermalink }}" integrity="{{ $customJSMinified.Data.Integrity }}"></script>
+{{ end }}

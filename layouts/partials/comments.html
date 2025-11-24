@@ -1,0 +1,22 @@
+{{/* Giscus Comments */}}
+{{ if site.Params.giscus.repo }}
+<div class="pt-8 mt-8 border-t border-neutral-200 dark:border-neutral-700">
+  <h3 class="text-2xl font-bold mb-4">评论</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ site.Params.giscus.repo }}"
+    data-repo-id="{{ site.Params.giscus.repoID }}"
+    data-category="{{ site.Params.giscus.category }}"
+    data-category-id="{{ site.Params.giscus.categoryID }}"
+    data-mapping="{{ site.Params.giscus.mapping | default "pathname" }}"
+    data-strict="{{ site.Params.giscus.strict | default "0" }}"
+    data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled | default "1" }}"
+    data-emit-metadata="{{ site.Params.giscus.emitMetadata | default "0" }}"
+    data-input-position="{{ site.Params.giscus.inputPosition | default "bottom" }}"
+    data-theme="{{ site.Params.giscus.theme | default "preferred_color_scheme" }}"
+    data-lang="{{ site.Params.giscus.lang | default "zh-CN" }}"
+    data-loading="{{ site.Params.giscus.loading | default "lazy" }}"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+{{ end }}

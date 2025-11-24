@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on 永远天真烂漫</title>
+    <link>http://localhost:1313/tags/ai/</link>
+    <description>Recent content in AI on 永远天真烂漫</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Wed, 15 Jan 2025 16:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>大模型应用开发实战</title>
+      <link>http://localhost:1313/posts/llm-application-development/</link>
+      <pubDate>Wed, 15 Jan 2025 16:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/llm-application-development/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

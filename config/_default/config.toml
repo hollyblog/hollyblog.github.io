@@ -1,0 +1,8 @@
+defaultContentLanguage = "zh-CN"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.zh]
+    languageName = "中文"
+    languageCode = "zh-CN"
+    weight = 1
