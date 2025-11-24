@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>永远天真烂漫 on 永远纯粹</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in 永远天真烂漫 on 永远纯粹</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Mon, 24 Nov 2025 14:30:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MySQL 基础 - 01</title>
+      <link>http://localhost:1313/posts/mysql-first/</link>
+      <pubDate>Mon, 24 Nov 2025 11:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql-first/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>分布式系统设计实践</title>
+      <link>http://localhost:1313/posts/distributed-system-design/</link>
+      <pubDate>Mon, 20 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/distributed-system-design/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>云原生架构演进</title>
+      <link>http://localhost:1313/posts/cloud-native-architecture/</link>
+      <pubDate>Sat, 18 Jan 2025 14:30:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/cloud-native-architecture/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>大模型应用开发实战</title>
+      <link>http://localhost:1313/posts/llm-application-development/</link>
+      <pubDate>Wed, 15 Jan 2025 16:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/llm-application-development/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>RabbitMQ 性能优化实践</title>
+      <link>http://localhost:1313/posts/rabbitmq-performance-optimization/</link>
+      <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/rabbitmq-performance-optimization/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Redis 性能优化实践</title>
+      <link>http://localhost:1313/posts/redis-performance-optimization/</link>
+      <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/redis-performance-optimization/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL 索引优化指南</title>
+      <link>http://localhost:1313/posts/mysql-index-optimization/</link>
+      <pubDate>Fri, 10 Jan 2025 11:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql-index-optimization/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 并发编程实战</title>
+      <link>http://localhost:1313/posts/java-concurrent-programming/</link>
+      <pubDate>Wed, 08 Jan 2025 15:20:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/java-concurrent-programming/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

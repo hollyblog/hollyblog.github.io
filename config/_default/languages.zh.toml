@@ -61,12 +61,12 @@ description = "永远保持好奇心，永远天真烂漫"
     weight = 6
   [[menu.main]]
     name = "智能餐饮"
-    url = "https://gitee.com/hollyblog/smart-dining"
+    url = "https://gitee.com/hollyblog/"
     parent = "项目"
     weight = 1
   [[menu.main]]
     name = "寻环小程序"
-    url = "https://gitee.com/hollyblog/xunhuan-miniapp"
+    url = "https://gitee.com/hollyblog/"
     parent = "项目"
     weight = 2
 
