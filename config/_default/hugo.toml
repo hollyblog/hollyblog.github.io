@@ -5,7 +5,7 @@ defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 timeZone = "Asia/Shanghai"
 # 发布设置
-publishDir = "docs"
+publishDir = "public"
 
 enableRobotsTXT = true
 summaryLength = 0

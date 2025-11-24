@@ -2,79 +2,79 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 永远纯粹</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://hollyblog.github.io/categories/</link>
     <description>Recent content in Categories on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2025 Holly</copyright>
-    <lastBuildDate>Mon, 24 Nov 2025 14:30:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Nov 2025 14:30:00 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Resume</title>
-      <link>http://localhost:1313/categories/resume/</link>
+      <link>https://hollyblog.github.io/categories/resume/</link>
       <pubDate>Mon, 24 Nov 2025 14:30:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/resume/</guid>
+      <guid>https://hollyblog.github.io/categories/resume/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Database-Interview</title>
-      <link>http://localhost:1313/categories/database-interview/</link>
+      <link>https://hollyblog.github.io/categories/database-interview/</link>
       <pubDate>Mon, 24 Nov 2025 11:00:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/database-interview/</guid>
+      <guid>https://hollyblog.github.io/categories/database-interview/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Distributed</title>
-      <link>http://localhost:1313/categories/distributed/</link>
+      <link>https://hollyblog.github.io/categories/distributed/</link>
       <pubDate>Mon, 20 Jan 2025 10:00:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/distributed/</guid>
+      <guid>https://hollyblog.github.io/categories/distributed/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Cloud</title>
-      <link>http://localhost:1313/categories/cloud/</link>
+      <link>https://hollyblog.github.io/categories/cloud/</link>
       <pubDate>Sat, 18 Jan 2025 14:30:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/cloud/</guid>
+      <guid>https://hollyblog.github.io/categories/cloud/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>LLM</title>
-      <link>http://localhost:1313/categories/llm/</link>
+      <link>https://hollyblog.github.io/categories/llm/</link>
       <pubDate>Wed, 15 Jan 2025 16:00:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/llm/</guid>
+      <guid>https://hollyblog.github.io/categories/llm/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Middleware-Interview</title>
-      <link>http://localhost:1313/categories/middleware-interview/</link>
+      <link>https://hollyblog.github.io/categories/middleware-interview/</link>
       <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/middleware-interview/</guid>
+      <guid>https://hollyblog.github.io/categories/middleware-interview/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java-Interview</title>
-      <link>http://localhost:1313/categories/java-interview/</link>
+      <link>https://hollyblog.github.io/categories/java-interview/</link>
       <pubDate>Wed, 08 Jan 2025 15:20:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/java-interview/</guid>
+      <guid>https://hollyblog.github.io/categories/java-interview/</guid>
       <description></description>
       
     </item>
