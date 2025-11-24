@@ -4,7 +4,7 @@ languageName = "简体中文"
 weight = 1
 
 # 网站信息
-title = "永远天真烂漫"
+title = "永远纯粹"
 description = "永远保持好奇心，永远天真烂漫"
 
 [params]
@@ -19,7 +19,7 @@ description = "永远保持好奇心，永远天真烂漫"
   [params.author]
     name = "Holly"
     image = "img/avatar.jpg"
-    headline = "欢迎你～愿永远天真，永远烂漫～"
+    headline = "永远纯粹和真诚～"
     bio = "专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享"
     
     links = [
