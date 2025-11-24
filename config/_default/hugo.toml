@@ -1,9 +1,11 @@
 theme = "blowfish"
-baseURL = "http://localhost:1313/"
+baseURL = "https://hollyblog.github.io/"
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 timeZone = "Asia/Shanghai"
+# 发布设置
+publishDir = "public"
 
 enableRobotsTXT = true
 summaryLength = 0
