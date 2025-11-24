@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on 永远天真烂漫</title>
+    <link>https://hollyblog.github.io/tags/redis/</link>
+    <description>Recent content in Redis on 永远天真烂漫</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Sun, 12 Jan 2025 09:30:00 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Redis 性能优化实践</title>
+      <link>https://hollyblog.github.io/posts/redis-performance-optimization/</link>
+      <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/redis-performance-optimization/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

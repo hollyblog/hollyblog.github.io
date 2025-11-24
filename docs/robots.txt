@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hollyblog.github.io/sitemap.xml

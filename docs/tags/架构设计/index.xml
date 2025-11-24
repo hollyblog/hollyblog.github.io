@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>架构设计 on 永远天真烂漫</title>
+    <link>https://hollyblog.github.io/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
+    <description>Recent content in 架构设计 on 永远天真烂漫</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Mon, 20 Jan 2025 10:00:00 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>分布式系统设计实践</title>
+      <link>https://hollyblog.github.io/posts/distributed-system-design/</link>
+      <pubDate>Mon, 20 Jan 2025 10:00:00 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/distributed-system-design/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>
