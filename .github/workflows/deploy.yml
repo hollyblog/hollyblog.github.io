@@ -5,6 +5,10 @@ on:
     branches:
       - main  # 如果你使用的是 main 分支
 
+# 新增这一段👇
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
