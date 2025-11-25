@@ -72,23 +72,38 @@ description = "永远保持好奇心，永远天真烂漫"
 
   # 面试专栏下拉菜单
   [[menu.main]]
-    name = "面试"
+    name = "基础"
     weight = 7
   [[menu.main]]
-    name = "Java"
-    pageRef = "categories/Java-interview"
-    parent = "面试"
+    name = "编程语言"
+    pageRef = "categories/Java-base"
+    parent = "基础"
     weight = 1
   [[menu.main]]
-    name = "数据库"
-    pageRef = "categories/Database-interview"
-    parent = "面试"
+    name = "数据存储"
+    pageRef = "categories/Database-base"
+    parent = "基础"
     weight = 2
   [[menu.main]]
-    name = "中间件"
-    pageRef = "categories/Middleware-interview"
-    parent = "面试"
+    name = "框架应用"
+    pageRef = "categories/Framework-base"
+    parent = "基础"
     weight = 3
+  [[menu.main]]
+    name = "中间件"
+    pageRef = "categories/Middleware-base"
+    parent = "基础"
+    weight = 4
+  [[menu.main]]
+    name = "系统架构"
+    pageRef = "categories/SA-base"
+    parent = "基础"
+    weight = 5
+  [[menu.main]]
+    name = "运维部署"
+    pageRef = "categories/Ops-base"
+    parent = "基础"
+    weight = 6
     
   # 简历
   [[menu.main]]

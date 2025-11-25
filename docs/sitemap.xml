@@ -63,8 +63,26 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/java-concurrent-programming/</loc>
-    <lastmod>2025-01-08T15:20:00+08:00</lastmod>
+    <loc>https://hollyblog.github.io/posts/java-base03/</loc>
+    <lastmod>2021-01-09T20:18:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base02/</loc>
+    <lastmod>2021-01-08T20:18:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base01/</loc>
+    <lastmod>2021-01-08T15:20:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-env-base/</loc>
+    <lastmod>2021-01-08T15:20:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

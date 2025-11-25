@@ -172,7 +172,7 @@
     <item>
       <title>Java</title>
       <link>https://hollyblog.github.io/tags/java/</link>
-      <pubDate>Wed, 08 Jan 2025 15:20:00 +0800</pubDate>
+      <pubDate>Sat, 09 Jan 2021 20:18:05 +0800</pubDate>
       
       <guid>https://hollyblog.github.io/tags/java/</guid>
       <description></description>
@@ -180,21 +180,41 @@
     </item>
     
     <item>
-      <title>并发编程</title>
-      <link>https://hollyblog.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</link>
-      <pubDate>Wed, 08 Jan 2025 15:20:00 +0800</pubDate>
+      <title>流程控制</title>
+      <link>https://hollyblog.github.io/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Sat, 09 Jan 2021 20:18:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://hollyblog.github.io/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>多线程</title>
-      <link>https://hollyblog.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
-      <pubDate>Wed, 08 Jan 2025 15:20:00 +0800</pubDate>
+      <title>基础语法</title>
+      <link>https://hollyblog.github.io/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Fri, 08 Jan 2021 20:18:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+      <guid>https://hollyblog.github.io/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>基础环境</title>
+      <link>https://hollyblog.github.io/tags/%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Fri, 08 Jan 2021 15:20:00 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/tags/%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>入门基础</title>
+      <link>https://hollyblog.github.io/tags/%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 08 Jan 2021 15:20:00 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/tags/%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
       
     </item>
