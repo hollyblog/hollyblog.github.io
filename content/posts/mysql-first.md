@@ -4,7 +4,7 @@ date: 2025-11-24T11:00:00+08:00
 draft: false
 description: "mysql 基础 - 01"
 tags: ["MySQL", "数据库"]
-categories: ["Database-interview"]
+categories: ["Database-basics"]
 ---
 
 ## 引言

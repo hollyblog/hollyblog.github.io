@@ -4,7 +4,7 @@ date: 2025-01-12T09:30:00+08:00
 draft: false
 description: "Redis 缓存性能优化的技巧和方法"
 tags: ["Redis", "中间件", "性能优化"]
-categories: ["Middleware-interview"]
+categories: ["Middleware-basics"]
 ---
 
 Redis 是最常用的缓存中间件之一，本文将分享 Redis 性能优化的实践经验。

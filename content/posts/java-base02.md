@@ -4,7 +4,7 @@ date: 2021-01-08T20:18:05+08:00
 draft: false
 description: "Java 基础语法：基本数据类型、变量类型、运算符、输入输出、表达式和语句、类型转换。"
 tags: ["Java", "基础语法"]
-categories: ["Java-base"]
+categories: ["Java-basics"]
 ---
 Java 基础语法：基本数据类型、变量类型、运算符、输入输出、表达式和语句、类型转换。
 

@@ -4,7 +4,7 @@ date: 2021-01-08T15:20:00+08:00
 draft: false
 description: "学习Java之前，先要学习基础环境搭建，包括安装JDK、配置环境变量、安装IDE等；还要掌握Maven的使用，包括安装Maven、配置环境变量、创建Maven项目等;最后要掌握Java的专业开发工具IntelliJ IDEA等。"
 tags: ["Java", "基础环境"]
-categories: ["Java-base"]
+categories: ["Java-basics"]
 ---
 
 学习Java之前，先要学习基础环境搭建，包括安装JDK、配置环境变量、安装IDE等；还要掌握Maven的使用，包括安装Maven、配置环境变量、创建Maven项目等;最后要掌握Java的专业开发工具IntelliJ IDEA等。

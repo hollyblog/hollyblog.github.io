@@ -4,7 +4,7 @@ date: 2021-01-09T20:18:05+08:00
 draft: false
 description: "Java 流程控制：if-else、switch、循环（for、while、do-while）、跳转语句（break、continue、return）。"
 tags: ["Java", "流程控制"]
-categories: ["Java-base"]
+categories: ["Java-basics"]
 ---
 
 Java 流程控制：if-else、switch、循环（for、while、do-while）、跳转语句（break、continue、return）。

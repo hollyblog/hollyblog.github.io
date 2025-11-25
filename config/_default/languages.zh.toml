@@ -76,32 +76,32 @@ description = "永远保持好奇心，永远天真烂漫"
     weight = 7
   [[menu.main]]
     name = "编程语言"
-    pageRef = "categories/Java-base"
+    pageRef = "categories/Java-basics"
     parent = "基础"
     weight = 1
   [[menu.main]]
     name = "数据存储"
-    pageRef = "categories/Database-base"
+    pageRef = "categories/Database-basics"
     parent = "基础"
     weight = 2
   [[menu.main]]
     name = "框架应用"
-    pageRef = "categories/Framework-base"
+    pageRef = "categories/Framework-basics"
     parent = "基础"
     weight = 3
   [[menu.main]]
     name = "中间件"
-    pageRef = "categories/Middleware-base"
+    pageRef = "categories/Middleware-basics"
     parent = "基础"
     weight = 4
   [[menu.main]]
     name = "系统架构"
-    pageRef = "categories/SA-base"
+    pageRef = "categories/SA-basics"
     parent = "基础"
     weight = 5
   [[menu.main]]
     name = "运维部署"
-    pageRef = "categories/Ops-base"
+    pageRef = "categories/Ops-basics"
     parent = "基础"
     weight = 6
     
