@@ -1,0 +1,2195 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="zh-CN">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>Java 高级特性 &middot; 永远纯粹</title>
+    <meta name="title" content="Java 高级特性 &middot; 永远纯粹">
+  
+
+  
+  
+    <meta name="description" content="Java 高级特性：内部类和嵌套类、枚举类型（enum）、递归、反射、注解（annotation）、泛型（generics）。">
+  
+  
+    <meta name="keywords" content="Java,Java高级特性,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/categories/java-basics/java-base07/">
+  
+
+  
+  
+    <meta name="author" content="Holly">
+  
+  
+    
+      
+        
+          <link href="https://github.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://gitee.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/categories/java-basics/java-base07/">
+  <meta property="og:site_name" content="永远纯粹">
+  <meta property="og:title" content="Java 高级特性">
+  <meta property="og:description" content="Java 高级特性：内部类和嵌套类、枚举类型（enum）、递归、反射、注解（annotation）、泛型（generics）。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="categories">
+    <meta property="article:published_time" content="2021-01-09T22:19:05+08:00">
+    <meta property="article:modified_time" content="2021-01-09T22:19:05+08:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Java高级特性">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java 高级特性">
+  <meta name="twitter:description" content="Java 高级特性：内部类和嵌套类、枚举类型（enum）、递归、反射、注解（annotation）、泛型（generics）。">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.dde3b8d0fdc751fb7c780fccbaa2b82e5e46210788309f435480f233fdc3f99564d81d4a6fe6d298eb6913f369601f7a76b747c08c585bb78efb1b54112bb772.css"
+    integrity="sha512-3eO40P3HUft8eA/MuqK4Ll5GIQeIMJ9DVIDyM/3D&#43;ZVk2B1Kb&#43;bSmOtpE/NpYB96drdHwIxYW7eO&#43;xtUESu3cg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9df4fc14d50efcc9aa4cfc2b6f348e365f421f5ad491278f8f48c0360cf2f93f08882fda6da162d7ace8e5add57c2df4ac46bd3861306b1d4c452cd31f448d64.js"
+      integrity="sha512-nfT8FNUO/MmqTPwrbzSONl9CH1rUkSePj0jANgzy&#43;T8IiC/abaFi16zo5a3VfC30rEa9OGEwax1MRSzTH0SNZA=="
+      data-copy=""
+      data-copied=""></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Categories",
+    "name": "Java 高级特性",
+    "headline": "Java 高级特性",
+    "description": "Java 高级特性：内部类和嵌套类、枚举类型（enum）、递归、反射、注解（annotation）、泛型（generics）。",
+    
+    "inLanguage": "zh-CN",
+    "url" : "http:\/\/localhost:1313\/categories\/java-basics\/java-base07\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Holly"
+    },
+    "copyrightYear": "2021",
+    "dateCreated": "2021-01-09T22:19:05\u002b08:00",
+    "datePublished": "2021-01-09T22:19:05\u002b08:00",
+    
+    "dateModified": "2021-01-09T22:19:05\u002b08:00",
+    
+    "keywords": ["Java","Java高级特性"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "6342"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+    
+
+
+  
+  <link rel="stylesheet" href="/css/custom.min.73bf6048d6126134a3a4d080eae4c7d7f266a34e211b8c064c369e863072b5f83301535ff631e803efa5c7fbfbfa9b5b52debdab6f1ca834f108f8cc7f432207.css" integrity="sha512-c79gSNYSYTSjpNCA6uTH1/Jmo04hG4wGTDaehjBytfgzAVNf9jHoA&#43;&#43;lx/v7&#43;ptbUt69q28cqDTxCPjMf0MiBw==" />
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+    
+    
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium">
+          永远纯粹
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="首页"
+  title="永远天真烂漫">
+  
+  
+    <p class="text-base font-medium">
+      首页
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="关于我"
+  title="关于我">
+  
+  
+    <p class="text-base font-medium">
+      关于我
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/distributed/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="分布式"
+  title="Distributed">
+  
+  
+    <p class="text-base font-medium">
+      分布式
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/cloud/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="云计算"
+  title="Cloud">
+  
+  
+    <p class="text-base font-medium">
+      云计算
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/llm/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="大模型"
+  title="LLM">
+  
+  
+    <p class="text-base font-medium">
+      大模型
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="项目"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        项目
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="智能餐饮"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              智能餐饮
+            </p>
+          </a>
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="寻环小程序"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              寻环小程序
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="基础"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        基础
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/java-basics/"
+            
+            aria-label="编程语言"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Java-Basics">
+              编程语言
+            </p>
+          </a>
+        
+          <a
+            href="/categories/database-basics/"
+            
+            aria-label="数据存储"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Database-Basics">
+              数据存储
+            </p>
+          </a>
+        
+          <a
+            href=""
+            
+            aria-label="框架应用"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              框架应用
+            </p>
+          </a>
+        
+          <a
+            href="/categories/middleware-basics/"
+            
+            aria-label="中间件"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Middleware-Basics">
+              中间件
+            </p>
+          </a>
+        
+          <a
+            href=""
+            
+            aria-label="系统架构"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              系统架构
+            </p>
+          </a>
+        
+          <a
+            href=""
+            
+            aria-label="运维部署"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              运维部署
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <a
+  href="/resume/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="我的简历"
+  title="个人简历">
+  
+  
+    <p class="text-base font-medium">
+      我的简历
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="首页"
+    title="永远天真烂漫">
+    
+    
+      <p class="text-bg font-bg">
+        首页
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="关于我"
+    title="关于我">
+    
+    
+      <p class="text-bg font-bg">
+        关于我
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/distributed/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="分布式"
+    title="Distributed">
+    
+    
+      <p class="text-bg font-bg">
+        分布式
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/cloud/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="云计算"
+    title="Cloud">
+    
+    
+      <p class="text-bg font-bg">
+        云计算
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/llm/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="大模型"
+    title="LLM">
+    
+    
+      <p class="text-bg font-bg">
+        大模型
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="项目"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      项目
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="智能餐饮"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        智能餐饮
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="寻环小程序"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        寻环小程序
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="基础"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      基础
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/java-basics/"
+      
+      aria-label="编程语言"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Java-Basics">
+        编程语言
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/database-basics/"
+      
+      aria-label="数据存储"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Database-Basics">
+        数据存储
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href=""
+      
+      aria-label="框架应用"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        框架应用
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/middleware-basics/"
+      
+      aria-label="中间件"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Middleware-Basics">
+        中间件
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href=""
+      
+      aria-label="系统架构"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        系统架构
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href=""
+      
+      aria-label="运维部署"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        运维部署
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/resume/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="我的简历"
+    title="个人简历">
+    
+    
+      <p class="text-bg font-bg">
+        我的简历
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+    
+    
+  
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/img/background_hu_de979b0156ba1693.jpg"
+      alt="Java 高级特性"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+      integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/img/background_hu_de979b0156ba1693.jpg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Java 高级特性
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2021-01-09T22:19:05&#43;08:00">2021年1月9日</time><span class="px-2 text-primary-500">&middot;</span><span>6342 字</span><span class="px-2 text-primary-500">&middot;</span><span title="">13 分钟</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/categories/java-basics/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Java基础
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/java/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Java
+  </span>
+</span>
+
+              </a>
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/java%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Java高级特性
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Holly"
+        src="/img/avatar_hu_ac9fd040db4ac989.jpg"
+        data-zoom-src="/img/avatar.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Holly
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/hollyblog/"
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://gitee.com/hollyblog/"
+          target="_blank"
+          aria-label="Gitee"
+          title="Gitee"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.037a.594.594 0 0 1-.592-.593v-1.482a.594.594 0 0 1 .592-.593h6.815c.327 0 .593.266.593.593v3.408a4 4 0 0 1-4 4H5.926a.594.594 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/>
+</svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:2285549633@qq.com"
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#内部类和嵌套类">内部类和嵌套类</a></li>
+    <li><a href="#枚举类型enum">枚举类型（enum）</a></li>
+    <li><a href="#递归recursion">递归(Recursion)</a></li>
+    <li><a href="#反射reflection">反射(Reflection)</a>
+      <ul>
+        <li><a href="#获取class对象">获取Class对象</a></li>
+        <li><a href="#字段反射操作">字段反射操作</a></li>
+        <li><a href="#方法反射操作">方法反射操作</a></li>
+        <li><a href="#构造器反射操作">构造器反射操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#注解annotation">注解（Annotation）</a></li>
+    <li><a href="#泛型generics">泛型（Generics）</a>
+      <ul>
+        <li><a href="#什么时候使用泛型">什么时候使用泛型</a></li>
+        <li><a href="#extends和super区别">extends和super区别</a></li>
+        <li><a href="#为什么不能创建泛型数组">为什么不能创建泛型数组</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#内部类和嵌套类">内部类和嵌套类</a></li>
+    <li><a href="#枚举类型enum">枚举类型（enum）</a></li>
+    <li><a href="#递归recursion">递归(Recursion)</a></li>
+    <li><a href="#反射reflection">反射(Reflection)</a>
+      <ul>
+        <li><a href="#获取class对象">获取Class对象</a></li>
+        <li><a href="#字段反射操作">字段反射操作</a></li>
+        <li><a href="#方法反射操作">方法反射操作</a></li>
+        <li><a href="#构造器反射操作">构造器反射操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#注解annotation">注解（Annotation）</a></li>
+    <li><a href="#泛型generics">泛型（Generics）</a>
+      <ul>
+        <li><a href="#什么时候使用泛型">什么时候使用泛型</a></li>
+        <li><a href="#extends和super区别">extends和super区别</a></li>
+        <li><a href="#为什么不能创建泛型数组">为什么不能创建泛型数组</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <p>Java 高级特性：内部类和嵌套类、枚举类型（enum）、递归、反射、注解（annotation）、泛型（generics）。</p>
+
+<h2 class="relative group">内部类和嵌套类
+    <div id="内部类和嵌套类" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%86%85%e9%83%a8%e7%b1%bb%e5%92%8c%e5%b5%8c%e5%a5%97%e7%b1%bb" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>内部类是定义在另一个类内部的类。嵌套类是指在一个类的内部定义的类，可以分为静态嵌套类和非静态嵌套类（即内部类）。内部类可以访问外部类的成员变量和方法，而静态嵌套类则不能。</p>
+<ul>
+<li>成员内部类：定义在外部类的非静态类，可以访问外部类的所有成员；持有外部类的引用；不能定义静态成员（除常量）。</li>
+<li>静态嵌套类：使用static修饰的类；只能访问外部类的静态成员；不持有外部类的引用；可以定义静态成员；可以独立于外部类对象存在。不会阻止外部类被垃圾回收。</li>
+<li>局部内部类：定义在方法或代码块中的类；作用域仅限于定义它的方法或代码块；可以访问方法的final或effectively final变量。</li>
+<li>匿名内部类：没有名字的内部类；通常用于简化代码，尤其是在实现接口或继承类时。适合简单的一次性实现，广泛用于事件处理和回调。</li>
+</ul>
+<p>成员内部类示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Outer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">outerField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">10</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">class</span> <span class="nc">Inner</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Outer field: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">outerField</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 使用成员内部类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Outer</span><span class="w"> </span><span class="n">outer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Outer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Outer</span><span class="p">.</span><span class="na">Inner</span><span class="w"> </span><span class="n">inner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outer</span><span class="p">.</span><span class="na">new</span><span class="w"> </span><span class="nf">Inner</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">inner</span><span class="p">.</span><span class="na">display</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">outer</span><span class="p">.</span><span class="na">createInner</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>静态嵌套类示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Outer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StaticNested</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Static nested class&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 使用静态嵌套类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Outer</span><span class="p">.</span><span class="na">StaticNested</span><span class="w"> </span><span class="n">nested</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Outer</span><span class="p">.</span><span class="na">StaticNested</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">nested</span><span class="p">.</span><span class="na">display</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>局部内部类示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Outer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">method</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">class</span> <span class="nc">LocalInner</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Local inner class&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">LocalInner</span><span class="w"> </span><span class="n">localInner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LocalInner</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">localInner</span><span class="p">.</span><span class="na">display</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 使用局部内部类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Outer</span><span class="w"> </span><span class="n">outer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Outer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">outer</span><span class="p">.</span><span class="na">method</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">LocalInner</span><span class="w"> </span><span class="n">localInner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outer</span><span class="p">.</span><span class="na">new</span><span class="w"> </span><span class="nf">LocalInner</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">localInner</span><span class="p">.</span><span class="na">display</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
+<p>⚠️局部内部类只能访问final或事实上的final局部变量。这是因为局部变量在方法结束后会被销毁，而内部类可能在方法结束后仍然存在，因此只能访问那些不会改变的变量。</p>
+</blockquote>
+<p>匿名内部类示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">Greeting</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">sayHello</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 使用匿名内部类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Greeting</span><span class="w"> </span><span class="n">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Greeting</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sayHello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Hello from anonymous class!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">greeting</span><span class="p">.</span><span class="na">sayHello</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>匿名类使用场景</p>
+<ul>
+<li>事件处理：gui编程中的事件监听器</li>
+<li>回调函数：异步操作的回调实现</li>
+<li>函数式接口：简单的函数式接口实现（java8之前）</li>
+<li>一次性实现：只使用一次的简单实现</li>
+</ul>
+<p>内部类类型对比</p>
+<table>
+  <thead>
+      <tr>
+          <th>内部类类型</th>
+          <th>访问外部类成员</th>
+          <th>定义静态成员</th>
+          <th>创建对象</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>成员内部类</td>
+          <td>可以访问外部类的实例成员、静态成员、持有外部类引用、使用访问修饰符</td>
+          <td>不能定义静态成员变量和方法，不可以独立创建对象，不可以访问局部变量</td>
+          <td>创建对象时需要外部类对象</td>
+      </tr>
+      <tr>
+          <td>静态嵌套类</td>
+          <td>只能访问外部类的静态成员变量和方法，可以独立创建对象，可以访问修饰符</td>
+          <td>可以定义静态成员变量和方法</td>
+          <td>创建对象时不需要外部类对象</td>
+      </tr>
+      <tr>
+          <td>局部内部类</td>
+          <td>可以访问外部类实例成员、静态成员、持有外部类引用、可以访问局部变量</td>
+          <td>不能定义静态成员变量和方法，不能独立创建对象、不能使用访问修饰符</td>
+          <td>创建对象时需要外部类对象</td>
+      </tr>
+      <tr>
+          <td>匿名内部类</td>
+          <td>可以访问外部类中的所有成员变量和方法</td>
+          <td>不能定义静态成员变量和方法</td>
+          <td>创建对象时需要外部类对象</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>使用内部类建议：</p>
+<ul>
+<li>不需要访问外部类实例时使用静态嵌套类</li>
+<li>简单的接口实现使用匿名类</li>
+<li>紧密关联的辅助类使用成员内部类</li>
+<li>方法内的临时类使用局部内部类</li>
+<li>需要临时创建对象使用匿名类</li>
+<li>迭代器模式和建造者模式（静态嵌套类）。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>⚠️性能和内存考虑</p>
+<ul>
+<li>内存泄漏：成员内部类持有外部类引用，可能导致外部类无法被垃圾回收；</li>
+<li>创建开销：静态嵌套类创建开销最小，匿名类可能较大。</li>
+<li>内存效率：静态嵌套类&gt;局部内部类&gt;成员内部类&gt;匿名类</li>
+<li>访问效率：静态嵌套类&gt;成员内部类&gt;匿名类&gt;局部内部类(直接访问比通过引用访问更高效)</li>
+</ul>
+</blockquote>
+
+<h2 class="relative group">枚举类型（enum）
+    <div id="枚举类型enum" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9e%9a%e4%b8%be%e7%b1%bb%e5%9e%8benum" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>枚举类型（enum）是一种特殊的类，是java5新特性，用于定义一组常量。枚举类型提供了一种更安全的方式来处理常量，并且可以提供一些额外的功能，如枚举类型的方法、构造函数、继承等。</p>
+<p>优势：</p>
+<ul>
+<li>类型安全：编译时检查，避免无效值；</li>
+<li>可读性强：语义明确，代码更易理解；</li>
+<li>功能丰富：可以添加属性、方法和构造函数；</li>
+<li>内置方法：values()、valueOf()、ordinal()、name()、toString()。</li>
+<li>单例保证：每个枚举常量都是单例。</li>
+</ul>
+<blockquote>
+<p>枚举类型实现原理：枚举类型是一个类，继承了Enum类，枚举类型中的每个常量都是一个枚举对象，枚举对象在编译时会被替换为对应的常量值。</p>
+</blockquote>
+<blockquote>
+<p>枚举内置方法</p>
+<ul>
+<li>values()：返回枚举类型的所有常量，返回的是一个数组；</li>
+<li>valueOf(String name)：返回指定名称的枚举常量，如果找不到则抛出异常；</li>
+<li>ordinal()：返回枚举常量的索引，索引从0开始；</li>
+<li>name()：返回枚举常量的名称；</li>
+<li>toString()：返回枚举常量的字符串表示，默认返回名称。</li>
+<li>equals()：比较两个枚举对象是否相等，相等则返回true；</li>
+<li>hashCode()：返回枚举常量的哈希码值，默认返回名称的哈希码值；</li>
+<li>compareTo()：比较两个枚举对象，返回值小于0表示当前对象小于参数对象，等于0表示当前对象等于参数对象，大于0表示当前对象大于参数对象。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>⚠️注意事项</p>
+<ul>
+<li>ordinal()方法返回的是声明顺序，不建议用于业务逻辑；
+-valueOf()方法区分大小写，传入错误名称会抛出异常；</li>
+<li>枚举实现了Comparable接口，默认情况下枚举对象会按照声明顺序进行排序，如果需要自定义排序规则，需要实现Comparable接口并重写compareTo()方法。</li>
+<li>枚举构造方法必须是private，可以省略private，这确保了枚举常量只能在枚举内部创建，维护了枚举的单例特性。</li>
+<li>枚举常量不能使用 &gt; 和 &lt; 直接比较，需要使用compareTo()方法进行比较。枚举支持 == 和equals()比较，并且实现了Comparable接口，因此可以进行排序。</li>
+</ul>
+</blockquote>
+<p>策略模式（Strategy Pattern）是一种软件设计模式，它允许在运行时动态选择算法或者策略。策略模式将算法封装在独立的对象中，并使它们可以相互替换。
+策略模式在java中的实现：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">DiscountStrategy</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">NONE</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">REGULAR</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">0</span><span class="p">.</span><span class="na">9</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">},</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">LONG_TERM</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">0</span><span class="p">.</span><span class="na">85</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>策略模式使用场景：</p>
+<ul>
+<li>使用枚举替代常量值</li>
+<li>为枚举添加有意义的方法</li>
+<li>使用枚举实现策略模式</li>
+<li>合理使用构造方法</li>
+</ul>
+
+<h2 class="relative group">递归(Recursion)
+    <div id="递归recursion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%80%92%e5%bd%92recursion" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>递归是一种强大的编程技术，函数调用自身来解决更小规模的相同问题。</p>
+<blockquote>
+<p>❗️递归的核心要素：</p>
+<ul>
+<li>基础情况：递归的终止条件，防止无限递归；</li>
+<li>递归情况：函数调用自身的情况；</li>
+<li>问题分解：将大问题分解为相同类型的小问题；</li>
+<li>结果合并：将子问题的结果合并得到最终答案。</li>
+</ul>
+</blockquote>
+<p>递归优化技术：</p>
+<ul>
+<li>记忆化：递归调用的结果保存起来，下次调用时直接返回结果，避免重复计算。</li>
+<li>尾递归：递归调用必须位于函数的末尾，递归调用必须返回结果。</li>
+<li>动态规划转换：将递归问题转换为动态规划问题。</li>
+<li>迭代：递归调用改为迭代调用。</li>
+<li>剪枝：递归调用时，根据当前状态判断是否需要继续递归调用。</li>
+<li>贪心算法：递归调用时，根据当前状态选择最佳解。</li>
+<li>回溯算法：递归调用时，根据当前状态选择所有可能的解，并返回最佳解。</li>
+<li>递归树：递归调用时，将递归调用过程画成树形结构，方便理解。</li>
+<li>递归树剪枝：递归调用时，根据递归树剪枝算法，剪枝掉不需要的递归调用。</li>
+<li>递归树优化：递归调用时，根据递归树优化算法，优化递归调用。</li>
+</ul>
+
+<h2 class="relative group">反射(Reflection)
+    <div id="反射reflection" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8f%8d%e5%b0%84reflection" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>反射机制允许程序在运行期间获取任意一个类的内部信息，并能够操作任意一个对象的内部属性以及方法。这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。</p>
+<blockquote>
+<p>反射主要用途</p>
+<ol>
+<li>运行时类型检查（在运行时确定对象的类型，获取类的详细信息，包括类名、包名、父类、接口等）；</li>
+<li>动态对象创建（根据类名动态创建对象实例，支持不同参数等构造器调用）；</li>
+<li>动态方法调用（在运行期间调用对象的方法，包括私有方法，实现灵活的程序控制）；</li>
+<li>动态字段访问（在运行期间访问对象字段，包括私有字段，实现灵活的程序控制）。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>反射核心类</p>
+<ol>
+<li>Class：代表一个类，Class对象表示某个类或接口，Class对象是所有Class对象的基类。Class对象是反射的起点。</li>
+<li>Field：代表类的成员变量，Field对象表示某个类的成员变量，Field对象是所有Field对象的基类。</li>
+<li>Method：代表类的方法，Method对象表示某个类的方法，Method对象是所有Method对象的基类。</li>
+<li>Constructor：代表类的构造器，Constructor对象表示某个类的构造器，Constructor对象是所有Constructor对象的基类。</li>
+</ol>
+</blockquote>
+
+<h3 class="relative group">获取Class对象
+    <div id="获取class对象" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%8e%b7%e5%8f%96class%e5%af%b9%e8%b1%a1" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ol>
+<li>Class.forName(&ldquo;包名.类名&rdquo;)：动态加载类，适用于类名以字符串形式提供的情况。</li>
+<li>对象.getClass()：运行时获取，适用于已有对象实例的情况。</li>
+<li>类名.class：编译时就确定，效率最高，适用于已知具体类是情况。</li>
+</ol>
+
+<h3 class="relative group">字段反射操作
+    <div id="字段反射操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e6%ae%b5%e5%8f%8d%e5%b0%84%e6%93%8d%e4%bd%9c" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Class</span><span class="w"> </span><span class="n">clazz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FieldReflect</span><span class="p">.</span><span class="na">class</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取所有字段(包括继承的)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Field</span><span class="o">[]</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getFields</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取当前类字段(不包括继承的)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Field</span><span class="o">[]</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getDeclaredFields</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Field</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">fields</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="na">getType</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//访问公共字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Field</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getField</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//访问私有字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Field</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getDeclaredField</span><span class="p">(</span><span class="s">&#34;age&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">field</span><span class="p">.</span><span class="na">setAccessible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="c1">//设置可访问</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">field</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">field</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;张三&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//访问静态字段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Field</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getDeclaredField</span><span class="p">(</span><span class="s">&#34;age&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">方法反射操作
+    <div id="方法反射操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%96%b9%e6%b3%95%e5%8f%8d%e5%b0%84%e6%93%8d%e4%bd%9c" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//调用公共方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&#34;getName&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">method</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//调用私有方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getDeclaredMethod</span><span class="p">(</span><span class="s">&#34;getName&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">method</span><span class="p">.</span><span class="na">setAccessible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">method</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//调用静态方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&#34;getName&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//调用重载方法(带参数)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&#34;getName&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;张三&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Method</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&#34;getName&#34;</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">18</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">构造器反射操作
+    <div id="构造器反射操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9e%84%e9%80%a0%e5%99%a8%e5%8f%8d%e5%b0%84%e6%93%8d%e4%bd%9c" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ConstructionReflection</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//使用无参构造器</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Constructor</span><span class="w"> </span><span class="n">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constructor</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//使用单参构造器</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Constructor</span><span class="w"> </span><span class="n">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constructor</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="s">&#34;张三&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//使用多参构造器</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Constructor</span><span class="w"> </span><span class="n">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constructor</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="s">&#34;张三&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">18</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//使用私有构造器</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Constructor</span><span class="w"> </span><span class="n">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getDeclaredConstructor</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">constructor</span><span class="p">.</span><span class="na">setAccessible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">constructor</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="s">&#34;张三&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;私有构造器对象：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">ConstructionReflection</span><span class="p">)</span><span class="n">obj</span><span class="p">).</span><span class="na">getInfo</span><span class="p">());</span><span class="w">
+</span></span></span></code></pre></div><p>反射最佳实践</p>
+<ol>
+<li>谨慎使用反射，优先考虑面向对象编程方式；</li>
+<li>反射操作要进行异常处理，捕获相关的反射异常；</li>
+<li>使用setAccessible(true)时要注意考虑安全性问题；</li>
+<li>反射操作性能较低，避免在性能敏感的代码中频繁使用反射；</li>
+<li>缓存反射获取的Class\Method\Field对象，避免每次获取对象;</li>
+<li>在框架中合理使用反射，提供灵活性和扩展性。</li>
+<li>反射操作无法在编译时进行类型检查，可能会导致运行时错误。</li>
+</ol>
+<p>反射使用场景</p>
+<ol>
+<li>配置文件解析</li>
+<li>框架开发</li>
+<li>动态代理</li>
+<li>测试框架</li>
+<li>调试工具：ide调试器使用反射显示对象的内部状态和结构信息；</li>
+<li>插件系统：动态加载和执行插件代码，实现可扩展的应用架构。</li>
+<li>序列化：json和xml序列化库使用反射将对象转化为字符串格式。</li>
+</ol>
+<p>反射的缺点</p>
+<ol>
+<li>反射性能问题：反射操作耗时，反射操作的效率比直接操作对象效率低。</li>
+<li>破坏封装性</li>
+<li>代码可读性差</li>
+<li>编译时无法进行类型检查。</li>
+</ol>
+
+<h2 class="relative group">注解（Annotation）
+    <div id="注解annotation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%b3%a8%e8%a7%a3annotation" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>注解是java5引入的，注解是一种修饰符，注解可以修饰包、类、方法、属性、参数、局部变量，为代码添加元数据的方式。注解本身不会改变程序的执行逻辑，但可以被编译器、开发工具和运行时环境读取和处理。</p>
+<blockquote>
+<p>注解的作用：</p>
+</blockquote>
+<ol>
+<li>编译时检查：如@Override检查方法重写是否正确；</li>
+<li>代码生成：如Lombok的@Getter@Setter注解，自动生成getter和setter方法；</li>
+<li>运行时处理：如Spring的@Component、@Controller、@Service、@Repository注解，自动扫描并注册bean，进行依赖注入；</li>
+<li>文档生成：如@Deprecated注解，表示该方法或类已过时，不建议使用。</li>
+<li>配置管理：如Spring的@Value注解，用于注入配置文件参数。</li>
+</ol>
+<blockquote>
+<p>Java内置的注解：</p>
+</blockquote>
+<ol>
+<li>@Override：表示该方法是一个重写方法，用于检查是否正确地重写父类方法；</li>
+<li>@Deprecated：表示该方法或类已过时，不建议使用；</li>
+<li>@SuppressWarnings：表示忽略编译警告，如使用过时方法或参数。</li>
+<li>@FunctionalInterface：表示该接口是一个函数式接口，用于定义lambda表达式。</li>
+<li>@SafeVarargs：表示该方法使用了可变参数，但该参数不会被修改，可以忽略编译警告。</li>
+<li>@Test：表示该方法为测试方法，用于单元测试。</li>
+</ol>
+<blockquote>
+<p>自定义注解</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//作者信息注解</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Documented</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">AuthorInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">name</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">&#34;holly&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">date</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">email</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//版本信息注解</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">METHOD</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">VersionInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">value</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">&#34;1.0.0&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
+<p>元注解</p>
+</blockquote>
+<ol>
+<li>@Documented：表示注解被javadoc工具所记录</li>
+<li>@Retention：表示注解被保留的时间长短(运行时、编译时、类加载时&mdash;SOURCE\CLASS\RUNTIME)</li>
+<li>@Target：表示注解所修饰的对象范围(类、方法、属性、构造器、参数、包、注解&mdash;TYPE\FIELD\METHOD)</li>
+<li>@Inherited：表示注解被子类继承。</li>
+</ol>
+<blockquote>
+<p>注解设计和使用原则</p>
+<ol>
+<li>注解本身没有逻辑，只是为程序员提供一种新的方法，来为程序进行注释。</li>
+<li>明确注解的目的和作用域</li>
+<li>提供合理的默认值</li>
+<li>使用有意义的名称</li>
+<li>添加完整的文档说明</li>
+<li>考虑性能影响（⚠️反射操作有一定的性能开销，在高频调用的场景中应该考虑缓存注解信息，避免重复的反射操作）</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>注解使用场景</p>
+<ul>
+<li>数据验证（使用注解标记字段验证规则，如：@NotBlank、@NotNull、@Min、@Max、@Email、@Pattern）</li>
+<li>依赖注入（使用注解标记字段，如：@Autowired、@Resource）</li>
+<li>orm映射（使用注解标记字段，如：@Table、@Column、@Id、@GeneratedValue）</li>
+<li>web开发（springmvc使用注解标记方法，如：@Controller、@RequestMapping、@RequestParam、@ResponseBody）</li>
+<li>序列化（jackson的@JsonProperty注解）</li>
+<li>测试（junit的@BeforeClass、@AfterClass、@Before、@After、@Test、@Ignore注解）</li>
+</ul>
+</blockquote>
+
+<h2 class="relative group">泛型（Generics）
+    <div id="泛型generics" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%b3%9b%e5%9e%8bgenerics" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>泛型是java5引入的新特性，泛型使得类、接口和方法可以支持任意数据类型。它提供了编译时类型安全检测机制，允许程序员在编译时检测到非法的类型。泛型的本质是参数化类型，即所操作的数据类型被指定为一个参数。</p>
+<blockquote>
+<p>❗️泛型主要优势：</p>
+</blockquote>
+<ul>
+<li>类型安全：在编译时检查类型错误，避免允许时ClassCastException;</li>
+<li>消除类型转换：避免显式类型转换，代码更简洁</li>
+<li>代码复用：可以编写一次泛型代码，用于多种数据类型，避免重复编写相似的代码。</li>
+<li>提高性能：避免装箱和拆箱操作，直接操作原始数据类型，提高性能。</li>
+<li>更好的api设计：使用api更加清晰和易用。</li>
+</ul>
+<blockquote>
+<p>? 泛型通配符</p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">通配符类型</th>
+          <th style="text-align: left">语法</th>
+          <th style="text-align: left">说明</th>
+          <th style="text-align: left">使用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">上界通配符</td>
+          <td style="text-align: left">&lt;? extends T&gt;</td>
+          <td style="text-align: left">表示类型必须是T或T的子类</td>
+          <td style="text-align: left">读取T类型的数据(只能读取，不能写入)生产者</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">下界通配符</td>
+          <td style="text-align: left">&lt;? super T&gt;</td>
+          <td style="text-align: left">表示类型必须是T或T的父类</td>
+          <td style="text-align: left">写入T类型的数据(只能写入，不能读取) 消费者</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">无界通配符</td>
+          <td style="text-align: left"><?></td>
+          <td style="text-align: left">表示类型可以是任意类型</td>
+          <td style="text-align: left">不限制类型</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>⚠️PECS原则</p>
+<ol>
+<li>生产者使用上界通配符（&lt;? extends T&gt;）需要从集合（工厂）中读取数据（生产者）get</li>
+<li>消费者使用下界通配符（&lt;? super T&gt;）需要向集合中写入数据（消费者）add</li>
+<li>无界通配符（<?>）在不确定具体类型时使用。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>类型擦除</p>
+<ul>
+<li>泛型类型在编译时会被擦除，替换为其边界类型（如果有）或Object类型。</li>
+<li>运行时无法获取泛型的具体类型信息</li>
+<li>不能创建泛型数组</li>
+<li>不能实例化类型参数</li>
+<li>不能使用基本类型作为类型参数</li>
+<li>不能在静态上下文中使用类型参数</li>
+</ul>
+</blockquote>
+
+<h3 class="relative group">什么时候使用泛型
+    <div id="什么时候使用泛型" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8%e6%b3%9b%e5%9e%8b" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>当需要类型安全、避免类型转换、提高代码重用性时，特别是在集合、工具类和框架开发中；</p>
+
+<h3 class="relative group">extends和super区别
+    <div id="extends和super区别" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#extends%e5%92%8csuper%e5%8c%ba%e5%88%ab" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>extends用于读取（生产者）&mdash;-子类或者相同类型，super用于写入（消费者）&mdash;-父类或者相同类型。</p>
+
+<h3 class="relative group">为什么不能创建泛型数组
+    <div id="为什么不能创建泛型数组" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%8d%e8%83%bd%e5%88%9b%e5%bb%ba%e6%b3%9b%e5%9e%8b%e6%95%b0%e7%bb%84" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>由于类型擦除，运行时无法确定数组的确切类型，可能导致类型安全问题，可以使用List代替数组，或者使用反射创建。</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_categories/Java-basics/java-base07.md"
+          data-oid-likes="likes_categories/Java-basics/java-base07.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+            <div class="pt-3">
+              
+
+<div class="pt-8 mt-8 border-t border-neutral-200 dark:border-neutral-700">
+  <h3 class="text-2xl font-bold mb-4">评论</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="hollyblog/hollyblog.github.io"
+    data-repo-id="R_kgDOQbMzVg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQbMzVs4Cyz-f"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label=""
+    title="">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Holly
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+    
+
+
+  
+  <script defer src="/js/custom.min.4ebb3e0a94262e65bb85593d7e41cefff82843a5373a842f3b91d2baace5f117b01e818abc9a9539776763aff333e6b43cee59a442a6d46e0dd43e1338f769a0.js" integrity="sha512-Trs&#43;CpQmLmW7hVk9fkHO//goQ6U3OoQvO5HSuqzl8RewHoGKvJqVOXdnY6/zM&#43;a0PO5ZpEKm1G4N1D4TOPdpoA=="></script>
+
+
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder=""
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

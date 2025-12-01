@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Distributed on 永远纯粹</title>
+    <title>分布式系统 on 永远纯粹</title>
     <link>https://hollyblog.github.io/categories/distributed/</link>
-    <description>Recent content in Distributed on 永远纯粹</description>
+    <description>Recent content in 分布式系统 on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2025 Holly</copyright>
@@ -11,10 +11,10 @@
     
     <item>
       <title>分布式系统设计实践</title>
-      <link>https://hollyblog.github.io/posts/distributed-system-design/</link>
+      <link>https://hollyblog.github.io/posts/distributed01/</link>
       <pubDate>Mon, 20 Jan 2025 10:00:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/distributed-system-design/</guid>
+      <guid>https://hollyblog.github.io/posts/distributed01/</guid>
       <description></description>
       
     </item>

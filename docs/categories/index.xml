@@ -20,17 +20,17 @@
     </item>
     
     <item>
-      <title>Database-Basics</title>
-      <link>https://hollyblog.github.io/categories/database-basics/</link>
+      <title>数据库基础</title>
+      <link>https://hollyblog.github.io/categories/database/</link>
       <pubDate>Mon, 24 Nov 2025 11:00:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/categories/database-basics/</guid>
+      <guid>https://hollyblog.github.io/categories/database/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>Distributed</title>
+      <title>分布式系统</title>
       <link>https://hollyblog.github.io/categories/distributed/</link>
       <pubDate>Mon, 20 Jan 2025 10:00:00 +0800</pubDate>
       
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>Cloud</title>
+      <title>云计算</title>
       <link>https://hollyblog.github.io/categories/cloud/</link>
       <pubDate>Sat, 18 Jan 2025 14:30:00 +0800</pubDate>
       
@@ -50,7 +50,7 @@
     </item>
     
     <item>
-      <title>LLM</title>
+      <title>大模型</title>
       <link>https://hollyblog.github.io/categories/llm/</link>
       <pubDate>Wed, 15 Jan 2025 16:00:00 +0800</pubDate>
       
@@ -60,21 +60,81 @@
     </item>
     
     <item>
-      <title>Middleware-Basics</title>
-      <link>https://hollyblog.github.io/categories/middleware-basics/</link>
+      <title>中间件</title>
+      <link>https://hollyblog.github.io/categories/middleware/</link>
       <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/categories/middleware-basics/</guid>
+      <guid>https://hollyblog.github.io/categories/middleware/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>Java-Basics</title>
-      <link>https://hollyblog.github.io/categories/java-basics/</link>
-      <pubDate>Sat, 09 Jan 2021 20:18:05 +0800</pubDate>
+      <title>Java基础</title>
+      <link>https://hollyblog.github.io/categories/java/</link>
+      <pubDate>Sun, 10 Jan 2021 21:22:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/categories/java-basics/</guid>
+      <guid>https://hollyblog.github.io/categories/java/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JUC</title>
+      <link>https://hollyblog.github.io/categories/juc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hollyblog.github.io/categories/juc/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM</title>
+      <link>https://hollyblog.github.io/categories/jvm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hollyblog.github.io/categories/jvm/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>框架应用</title>
+      <link>https://hollyblog.github.io/categories/framework/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hollyblog.github.io/categories/framework/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>系统架构</title>
+      <link>https://hollyblog.github.io/categories/sa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hollyblog.github.io/categories/sa/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>线程池</title>
+      <link>https://hollyblog.github.io/categories/threadpool/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hollyblog.github.io/categories/threadpool/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>运维部署</title>
+      <link>https://hollyblog.github.io/categories/ops/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hollyblog.github.io/categories/ops/</guid>
       <description></description>
       
     </item>

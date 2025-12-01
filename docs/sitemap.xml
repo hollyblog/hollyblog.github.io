@@ -15,7 +15,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/mysql-first/</loc>
+    <loc>https://hollyblog.github.io/posts/mysql01/</loc>
     <lastmod>2025-11-24T11:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -27,43 +27,91 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/distributed-system-design/</loc>
+    <loc>https://hollyblog.github.io/posts/distributed01/</loc>
     <lastmod>2025-01-20T10:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/cloud-native-architecture/</loc>
+    <loc>https://hollyblog.github.io/posts/cloud01/</loc>
     <lastmod>2025-01-18T14:30:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/llm-application-development/</loc>
+    <loc>https://hollyblog.github.io/posts/llm01/</loc>
     <lastmod>2025-01-15T16:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/rabbitmq-performance-optimization/</loc>
+    <loc>https://hollyblog.github.io/posts/middleware-rabbitmq01/</loc>
     <lastmod>2025-01-12T09:30:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/redis-performance-optimization/</loc>
+    <loc>https://hollyblog.github.io/posts/middleware-redis01/</loc>
     <lastmod>2025-01-12T09:30:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hollyblog.github.io/posts/mysql-index-optimization/</loc>
+    <loc>https://hollyblog.github.io/posts/mysql02/</loc>
     <lastmod>2025-01-10T11:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://hollyblog.github.io/posts/java-base11/</loc>
+    <lastmod>2021-01-10T21:22:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base10/</loc>
+    <lastmod>2021-01-09T22:22:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base09/</loc>
+    <lastmod>2021-01-09T22:21:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base08/</loc>
+    <lastmod>2021-01-09T22:20:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base07/</loc>
+    <lastmod>2021-01-09T22:19:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base06/</loc>
+    <lastmod>2021-01-09T22:18:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base05/</loc>
+    <lastmod>2021-01-09T21:18:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://hollyblog.github.io/posts/java-base03/</loc>
+    <lastmod>2021-01-09T20:18:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hollyblog.github.io/posts/java-base04/</loc>
     <lastmod>2021-01-09T20:18:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

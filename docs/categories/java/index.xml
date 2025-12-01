@@ -1,20 +1,130 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on 永远纯粹</title>
-    <link>http://localhost:1313/categories/java/</link>
-    <description>Recent content in Java on 永远纯粹</description>
+    <title>Java基础 on 永远纯粹</title>
+    <link>https://hollyblog.github.io/categories/java/</link>
+    <description>Recent content in Java基础 on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2025 Holly</copyright>
-    <lastBuildDate>Fri, 08 Jan 2021 19:00:01 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jan 2021 21:22:05 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Java 高级主题</title>
+      <link>https://hollyblog.github.io/posts/java-base11/</link>
+      <pubDate>Sun, 10 Jan 2021 21:22:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base11/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 输入输出</title>
+      <link>https://hollyblog.github.io/posts/java-base10/</link>
+      <pubDate>Sat, 09 Jan 2021 22:22:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base10/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 集合框架</title>
+      <link>https://hollyblog.github.io/posts/java-base09/</link>
+      <pubDate>Sat, 09 Jan 2021 22:21:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base09/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 异常处理</title>
+      <link>https://hollyblog.github.io/posts/java-base08/</link>
+      <pubDate>Sat, 09 Jan 2021 22:20:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base08/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 高级特性</title>
+      <link>https://hollyblog.github.io/posts/java-base07/</link>
+      <pubDate>Sat, 09 Jan 2021 22:19:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base07/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 面向对象进阶</title>
+      <link>https://hollyblog.github.io/posts/java-base06/</link>
+      <pubDate>Sat, 09 Jan 2021 22:18:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 面向对象基础</title>
+      <link>https://hollyblog.github.io/posts/java-base05/</link>
+      <pubDate>Sat, 09 Jan 2021 21:18:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 流程控制</title>
+      <link>https://hollyblog.github.io/posts/java-base03/</link>
+      <pubDate>Sat, 09 Jan 2021 20:18:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 数组</title>
+      <link>https://hollyblog.github.io/posts/java-base04/</link>
+      <pubDate>Sat, 09 Jan 2021 20:18:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 基础语法</title>
+      <link>https://hollyblog.github.io/posts/java-base02/</link>
+      <pubDate>Fri, 08 Jan 2021 20:18:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base02/</guid>
+      <description></description>
+      
+    </item>
     
     <item>
       <title>Java 入门基础</title>
-      <link>http://localhost:1313/posts/java-base01/</link>
-      <pubDate>Fri, 08 Jan 2021 19:00:01 +0800</pubDate>
+      <link>https://hollyblog.github.io/posts/java-base01/</link>
+      <pubDate>Fri, 08 Jan 2021 15:20:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/posts/java-base01/</guid>
+      <guid>https://hollyblog.github.io/posts/java-base01/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>基础环境搭建</title>
+      <link>https://hollyblog.github.io/posts/java-env-base/</link>
+      <pubDate>Fri, 08 Jan 2021 15:20:00 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-env-base/</guid>
       <description></description>
       
     </item>

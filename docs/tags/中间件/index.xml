@@ -11,20 +11,20 @@
     
     <item>
       <title>RabbitMQ 性能优化实践</title>
-      <link>https://hollyblog.github.io/posts/rabbitmq-performance-optimization/</link>
+      <link>https://hollyblog.github.io/posts/middleware-rabbitmq01/</link>
       <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/rabbitmq-performance-optimization/</guid>
+      <guid>https://hollyblog.github.io/posts/middleware-rabbitmq01/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Redis 性能优化实践</title>
-      <link>https://hollyblog.github.io/posts/redis-performance-optimization/</link>
+      <link>https://hollyblog.github.io/posts/middleware-redis01/</link>
       <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/redis-performance-optimization/</guid>
+      <guid>https://hollyblog.github.io/posts/middleware-redis01/</guid>
       <description></description>
       
     </item>

@@ -20,7 +20,7 @@ description = "永远保持好奇心，永远天真烂漫"
     name = "Holly"
     image = "img/avatar.jpg"
     headline = "永远纯粹和真诚～"
-    bio = "专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享"
+    bio = "专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享。"
     
     links = [
       { github = "https://github.com/hollyblog/" },
@@ -70,46 +70,65 @@ description = "永远保持好奇心，永远天真烂漫"
     parent = "项目"
     weight = 2
 
-  # 面试专栏下拉菜单
+  # 基础专栏下拉菜单
   [[menu.main]]
     name = "基础"
     weight = 7
   [[menu.main]]
     name = "编程语言"
-    pageRef = "categories/Java-basics"
+    pageRef = "categories/Java"
     parent = "基础"
     weight = 1
   [[menu.main]]
     name = "数据存储"
-    pageRef = "categories/Database-basics"
+    pageRef = "categories/Database"
     parent = "基础"
     weight = 2
   [[menu.main]]
     name = "框架应用"
-    pageRef = "categories/Framework-basics"
+    pageRef = "categories/Framework"
     parent = "基础"
     weight = 3
   [[menu.main]]
     name = "中间件"
-    pageRef = "categories/Middleware-basics"
+    pageRef = "categories/Middleware"
     parent = "基础"
     weight = 4
   [[menu.main]]
     name = "系统架构"
-    pageRef = "categories/SA-basics"
+    pageRef = "categories/SA"
     parent = "基础"
     weight = 5
   [[menu.main]]
     name = "运维部署"
-    pageRef = "categories/Ops-basics"
+    pageRef = "categories/Ops"
     parent = "基础"
     weight = 6
+  # 进阶专栏下拉菜单
+  [[menu.main]]
+    name = "进阶"
+    weight = 8
+  [[menu.main]]
+    name = "并发编程JUC"
+    pageRef = "categories/JUC"
+    parent = "进阶"
+    weight = 1
+  [[menu.main]]
+    name = "Java线程池"
+    pageRef = "categories/ThreadPool"
+    parent = "进阶"
+    weight = 2
+  [[menu.main]]
+    name = "JVM调优"
+    pageRef = "categories/JVM"
+    parent = "进阶"
+    weight = 3
     
   # 简历
   [[menu.main]]
     name = "我的简历"
     pageRef = "resume"
-    weight = 8
+    weight = 9
 
 # 日期格式
 [params.format]

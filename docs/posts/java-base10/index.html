@@ -1,0 +1,2624 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="zh-CN">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>Java 输入输出 &middot; 永远纯粹</title>
+    <meta name="title" content="Java 输入输出 &middot; 永远纯粹">
+  
+
+  
+  
+    <meta name="description" content="Java 输入输出：IO流概述、字节流、字符流、文件操作、序列化。">
+  
+  
+    <meta name="keywords" content="Java,Java输入输出,">
+  
+  
+  
+  <link rel="canonical" href="https://hollyblog.github.io/posts/java-base10/">
+  
+
+  
+  
+    <meta name="author" content="Holly">
+  
+  
+    
+      
+        
+          <link href="https://github.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://gitee.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="https://hollyblog.github.io/posts/java-base10/">
+  <meta property="og:site_name" content="永远纯粹">
+  <meta property="og:title" content="Java 输入输出">
+  <meta property="og:description" content="Java 输入输出：IO流概述、字节流、字符流、文件操作、序列化。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-01-09T22:22:05+08:00">
+    <meta property="article:modified_time" content="2021-01-09T22:22:05+08:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Java输入输出">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java 输入输出">
+  <meta name="twitter:description" content="Java 输入输出：IO流概述、字节流、字符流、文件操作、序列化。">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.dde3b8d0fdc751fb7c780fccbaa2b82e5e46210788309f435480f233fdc3f99564d81d4a6fe6d298eb6913f369601f7a76b747c08c585bb78efb1b54112bb772.css"
+    integrity="sha512-3eO40P3HUft8eA/MuqK4Ll5GIQeIMJ9DVIDyM/3D&#43;ZVk2B1Kb&#43;bSmOtpE/NpYB96drdHwIxYW7eO&#43;xtUESu3cg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9df4fc14d50efcc9aa4cfc2b6f348e365f421f5ad491278f8f48c0360cf2f93f08882fda6da162d7ace8e5add57c2df4ac46bd3861306b1d4c452cd31f448d64.js"
+      integrity="sha512-nfT8FNUO/MmqTPwrbzSONl9CH1rUkSePj0jANgzy&#43;T8IiC/abaFi16zo5a3VfC30rEa9OGEwax1MRSzTH0SNZA=="
+      data-copy=""
+      data-copied=""></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "全部文章",
+    "name": "Java 输入输出",
+    "headline": "Java 输入输出",
+    "description": "Java 输入输出：IO流概述、字节流、字符流、文件操作、序列化。",
+    
+    "inLanguage": "zh-CN",
+    "url" : "https:\/\/hollyblog.github.io\/posts\/java-base10\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Holly"
+    },
+    "copyrightYear": "2021",
+    "dateCreated": "2021-01-09T22:22:05\u002b08:00",
+    "datePublished": "2021-01-09T22:22:05\u002b08:00",
+    
+    "dateModified": "2021-01-09T22:22:05\u002b08:00",
+    
+    "keywords": ["Java","Java输入输出"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "6400"
+  }]
+  </script>
+
+
+
+  
+  
+    
+
+
+
+
+  
+
+  
+  
+    
+
+
+  
+  <link rel="stylesheet" href="/css/custom.min.73bf6048d6126134a3a4d080eae4c7d7f266a34e211b8c064c369e863072b5f83301535ff631e803efa5c7fbfbfa9b5b52debdab6f1ca834f108f8cc7f432207.css" integrity="sha512-c79gSNYSYTSjpNCA6uTH1/Jmo04hG4wGTDaehjBytfgzAVNf9jHoA&#43;&#43;lx/v7&#43;ptbUt69q28cqDTxCPjMf0MiBw==" />
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+    
+    
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium">
+          永远纯粹
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="首页"
+  title="永远天真烂漫">
+  
+  
+    <p class="text-base font-medium">
+      首页
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="关于我"
+  title="关于我">
+  
+  
+    <p class="text-base font-medium">
+      关于我
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/distributed/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="分布式"
+  title="分布式系统">
+  
+  
+    <p class="text-base font-medium">
+      分布式
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/cloud/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="云计算"
+  title="云计算">
+  
+  
+    <p class="text-base font-medium">
+      云计算
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/llm/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="大模型"
+  title="大模型">
+  
+  
+    <p class="text-base font-medium">
+      大模型
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="项目"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        项目
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="智能餐饮"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              智能餐饮
+            </p>
+          </a>
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="寻环小程序"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              寻环小程序
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="基础"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        基础
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/java/"
+            
+            aria-label="编程语言"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Java基础">
+              编程语言
+            </p>
+          </a>
+        
+          <a
+            href="/categories/database/"
+            
+            aria-label="数据存储"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="数据库基础">
+              数据存储
+            </p>
+          </a>
+        
+          <a
+            href="/categories/framework/"
+            
+            aria-label="框架应用"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="框架应用">
+              框架应用
+            </p>
+          </a>
+        
+          <a
+            href="/categories/middleware/"
+            
+            aria-label="中间件"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="中间件">
+              中间件
+            </p>
+          </a>
+        
+          <a
+            href="/categories/sa/"
+            
+            aria-label="系统架构"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="系统架构">
+              系统架构
+            </p>
+          </a>
+        
+          <a
+            href="/categories/ops/"
+            
+            aria-label="运维部署"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="运维部署">
+              运维部署
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="进阶"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        进阶
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/juc/"
+            
+            aria-label="并发编程JUC"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JUC">
+              并发编程JUC
+            </p>
+          </a>
+        
+          <a
+            href="/categories/threadpool/"
+            
+            aria-label="Java线程池"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="线程池">
+              Java线程池
+            </p>
+          </a>
+        
+          <a
+            href="/categories/jvm/"
+            
+            aria-label="JVM调优"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JVM">
+              JVM调优
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <a
+  href="/resume/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="我的简历"
+  title="个人简历">
+  
+  
+    <p class="text-base font-medium">
+      我的简历
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="首页"
+    title="永远天真烂漫">
+    
+    
+      <p class="text-bg font-bg">
+        首页
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="关于我"
+    title="关于我">
+    
+    
+      <p class="text-bg font-bg">
+        关于我
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/distributed/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="分布式"
+    title="分布式系统">
+    
+    
+      <p class="text-bg font-bg">
+        分布式
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/cloud/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="云计算"
+    title="云计算">
+    
+    
+      <p class="text-bg font-bg">
+        云计算
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/llm/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="大模型"
+    title="大模型">
+    
+    
+      <p class="text-bg font-bg">
+        大模型
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="项目"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      项目
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="智能餐饮"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        智能餐饮
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="寻环小程序"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        寻环小程序
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="基础"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      基础
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/java/"
+      
+      aria-label="编程语言"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Java基础">
+        编程语言
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/database/"
+      
+      aria-label="数据存储"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="数据库基础">
+        数据存储
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/framework/"
+      
+      aria-label="框架应用"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="框架应用">
+        框架应用
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/middleware/"
+      
+      aria-label="中间件"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="中间件">
+        中间件
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/sa/"
+      
+      aria-label="系统架构"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="系统架构">
+        系统架构
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/ops/"
+      
+      aria-label="运维部署"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="运维部署">
+        运维部署
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="进阶"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      进阶
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/juc/"
+      
+      aria-label="并发编程JUC"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JUC">
+        并发编程JUC
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/threadpool/"
+      
+      aria-label="Java线程池"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="线程池">
+        Java线程池
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/jvm/"
+      
+      aria-label="JVM调优"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JVM">
+        JVM调优
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/resume/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="我的简历"
+    title="个人简历">
+    
+    
+      <p class="text-bg font-bg">
+        我的简历
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+    
+    
+  
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/img/background_hu_de979b0156ba1693.jpg"
+      alt="Java 输入输出"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+      integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/img/background_hu_de979b0156ba1693.jpg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Java 输入输出
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2021-01-09T22:22:05&#43;08:00">2021年1月9日</time><span class="px-2 text-primary-500">&middot;</span><span>6400 字</span><span class="px-2 text-primary-500">&middot;</span><span title="">13 分钟</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/categories/java/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Java基础
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/java/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Java
+  </span>
+</span>
+
+              </a>
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/java%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Java输入输出
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Holly"
+        src="/img/avatar_hu_ac9fd040db4ac989.jpg"
+        data-zoom-src="/img/avatar.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Holly
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享。</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/hollyblog/"
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://gitee.com/hollyblog/"
+          target="_blank"
+          aria-label="Gitee"
+          title="Gitee"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.037a.594.594 0 0 1-.592-.593v-1.482a.594.594 0 0 1 .592-.593h6.815c.327 0 .593.266.593.593v3.408a4 4 0 0 1-4 4H5.926a.594.594 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/>
+</svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:2285549633@qq.com"
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#io流概述">IO流概述</a>
+      <ul>
+        <li><a href="#io流分类">IO流分类</a></li>
+        <li><a href="#流的继承体系">流的继承体系</a></li>
+        <li><a href="#装饰器模式在io流中的应用">装饰器模式在IO流中的应用</a></li>
+        <li><a href="#选择合适的流类型">选择合适的流类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#字节流">字节流</a>
+      <ul>
+        <li><a href="#字节流的主要实现类">字节流的主要实现类</a></li>
+        <li><a href="#字节流类型比较">字节流类型比较</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符流">字符流</a>
+      <ul>
+        <li><a href="#字符流的主要实现类">字符流的主要实现类</a></li>
+        <li><a href="#字符流最佳实践">字符流最佳实践</a></li>
+        <li><a href="#什么时候使用字符流什么时候使用字节流">什么时候使用字符流，什么时候使用字节流</a></li>
+        <li><a href="#如何处理中文乱码问题">如何处理中文乱码问题</a></li>
+        <li><a href="#bufferreader的缓冲区大小是多少">BufferReader的缓冲区大小是多少</a></li>
+      </ul>
+    </li>
+    <li><a href="#file文件操作">File文件操作</a>
+      <ul>
+        <li><a href="#创建file文件">创建file文件</a></li>
+        <li><a href="#文件基本操作">文件基本操作</a></li>
+        <li><a href="#file类-vs-nio">File类 vs NIO</a></li>
+        <li><a href="#符号链接">符号链接</a></li>
+        <li><a href="#文件属性">文件属性</a></li>
+        <li><a href="#filedelete返回false怎么办">File.delete()返回false怎么办</a></li>
+        <li><a href="#如何处理文件编码问题">如何处理文件编码问题</a></li>
+        <li><a href="#大文件操作如何优化">大文件操作如何优化</a></li>
+        <li><a href="#如何安全删除目录">如何安全删除目录</a></li>
+        <li><a href="#练习建议">练习建议</a></li>
+      </ul>
+    </li>
+    <li><a href="#序列化">序列化</a>
+      <ul>
+        <li><a href="#serializable-接口">Serializable 接口</a></li>
+        <li><a href="#transient-关键字">transient 关键字</a></li>
+        <li><a href="#常见问题">常见问题</a></li>
+        <li><a href="#序列化代替方案">序列化代替方案</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#io流概述">IO流概述</a>
+      <ul>
+        <li><a href="#io流分类">IO流分类</a></li>
+        <li><a href="#流的继承体系">流的继承体系</a></li>
+        <li><a href="#装饰器模式在io流中的应用">装饰器模式在IO流中的应用</a></li>
+        <li><a href="#选择合适的流类型">选择合适的流类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#字节流">字节流</a>
+      <ul>
+        <li><a href="#字节流的主要实现类">字节流的主要实现类</a></li>
+        <li><a href="#字节流类型比较">字节流类型比较</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符流">字符流</a>
+      <ul>
+        <li><a href="#字符流的主要实现类">字符流的主要实现类</a></li>
+        <li><a href="#字符流最佳实践">字符流最佳实践</a></li>
+        <li><a href="#什么时候使用字符流什么时候使用字节流">什么时候使用字符流，什么时候使用字节流</a></li>
+        <li><a href="#如何处理中文乱码问题">如何处理中文乱码问题</a></li>
+        <li><a href="#bufferreader的缓冲区大小是多少">BufferReader的缓冲区大小是多少</a></li>
+      </ul>
+    </li>
+    <li><a href="#file文件操作">File文件操作</a>
+      <ul>
+        <li><a href="#创建file文件">创建file文件</a></li>
+        <li><a href="#文件基本操作">文件基本操作</a></li>
+        <li><a href="#file类-vs-nio">File类 vs NIO</a></li>
+        <li><a href="#符号链接">符号链接</a></li>
+        <li><a href="#文件属性">文件属性</a></li>
+        <li><a href="#filedelete返回false怎么办">File.delete()返回false怎么办</a></li>
+        <li><a href="#如何处理文件编码问题">如何处理文件编码问题</a></li>
+        <li><a href="#大文件操作如何优化">大文件操作如何优化</a></li>
+        <li><a href="#如何安全删除目录">如何安全删除目录</a></li>
+        <li><a href="#练习建议">练习建议</a></li>
+      </ul>
+    </li>
+    <li><a href="#序列化">序列化</a>
+      <ul>
+        <li><a href="#serializable-接口">Serializable 接口</a></li>
+        <li><a href="#transient-关键字">transient 关键字</a></li>
+        <li><a href="#常见问题">常见问题</a></li>
+        <li><a href="#序列化代替方案">序列化代替方案</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <p>Java 输入输出：IO流概述、字节流、字符流、文件操作、序列化。</p>
+
+<h2 class="relative group">IO流概述
+    <div id="io流概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#io%e6%b5%81%e6%a6%82%e8%bf%b0" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>Java IO流概述：IO流是Java中用于处理输入输出操作的机制。它将外部设备（如文件、网络）与Java程序连接起来，实现数据的读取和写入。流是一种抽象概念。它提供了一种统一的方式来处理不同类型的数据源和目标，如文件、内存、网络等。通过流的方式进行输入输出，数据被当作无结构的字节序列或字符序列。通过流的方式，我们可以以一致的方法读取和写入数据。</p>
+<p>IO流特点：</p>
+<ol>
+<li>流是一种有序的字节序列。</li>
+<li>流可以是输入流（读取数据）或输出流（写入数据）。</li>
+<li>流可以是字节流（处理二进制数据）或字符流（处理文本数据）。</li>
+<li>流可以是节点流（直接操作数据源或目标）或处理流（在节点流基础上进行封装，提供额外的功能）。</li>
+<li>流的操作是顺序的，一次只能处理一个字节或字符。</li>
+<li>流的操作可以是阻塞的，即等待数据准备就绪或空间可用。</li>
+<li>流的操作可以抛出IOException异常，需要进行异常处理。</li>
+<li>流的操作完成后，需要关闭流以释放系统资源。</li>
+<li>统一性：所有IO操作都通过流的方式进行</li>
+<li>抽象性：提供了统一的接口，屏蔽了底层实现细节</li>
+<li>可扩展性：通过装饰器模式可以灵活组合功能</li>
+<li>高效性：提供了缓冲机制提高IO性能。</li>
+</ol>
+
+<h3 class="relative group">IO流分类
+    <div id="io流分类" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#io%e6%b5%81%e5%88%86%e7%b1%bb" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ol>
+<li>按照数据单位分类
+<ul>
+<li>字节流：以字节（8位）为单位进行读写操作，适用于处理二进制数据。</li>
+<li>字符流：以字符（16位）为单位进行读写操作，适用于处理文本数据。</li>
+</ul>
+</li>
+<li>按照流的方向分类
+<ul>
+<li>输入流：从外部设备读取数据到Java程序。InputStream\Reader</li>
+<li>输出流：从Java程序写入数据到外部设备。OutputStream\Writer</li>
+</ul>
+</li>
+<li>按照流的功能（角色）分类
+<ul>
+<li>节点流：直接操作数据源或目标，如文件流、数组流等。FileInputStream\FileReader\FileOutputStream\FileWriter</li>
+<li>处理流：在节点流基础上进行封装，提供额外的功能，如缓冲流、转换流等。BufferedInputStream\BufferedOutputStream\BufferedReader\BufferedWriter</li>
+</ul>
+</li>
+<li>按照流的使用场景分类
+<ul>
+<li>字节流：适用于处理二进制数据，如图片、视频、音频等。</li>
+<li>字符流：适用于处理文本数据，如普通文本文件、配置文件等。</li>
+</ul>
+</li>
+</ol>
+
+<h3 class="relative group">流的继承体系
+    <div id="流的继承体系" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%b5%81%e7%9a%84%e7%bb%a7%e6%89%bf%e4%bd%93%e7%b3%bb" aria-label="">#</a>
+    </span>
+    
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>基类</th>
+          <th>类型</th>
+          <th>常用实现类</th>
+          <th>主要用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>InputStream</td>
+          <td>字节输入流</td>
+          <td>FileInputStream、BufferedInputStream</td>
+          <td>从文件或其他数据源读取字节数据</td>
+      </tr>
+      <tr>
+          <td>OutputStream</td>
+          <td>字节输出流</td>
+          <td>FileOutputStream、BufferedOutputStream</td>
+          <td>将字节数据写入文件或其他目标</td>
+      </tr>
+      <tr>
+          <td>Reader</td>
+          <td>字符输入流</td>
+          <td>FileReader、BufferedReader</td>
+          <td>从文件或其他数据源读取字符数据</td>
+      </tr>
+      <tr>
+          <td>Writer</td>
+          <td>字符输出流</td>
+          <td>FileWriter、BufferedWriter</td>
+          <td>将字符数据写入文件或其他目标</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">装饰器模式在IO流中的应用
+    <div id="装饰器模式在io流中的应用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%a3%85%e9%a5%b0%e5%99%a8%e6%a8%a1%e5%bc%8f%e5%9c%a8io%e6%b5%81%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>装饰器模式是一种结构型设计模式，它允许在不改变原有对象结构的情况下，动态地给对象添加新的功能。在IO流中，装饰器模式被广泛应用于添加额外的功能，如缓冲、转换、加密等。通过装饰器模式，我们可以在不修改原有流的情况下，灵活地组合不同的功能。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//基础流（节点流）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FileInputStream</span><span class="w"> </span><span class="n">fileStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="s">&#34;file.txt&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// (第一层装饰）添加缓冲功能</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">BufferedInputStream</span><span class="w"> </span><span class="n">bufferedStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BufferedInputStream</span><span class="p">(</span><span class="n">fileStream</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//（第二层装饰）添加数据类型读取功能</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">DataInputStream</span><span class="w"> </span><span class="n">dataStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataInputStream</span><span class="p">(</span><span class="n">bufferedStream</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//现在可以高效地读取各种数据类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataStream</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">double</span><span class="w"> </span><span class="n">doubleValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataStream</span><span class="p">.</span><span class="na">readDouble</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataStream</span><span class="p">.</span><span class="na">readUTF</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>装饰器模式的优势</p>
+<ul>
+<li>可以动态地给对象添加功能</li>
+<li>通过组合而非继承实现功能扩展</li>
+<li>符合开闭原则，易于扩展</li>
+<li>避免了类爆炸问题</li>
+</ul>
+
+<h3 class="relative group">选择合适的流类型
+    <div id="选择合适的流类型" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%80%89%e6%8b%a9%e5%90%88%e9%80%82%e7%9a%84%e6%b5%81%e7%b1%bb%e5%9e%8b" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>处理文本数据选择字符流</li>
+<li>处理二进制数据选择字节流</li>
+<li>频繁读写使用缓冲流</li>
+<li>需要类型转换使用数据流</li>
+</ul>
+
+<h2 class="relative group">字节流
+    <div id="字节流" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e8%8a%82%e6%b5%81" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>字节流特点</p>
+<ul>
+<li>处理二进制数据：适合处理图片、音频、视频等二进制文件</li>
+<li>以字节为单位：每次读写一个或多个字节</li>
+<li>通用性强：可以处理任何类型的文件</li>
+<li>效率较高：直接操作字节，没有编码转换开销</li>
+</ul>
+
+<h3 class="relative group">字节流的主要实现类
+    <div id="字节流的主要实现类" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e8%8a%82%e6%b5%81%e7%9a%84%e4%b8%bb%e8%a6%81%e5%ae%9e%e7%8e%b0%e7%b1%bb" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>FileInputStream：从文件读取字节（针对java程序是输入流）</li>
+<li>FileOutputStream：向文件写入字节（针对java程序是输出流）</li>
+<li>BufferedInputStream：添加缓冲功能，提高读取效率</li>
+<li>BufferedOutputStream：添加缓冲功能，提高写入效率</li>
+<li>DataInputStream：添加数据类型读取功能</li>
+<li>DataOutputStream：添加数据类型写入功能</li>
+<li>ByteArrayInputStream:字节数组输入流，从字节数组读取数据（不涉及到磁盘io文件操作，在内存中操作，适合临时数据处理和数据转换）</li>
+<li>ByteArrayOutputStream:字节数组输出流，向字节数组写入数据（不涉及到磁盘io文件操作，在内存中操作，适合临时数据处理和数据转换）</li>
+</ul>
+
+<h3 class="relative group">字节流类型比较
+    <div id="字节流类型比较" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e8%8a%82%e6%b5%81%e7%b1%bb%e5%9e%8b%e6%af%94%e8%be%83" aria-label="">#</a>
+    </span>
+    
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>流类型</th>
+          <th>适用场景</th>
+          <th>性能特点</th>
+          <th>使用建议</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>FileInputStream</td>
+          <td>从文件读取字节</td>
+          <td>效率高，直接操作字节</td>
+          <td>适用于处理二进制文件(小文件512字节&ndash;4kb)</td>
+      </tr>
+      <tr>
+          <td>FileOutputStream</td>
+          <td>向文件写入字节</td>
+          <td>效率高，直接操作字节</td>
+          <td>适用于处理二进制文件</td>
+      </tr>
+      <tr>
+          <td>BufferedInputStream</td>
+          <td>添加缓冲功能，提高读取效率</td>
+          <td>效率高，减少磁盘io次数</td>
+          <td>适用于频繁读取操作（大文件8kb-64kb）</td>
+      </tr>
+      <tr>
+          <td>BufferedOutputStream</td>
+          <td>添加缓冲功能，提高写入效率</td>
+          <td>效率高，减少磁盘io次数</td>
+          <td>适用于频繁写入操作</td>
+      </tr>
+      <tr>
+          <td>DataInputStream</td>
+          <td>添加数据类型读取功能</td>
+          <td>方便读取各种数据类型</td>
+          <td>适用于需要读取不同数据类型的场景</td>
+      </tr>
+      <tr>
+          <td>DataOutputStream</td>
+          <td>添加数据类型写入功能</td>
+          <td>方便写入各种数据类型</td>
+          <td>适用于需要写入不同数据类型的场景</td>
+      </tr>
+      <tr>
+          <td>ByteArrayInputStream</td>
+          <td>从字节数组读取数据</td>
+          <td>效率高，在内存中操作</td>
+          <td>适用于临时数据处理和数据转换</td>
+      </tr>
+      <tr>
+          <td>ByteArrayOutputStream</td>
+          <td>向字节数组写入数据</td>
+          <td>效率高，在内存中操作</td>
+          <td>适用于临时数据处理和数据转换</td>
+      </tr>
+  </tbody>
+</table>
+
+<h2 class="relative group">字符流
+    <div id="字符流" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e7%ac%a6%e6%b5%81" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>字符流特点</p>
+<ul>
+<li>处理文本数据：适合处理普通文本文件、配置文件等</li>
+<li>以字符为单位：每次读写一个或多个字符</li>
+<li>编码转换：自动处理字符编码转换，无需手动处理</li>
+<li>效率较低：相对于字节流，每次读写操作需要进行编码转换</li>
+</ul>
+
+<h3 class="relative group">字符流的主要实现类
+    <div id="字符流的主要实现类" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e7%ac%a6%e6%b5%81%e7%9a%84%e4%b8%bb%e8%a6%81%e5%ae%9e%e7%8e%b0%e7%b1%bb" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>FileReader：从文件读取字符（针对java程序是输入流）</li>
+<li>FileWriter：向文件写入字符（针对java程序是输出流）</li>
+<li>BufferedReader：添加缓冲功能，提高读取效率</li>
+<li>BufferedWriter：添加缓冲功能，提高写入效率</li>
+<li>InputStreamReader：将字节流转换为字符流（针对java程序是输入流）</li>
+<li>OutputStreamWriter：将字符流转换为字节流（针对java程序是输出流）</li>
+<li>PrintWriter：方便打印输出，自动处理换行符,自动刷新功能。</li>
+</ul>
+
+<h3 class="relative group">字符流最佳实践
+    <div id="字符流最佳实践" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e7%ac%a6%e6%b5%81%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>选择合适的字符编码：根据实际情况选择合适的字符编码，避免编码转换问题。</li>
+<li>处理异常：在字符流操作中，需要注意处理异常，如文件不存在、编码转换错误等。</li>
+<li>关闭流：在使用完字符流后，需要及时关闭流，释放资源。</li>
+<li>缓冲区大小：根据实际情况调整缓冲区大小，平衡读写效率和内存占用。</li>
+<li>考虑使用try-with-resources语句自动关闭流，避免资源泄漏。</li>
+<li>重要数据及时刷新缓冲区</li>
+</ul>
+
+<h3 class="relative group">什么时候使用字符流，什么时候使用字节流
+    <div id="什么时候使用字符流什么时候使用字节流" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8%e5%ad%97%e7%ac%a6%e6%b5%81%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e4%bd%bf%e7%94%a8%e5%ad%97%e8%8a%82%e6%b5%81" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>处理文本数据选择字符流（字符流能自动处理字符编码，更适合文本操作）</li>
+<li>处理二进制数据选择字节流（字节流直接操作字节，没有编码转换开销，更适合处理二进制文件，图片、视频、音频等）</li>
+</ul>
+
+<h3 class="relative group">如何处理中文乱码问题
+    <div id="如何处理中文乱码问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>使用InputStreamReader和OutputStreamWriter处理中文乱码问题</p>
+<ul>
+<li>读取文件时，使用InputStreamReader指定字符编码，如new InputStreamReader(fileStream, &ldquo;UTF-8&rdquo;)</li>
+<li>写入文件时，使用OutputStreamWriter指定字符编码，如new OutputStreamWriter(fileStream, &ldquo;UTF-8&rdquo;)</li>
+</ul>
+
+<h3 class="relative group">BufferReader的缓冲区大小是多少
+    <div id="bufferreader的缓冲区大小是多少" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#bufferreader%e7%9a%84%e7%bc%93%e5%86%b2%e5%8c%ba%e5%a4%a7%e5%b0%8f%e6%98%af%e5%a4%9a%e5%b0%91" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>默认缓冲区大小是8192字节（8kb），合理的缓冲区大小能显著提高io性能。</p>
+
+<h2 class="relative group">File文件操作
+    <div id="file文件操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#file%e6%96%87%e4%bb%b6%e6%93%8d%e4%bd%9c" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">创建file文件
+    <div id="创建file文件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%88%9b%e5%bb%bafile%e6%96%87%e4%bb%b6" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>file对象可以表示文件或目录，创建file对象并不会在文件系统中创建实际的文件或目录。
+需要通过file对象的方法来创建实际的文件或目录，如createNewFile()、mkdir()、mkdirs()等。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 创建文件对象</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&#34;test.txt&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">file</span><span class="p">.</span><span class="na">createNewFile</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//使用路径创建</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 使用路径创建文件对象</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">File</span><span class="w"> </span><span class="n">file2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&#34;testDir/test.txt&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">file2</span><span class="p">.</span><span class="na">createNewFile</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//创建目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">File</span><span class="w"> </span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&#34;testDir&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dir</span><span class="p">.</span><span class="na">mkdir</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//创建多级目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">File</span><span class="w"> </span><span class="n">dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&#34;testDir1/testDir2&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dirs</span><span class="p">.</span><span class="na">mkdirs</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">文件基本操作
+    <div id="文件基本操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%96%87%e4%bb%b6%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&#34;test.txt&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//创建一个新的空文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">file</span><span class="p">.</span><span class="na">createNewFile</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//判断文件是否存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">boolean</span><span class="w"> </span><span class="n">exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">exists</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//判断是否是文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">boolean</span><span class="w"> </span><span class="n">isFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">isFile</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//判断是否是目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">boolean</span><span class="w"> </span><span class="n">isDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">isDirectory</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//判断是否可读</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">boolean</span><span class="w"> </span><span class="n">isReadable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">canRead</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//判断是否可写</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">boolean</span><span class="w"> </span><span class="n">isWritable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">canWrite</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//遍历目录中的所有文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">File</span><span class="o">[]</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="na">listFiles</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//遍历目录中的所有文件和子目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">File</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">files</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">isFile</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;文件：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">isDirectory</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;目录：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取文件名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取文件路径</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getPath</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取文件绝对路径</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">absPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取文件父目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">File</span><span class="w"> </span><span class="n">parentDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getParentFile</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//文件大小</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//文件最后修改时间</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">lastModified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">lastModified</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//删除文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">boolean</span><span class="w"> </span><span class="n">deleted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
+<p>File.separator</p>
+<ul>
+<li>文件分隔符</li>
+<li>在不同操作系统中，文件路径的分隔符是不同的，如Windows使用反斜杠\，而Unix/Linux使用正斜杠/。</li>
+<li>为了跨平台兼容性，建议使用File.separator来表示文件路径分隔符。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//例如：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;testDir&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="na">separator</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;test.txt&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//在Windows中，filePath为&#34;testDir\test.txt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//在Unix/Linux中，filePath为&#34;testDir/test.txt&#34;</span><span class="w">
+</span></span></span></code></pre></div></blockquote>
+<blockquote>
+<p>Paths.get()</p>
+<ul>
+<li>用于创建Path对象，Path对象表示文件路径。</li>
+<li>可以接受多个字符串参数，每个参数表示路径的一部分，用File.separator分隔。</li>
+<li>可以跨平台兼容，自动处理不同操作系统的文件路径分隔符。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//例如：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Path</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;testDir&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;test.txt&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//在Windows中，path为&#34;testDir\test.txt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//在Unix/Linux中，path为&#34;testDir/test.txt&#34;</span><span class="w">
+</span></span></span></code></pre></div></blockquote>
+<blockquote>
+<p>⚠️注意</p>
+<ul>
+<li>对于大量文件操作，建议使用NIO.2(java.nio.file包)，它提供了更好的性能和更丰富的功能。对于简单的文件操作，传统的file类也提供了丰富的方法。</li>
+<li>文件操作涉及到系统资源，务必注意异常处理和资源释放。在多线程环境下进行文件操作时，要考虑线程安全问题。删除文件或目录前，确保没有其他程序正在使用。</li>
+</ul>
+</blockquote>
+
+<h3 class="relative group">File类 vs NIO
+    <div id="file类-vs-nio" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#file%e7%b1%bb-vs-nio" aria-label="">#</a>
+    </span>
+    
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>File类</th>
+          <th>NIO.2（java.nio.file包）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>性能</td>
+          <td>一般</td>
+          <td>较高</td>
+      </tr>
+      <tr>
+          <td>功能</td>
+          <td>基本</td>
+          <td>丰富</td>
+      </tr>
+      <tr>
+          <td>跨平台</td>
+          <td>是</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>线程安全</td>
+          <td>否</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>异常处理</td>
+          <td>简单返回boolean</td>
+          <td>复杂抛出异常</td>
+      </tr>
+      <tr>
+          <td>资源释放</td>
+          <td>手动</td>
+          <td>自动</td>
+      </tr>
+      <tr>
+          <td>符号链接支持</td>
+          <td>不支持</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td>文件属性</td>
+          <td>基本</td>
+          <td>详细</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">符号链接
+    <div id="符号链接" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ac%a6%e5%8f%b7%e9%93%be%e6%8e%a5" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>符号链接（Symbolic Link）是一种特殊的文件，它指向另一个文件或目录。符号链接可以跨文件系统，而硬链接只能在同一文件系统中。
+NIO.2提供了对符号链接的支持，可以使用Files.createSymbolicLink()方法创建符号链接。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//创建符号链接</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Path</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Files</span><span class="p">.</span><span class="na">createSymbolicLink</span><span class="p">(</span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;link.txt&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;target.txt&#34;</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">文件属性
+    <div id="文件属性" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%96%87%e4%bb%b6%e5%b1%9e%e6%80%a7" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>NIO.2提供了丰富的文件属性操作方法，如获取文件大小、最后修改时间、权限等。可以使用Files.readAttributes()方法读取文件属性。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//读取文件属性</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">BasicFileAttributes</span><span class="w"> </span><span class="n">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Files</span><span class="p">.</span><span class="na">readAttributes</span><span class="p">(</span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;test.txt&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">BasicFileAttributes</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取文件大小</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">long</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrs</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取最后修改时间</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Instant</span><span class="w"> </span><span class="n">lastModified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attrs</span><span class="p">.</span><span class="na">lastModifiedTime</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//获取权限</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PosixFilePermissions</span><span class="w"> </span><span class="n">permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Files</span><span class="p">.</span><span class="na">getPosixFilePermissions</span><span class="p">(</span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;test.txt&#34;</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">File.delete()返回false怎么办
+    <div id="filedelete返回false怎么办" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#filedelete%e8%bf%94%e5%9b%9efalse%e6%80%8e%e4%b9%88%e5%8a%9e" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>检查文件是否存在</li>
+<li>检查文件是否被其他程序占用</li>
+<li>检查文件是否为只读</li>
+<li>检查文件是否为系统文件</li>
+<li>检查文件是否为隐藏文件</li>
+<li>检查文件是否为目录，确保目录为空</li>
+<li>检查文件是否为符号链接</li>
+<li>检查文件是否为挂载点</li>
+<li>检查文件是否为设备文件</li>
+<li>检查文件是否为管道文件</li>
+<li>检查文件是否为套接字文件</li>
+<li>检查文件是否为字符设备文件</li>
+<li>检查文件是否为块设备文件</li>
+<li>检查文件是否为目录符号链接</li>
+<li>检查文件是否为文件符号链接</li>
+<li>检查文件是否为挂载点符号链接</li>
+<li>检查文件是否为设备符号链接</li>
+<li>检查文件是否为管道符号链接</li>
+<li>检查文件是否为套接字符号链接</li>
+<li>检查文件是否为字符设备符号链接</li>
+<li>检查文件是否为块设备符号链接</li>
+</ul>
+
+<h3 class="relative group">如何处理文件编码问题
+    <div id="如何处理文件编码问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e6%96%87%e4%bb%b6%e7%bc%96%e7%a0%81%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>使用InputStreamReader和OutputStreamWriter处理文件编码问题。或者使用NIO的Charset类处理编码问题。</p>
+
+<h3 class="relative group">大文件操作如何优化
+    <div id="大文件操作如何优化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%a4%a7%e6%96%87%e4%bb%b6%e6%93%8d%e4%bd%9c%e5%a6%82%e4%bd%95%e4%bc%98%e5%8c%96" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>使用缓冲流、NIO的通道（Channel）和缓冲区（Buffer）进行大文件操作，或者分块处理大文件。</p>
+
+<h3 class="relative group">如何安全删除目录
+    <div id="如何安全删除目录" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%a6%82%e4%bd%95%e5%ae%89%e5%85%a8%e5%88%a0%e9%99%a4%e7%9b%ae%e5%bd%95" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>先递归删除目录中的所有文件和子目录，最后删除目录本身。</p>
+
+<h3 class="relative group">练习建议
+    <div id="练习建议" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%bb%83%e4%b9%a0%e5%bb%ba%e8%ae%ae" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>文件搜索工具：实现一个文件搜索工具，支持按照名称、大小、修改时间搜索</li>
+<li>文件备份工具：实现一个文件备份工具，支持增量备份和全量备份。</li>
+<li>文件管理器：实现一个简单的文件管理器，支持文件的复制、移动、删除、重命名等操作。</li>
+<li>日志分析工具：实现一个简单的日志分析工具，支持按照时间、级别、内容搜索日志，统计日志文件的各种信息。</li>
+</ul>
+
+<h2 class="relative group">序列化
+    <div id="序列化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ba%8f%e5%88%97%e5%8c%96" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>Java序列化是将对象的状态转换为字节流的过程，以便可以将对象保存到文件、数据库或通过网络传输。反序列化是相反的过程，将字节流转换回对象，恢复其状态。用于分布式系统、缓存和持久化存储等场景。</p>
+<ul>
+<li>持久化存储：将对象转换为字节流，保存到文件或数据库中，以便后续恢复对象状态。</li>
+<li>缓存机制：将对象转换为字节流，存储在缓存中，以提高访问速度。</li>
+<li>网络传输：将对象转换为字节流，通过网络传输到远程节点，实现分布式系统中的通信。</li>
+<li>深度复制：创建对象的完整副本，包括所有嵌套对象。</li>
+</ul>
+
+<h3 class="relative group">Serializable 接口
+    <div id="serializable-接口" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#serializable-%e6%8e%a5%e5%8f%a3" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Serializable 接口是Java中用于序列化的标记接口。实现了Serializable接口的类可以被序列化，即转换为字节流进行存储或传输。反序列化时，字节流会被转换回对象。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.Serializable</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//类的成员变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//构造方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//其他方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
+<p>注意：serialVersionUID 是用于序列化和反序列化的版本控制机制。如果类的 serialVersionUID 与序列化时的 serialVersionUID 不匹配，会抛出 InvalidClassException 异常。</p>
+</blockquote>
+
+<h3 class="relative group">transient 关键字
+    <div id="transient-关键字" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#transient-%e5%85%b3%e9%94%ae%e5%ad%97" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>transient 关键字用于标记类的成员变量，在序列化时会被忽略。这在某些场景下非常有用，例如密码、敏感信息等。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.Serializable</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyClass</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//类的成员变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">transient</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//构造方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">password</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//其他方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
+<p>注意：transient 关键字标记的成员变量在反序列化时会被初始化为默认值，例如 int 类型为 0，引用类型为 null。</p>
+</blockquote>
+
+<h3 class="relative group">常见问题
+    <div id="常见问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ol>
+<li>忘记实现 Serializable 接口：如果类没有实现 Serializable 接口，尝试序列化时会抛出 NotSerializableException 异常。</li>
+<li>忘记添加 serialVersionUID：如果类没有添加 serialVersionUID 字段，尝试序列化时会抛出 InvalidClassException 异常。</li>
+<li>忘记处理 IOException：在序列化和反序列化过程中，可能会抛出 IOException 异常，需要进行适当的处理。</li>
+<li>忘记处理 ClassNotFoundException：在反序列化过程中，可能会抛出 ClassNotFoundException 异常，需要进行适当的处理。</li>
+<li>序列化大对象或者频繁序列化操作：使用BufferedStream,避免序列化不必要的字段。</li>
+<li>安全问题：反序列化不可信数据可能导致安全漏洞，例如反序列化攻击（如利用序列化的对象执行恶意代码），使用白名单机制。</li>
+<li>当父类没有实现 Serializable 接口时，子类可以实现 Serializable 接口吗？</li>
+</ol>
+<blockquote>
+<p>可以。子类可以实现 Serializable 接口，在序列化时，父类的状态也会被序列化。但是父类必须有一个无参的构造器，在反序列化时，父类的无参构造器会被调用来初始化父类部分，如果父类没有无参构造器，会在反序列化时抛出 InvalidClassException 异常。
+要自定义序列化过程，可以在类中实现 writeObject 和 readObject 方法。这两个方法分别在序列化和反序列化时被调用，用于自定义序列化和反序列化过程。</p>
+</blockquote>
+
+<h3 class="relative group">序列化代替方案
+    <div id="序列化代替方案" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ba%8f%e5%88%97%e5%8c%96%e4%bb%a3%e6%9b%bf%e6%96%b9%e6%a1%88" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>java原生的序列化机制</li>
+<li>JSON：将对象转换为 JSON 字符串，进行存储或传输。反序列化时，将 JSON 字符串转换回对象。<strong>web api</strong></li>
+<li>XML：将对象转换为 XML 字符串，进行存储或传输。反序列化时，将 XML 字符串转换回对象。</li>
+<li>协议缓冲区（Protocol Buffers）：Google 开发的一种二进制序列化格式，效率高，支持跨平台。</li>
+<li>Apache Avro : 是一种基于二进制的序列化格式，由 Apache 软件基金会开发。它支持动态类型，提供高效的序列化和反序列化操作。适合大数据场景。</li>
+</ul>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/java-base10.md"
+          data-oid-likes="likes_posts/java-base10.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/java-base09/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;Java 集合框架
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-01-09T22:21:05&#43;08:00">2021年1月9日</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/java-base11/">
+              <span class="leading-6">
+                Java 高级主题&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-01-10T21:22:05&#43;08:00">2021年1月10日</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+            <div class="pt-3">
+              
+
+<div class="pt-8 mt-8 border-t border-neutral-200 dark:border-neutral-700">
+  <h3 class="text-2xl font-bold mb-4">评论</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="hollyblog/hollyblog.github.io"
+    data-repo-id="R_kgDOQbMzVg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQbMzVs4Cyz-f"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label=""
+    title="">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Holly
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+    
+
+
+  
+  <script defer src="/js/custom.min.4ebb3e0a94262e65bb85593d7e41cefff82843a5373a842f3b91d2baace5f117b01e818abc9a9539776763aff333e6b43cee59a442a6d46e0dd43e1338f769a0.js" integrity="sha512-Trs&#43;CpQmLmW7hVk9fkHO//goQ6U3OoQvO5HSuqzl8RewHoGKvJqVOXdnY6/zM&#43;a0PO5ZpEKm1G4N1D4TOPdpoA=="></script>
+
+
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="https://hollyblog.github.io/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder=""
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

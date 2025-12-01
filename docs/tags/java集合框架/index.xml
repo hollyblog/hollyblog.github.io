@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java集合框架 on 永远纯粹</title>
+    <link>https://hollyblog.github.io/tags/java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</link>
+    <description>Recent content in Java集合框架 on 永远纯粹</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Sat, 09 Jan 2021 22:21:05 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/tags/java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Java 集合框架</title>
+      <link>https://hollyblog.github.io/posts/java-base09/</link>
+      <pubDate>Sat, 09 Jan 2021 22:21:05 +0800</pubDate>
+      
+      <guid>https://hollyblog.github.io/posts/java-base09/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

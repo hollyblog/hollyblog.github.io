@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Middleware-Basics on 永远纯粹</title>
-    <link>https://hollyblog.github.io/categories/middleware-basics/</link>
-    <description>Recent content in Middleware-Basics on 永远纯粹</description>
+    <title>中间件 on 永远纯粹</title>
+    <link>http://localhost:1313/categories/middleware-basics/</link>
+    <description>Recent content in 中间件 on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2025 Holly</copyright>
-    <lastBuildDate>Sun, 12 Jan 2025 09:30:00 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/categories/middleware-basics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Jan 2025 09:30:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/middleware-basics/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>RabbitMQ 性能优化实践</title>
-      <link>https://hollyblog.github.io/posts/rabbitmq-performance-optimization/</link>
+      <link>http://localhost:1313/posts/middleware-rabbitmq01/</link>
       <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/rabbitmq-performance-optimization/</guid>
+      <guid>http://localhost:1313/posts/middleware-rabbitmq01/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Redis 性能优化实践</title>
-      <link>https://hollyblog.github.io/posts/redis-performance-optimization/</link>
+      <link>http://localhost:1313/posts/middleware-redis01/</link>
       <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/redis-performance-optimization/</guid>
+      <guid>http://localhost:1313/posts/middleware-redis01/</guid>
       <description></description>
       
     </item>
