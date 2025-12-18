@@ -6,3 +6,9 @@ defaultContentLanguageInSubdir = false
     languageName = "中文"
     languageCode = "zh-CN"
     weight = 1
+[markup]
+  [markup.highlight]
+    noHighlight = ["mermaid"]
+
+[params.mermaid]
+  enable = true

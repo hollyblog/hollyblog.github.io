@@ -1,6 +1,6 @@
 ---
 title: "Java 面向对象进阶"
-date: 2021-01-09T22:18:05+08:00
+date: 2021-01-12T22:18:05+08:00
 draft: false
 description: "Java 面向对象进阶：继承、方法重写、super关键字、final关键字、抽象类和抽象方法、接口（interface）、多态、封装、instanceof关键字。"
 tags: ["Java", "面向对象进阶"]

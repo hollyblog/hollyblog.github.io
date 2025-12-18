@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>线程池性能优化与监控 on 永远纯粹</title>
+    <link>http://localhost:1313/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B8%8E%E7%9B%91%E6%8E%A7/</link>
+    <description>Recent content in 线程池性能优化与监控 on 永远纯粹</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Tue, 26 Jan 2021 15:44:13 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B8%8E%E7%9B%91%E6%8E%A7/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>性能优化与监控</title>
+      <link>http://localhost:1313/posts/thread04/</link>
+      <pubDate>Tue, 26 Jan 2021 15:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread04/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

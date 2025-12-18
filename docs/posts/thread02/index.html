@@ -1,0 +1,2693 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="zh-CN">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>同步机制 &middot; 永远纯粹</title>
+    <meta name="title" content="同步机制 &middot; 永远纯粹">
+  
+
+  
+  
+    <meta name="description" content="同步机制：线程安全问题、同步机制详解、高级锁机制、线程间通信。">
+  
+  
+    <meta name="keywords" content="线程池,同步机制,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/thread02/">
+  
+
+  
+  
+    <meta name="author" content="Holly">
+  
+  
+    
+      
+        
+          <link href="https://github.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://gitee.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/thread02/">
+  <meta property="og:site_name" content="永远纯粹">
+  <meta property="og:title" content="同步机制">
+  <meta property="og:description" content="同步机制：线程安全问题、同步机制详解、高级锁机制、线程间通信。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-01-24T13:44:13+08:00">
+    <meta property="article:modified_time" content="2021-01-24T13:44:13+08:00">
+    <meta property="article:tag" content="线程池">
+    <meta property="article:tag" content="同步机制">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="同步机制">
+  <meta name="twitter:description" content="同步机制：线程安全问题、同步机制详解、高级锁机制、线程间通信。">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.391ee07dafc20cca70c5cd4275104dda29a78c8787887fd66963f367c6564348c73c2d276e442aec635a38b762100dc76b354c4fb9abbb38127ea518b3bada36.css"
+    integrity="sha512-OR7gfa/CDMpwxc1CdRBN2imnjIeHiH/WaWPzZ8ZWQ0jHPC0nbkQq7GNaOLdiEA3HazVMT7mruzgSfqUYs7raNg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9df4fc14d50efcc9aa4cfc2b6f348e365f421f5ad491278f8f48c0360cf2f93f08882fda6da162d7ace8e5add57c2df4ac46bd3861306b1d4c452cd31f448d64.js"
+      integrity="sha512-nfT8FNUO/MmqTPwrbzSONl9CH1rUkSePj0jANgzy&#43;T8IiC/abaFi16zo5a3VfC30rEa9OGEwax1MRSzTH0SNZA=="
+      data-copy=""
+      data-copied=""></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "全部文章",
+    "name": "同步机制",
+    "headline": "同步机制",
+    "description": "同步机制：线程安全问题、同步机制详解、高级锁机制、线程间通信。",
+    
+    "inLanguage": "zh-CN",
+    "url" : "http://localhost:1313/posts/thread02/",
+    "author" : {
+      "@type": "Person",
+      "name": "Holly"
+    },
+    "copyrightYear": "2021",
+    "dateCreated": "2021-01-24T13:44:13\u002b08:00",
+    "datePublished": "2021-01-24T13:44:13\u002b08:00",
+    
+    "dateModified": "2021-01-24T13:44:13\u002b08:00",
+    
+    "keywords": ["线程池","同步机制"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "7859"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+    
+
+
+  
+  <link rel="stylesheet" href="/css/custom.min.73bf6048d6126134a3a4d080eae4c7d7f266a34e211b8c064c369e863072b5f83301535ff631e803efa5c7fbfbfa9b5b52debdab6f1ca834f108f8cc7f432207.css" integrity="sha512-c79gSNYSYTSjpNCA6uTH1/Jmo04hG4wGTDaehjBytfgzAVNf9jHoA&#43;&#43;lx/v7&#43;ptbUt69q28cqDTxCPjMf0MiBw==" />
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+    
+    
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium">
+          永远纯粹
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="首页"
+  title="永远天真烂漫">
+  
+  
+    <p class="text-base font-medium">
+      首页
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="关于我"
+  title="关于我">
+  
+  
+    <p class="text-base font-medium">
+      关于我
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/distributed/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="分布式"
+  title="分布式系统">
+  
+  
+    <p class="text-base font-medium">
+      分布式
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/cloud/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="云计算"
+  title="云计算">
+  
+  
+    <p class="text-base font-medium">
+      云计算
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/llm/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="大模型"
+  title="大模型">
+  
+  
+    <p class="text-base font-medium">
+      大模型
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="项目"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        项目
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="智能餐饮"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              智能餐饮
+            </p>
+          </a>
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="寻环小程序"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              寻环小程序
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="基础"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        基础
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/computer/"
+            
+            aria-label="计算机基础"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="计算机基础">
+              计算机基础
+            </p>
+          </a>
+        
+          <a
+            href="/categories/java/"
+            
+            aria-label="编程语言"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Java基础">
+              编程语言
+            </p>
+          </a>
+        
+          <a
+            href="/categories/database/"
+            
+            aria-label="数据存储"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="数据库基础">
+              数据存储
+            </p>
+          </a>
+        
+          <a
+            href="/categories/framework/"
+            
+            aria-label="框架应用"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="框架应用">
+              框架应用
+            </p>
+          </a>
+        
+          <a
+            href="/categories/middleware/"
+            
+            aria-label="中间件"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="中间件">
+              中间件
+            </p>
+          </a>
+        
+          <a
+            href="/categories/ops/"
+            
+            aria-label="运维部署"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="运维部署">
+              运维部署
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="进阶"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        进阶
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/juc/"
+            
+            aria-label="JUC"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JUC">
+              JUC
+            </p>
+          </a>
+        
+          <a
+            href="/categories/threadpool/"
+            
+            aria-label="线程池"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="线程池">
+              线程池
+            </p>
+          </a>
+        
+          <a
+            href="/categories/jvm/"
+            
+            aria-label="JVM调优"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JVM">
+              JVM调优
+            </p>
+          </a>
+        
+          <a
+            href="/categories/sa/"
+            
+            aria-label="系统架构"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="系统架构">
+              系统架构
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <a
+  href="/resume/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="我的简历"
+  title="个人简历">
+  
+  
+    <p class="text-base font-medium">
+      我的简历
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="首页"
+    title="永远天真烂漫">
+    
+    
+      <p class="text-bg font-bg">
+        首页
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="关于我"
+    title="关于我">
+    
+    
+      <p class="text-bg font-bg">
+        关于我
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/distributed/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="分布式"
+    title="分布式系统">
+    
+    
+      <p class="text-bg font-bg">
+        分布式
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/cloud/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="云计算"
+    title="云计算">
+    
+    
+      <p class="text-bg font-bg">
+        云计算
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/llm/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="大模型"
+    title="大模型">
+    
+    
+      <p class="text-bg font-bg">
+        大模型
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="项目"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      项目
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="智能餐饮"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        智能餐饮
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="寻环小程序"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        寻环小程序
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="基础"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      基础
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/computer/"
+      
+      aria-label="计算机基础"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="计算机基础">
+        计算机基础
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/java/"
+      
+      aria-label="编程语言"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Java基础">
+        编程语言
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/database/"
+      
+      aria-label="数据存储"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="数据库基础">
+        数据存储
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/framework/"
+      
+      aria-label="框架应用"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="框架应用">
+        框架应用
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/middleware/"
+      
+      aria-label="中间件"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="中间件">
+        中间件
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/ops/"
+      
+      aria-label="运维部署"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="运维部署">
+        运维部署
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="进阶"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      进阶
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/juc/"
+      
+      aria-label="JUC"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JUC">
+        JUC
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/threadpool/"
+      
+      aria-label="线程池"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="线程池">
+        线程池
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/jvm/"
+      
+      aria-label="JVM调优"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JVM">
+        JVM调优
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/sa/"
+      
+      aria-label="系统架构"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="系统架构">
+        系统架构
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/resume/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="我的简历"
+    title="个人简历">
+    
+    
+      <p class="text-bg font-bg">
+        我的简历
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+    
+    
+  
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/img/background_hu_de979b0156ba1693.jpg"
+      alt="同步机制"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+      integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/img/background_hu_de979b0156ba1693.jpg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        同步机制
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2021-01-24T13:44:13&#43;08:00">2021年1月24日</time><span class="px-2 text-primary-500">&middot;</span><span>7859 字</span><span class="px-2 text-primary-500">&middot;</span><span title="">16 分钟</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/categories/threadpool/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    线程池
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    线程池
+  </span>
+</span>
+
+              </a>
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    同步机制
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Holly"
+        src="/img/avatar_hu_ac9fd040db4ac989.jpg"
+        data-zoom-src="/img/avatar_hu_7ab8791e041692ec.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Holly
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享。</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/hollyblog/"
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://gitee.com/hollyblog/"
+          target="_blank"
+          aria-label="Gitee"
+          title="Gitee"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.037a.594.594 0 0 1-.592-.593v-1.482a.594.594 0 0 1 .592-.593h6.815c.327 0 .593.266.593.593v3.408a4 4 0 0 1-4 4H5.926a.594.594 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/>
+</svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:2285549633@qq.com"
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640"
+          target="_blank"
+          aria-label="Csdn"
+          title="Csdn"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#线程安全问题">线程安全问题</a>
+      <ul>
+        <li><a href="#什么是线程安全问题">什么是线程安全问题</a></li>
+        <li><a href="#竞条条件">竞条条件</a></li>
+        <li><a href="#原子性问题">原子性问题</a></li>
+        <li><a href="#可见性问题">可见性问题</a>
+          <ul>
+            <li><a href="#volatile关键字">volatile关键字</a></li>
+          </ul>
+        </li>
+        <li><a href="#有序性问题">有序性问题</a>
+          <ul>
+            <li><a href="#happens-before规则">happens-before规则</a></li>
+          </ul>
+        </li>
+        <li><a href="#线程安全的设计原则">线程安全的设计原则</a></li>
+      </ul>
+    </li>
+    <li><a href="#同步机制详解">同步机制详解</a>
+      <ul>
+        <li><a href="#synchronized原理">synchronized原理</a></li>
+        <li><a href="#synchronized使用方式">synchronized使用方式</a></li>
+        <li><a href="#死锁问题">死锁问题</a></li>
+        <li><a href="#waitnotify机制">wait/notify机制</a></li>
+      </ul>
+    </li>
+    <li><a href="#高级锁机制">高级锁机制</a>
+      <ul>
+        <li><a href="#reentrantlock详解">ReentrantLock详解</a></li>
+        <li><a href="#公平锁和非公平锁">公平锁和非公平锁</a></li>
+        <li><a href="#readwritelock读写锁">ReadWriteLock读写锁</a></li>
+        <li><a href="#condition接口">Condition接口</a></li>
+        <li><a href="#stampedlock高级特性">StampedLock高级特性</a></li>
+        <li><a href="#练习">练习</a></li>
+      </ul>
+    </li>
+    <li><a href="#线程间通信">线程间通信</a>
+      <ul>
+        <li><a href="#共享变量通信">共享变量通信</a>
+          <ul>
+            <li><a href="#volatile变量">volatile变量</a></li>
+            <li><a href="#原子变量">原子变量</a></li>
+          </ul>
+        </li>
+        <li><a href="#管道通信">管道通信</a></li>
+        <li><a href="#信号量semaphore">信号量Semaphore</a></li>
+        <li><a href="#同步辅助类">同步辅助类</a>
+          <ul>
+            <li><a href="#countdownlatch">CountDownLatch</a></li>
+            <li><a href="#cyclicbarrier">CyclicBarrier</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据交换exchanger">数据交换Exchanger</a></li>
+        <li><a href="#实践建议">实践建议</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#线程安全问题">线程安全问题</a>
+      <ul>
+        <li><a href="#什么是线程安全问题">什么是线程安全问题</a></li>
+        <li><a href="#竞条条件">竞条条件</a></li>
+        <li><a href="#原子性问题">原子性问题</a></li>
+        <li><a href="#可见性问题">可见性问题</a>
+          <ul>
+            <li><a href="#volatile关键字">volatile关键字</a></li>
+          </ul>
+        </li>
+        <li><a href="#有序性问题">有序性问题</a>
+          <ul>
+            <li><a href="#happens-before规则">happens-before规则</a></li>
+          </ul>
+        </li>
+        <li><a href="#线程安全的设计原则">线程安全的设计原则</a></li>
+      </ul>
+    </li>
+    <li><a href="#同步机制详解">同步机制详解</a>
+      <ul>
+        <li><a href="#synchronized原理">synchronized原理</a></li>
+        <li><a href="#synchronized使用方式">synchronized使用方式</a></li>
+        <li><a href="#死锁问题">死锁问题</a></li>
+        <li><a href="#waitnotify机制">wait/notify机制</a></li>
+      </ul>
+    </li>
+    <li><a href="#高级锁机制">高级锁机制</a>
+      <ul>
+        <li><a href="#reentrantlock详解">ReentrantLock详解</a></li>
+        <li><a href="#公平锁和非公平锁">公平锁和非公平锁</a></li>
+        <li><a href="#readwritelock读写锁">ReadWriteLock读写锁</a></li>
+        <li><a href="#condition接口">Condition接口</a></li>
+        <li><a href="#stampedlock高级特性">StampedLock高级特性</a></li>
+        <li><a href="#练习">练习</a></li>
+      </ul>
+    </li>
+    <li><a href="#线程间通信">线程间通信</a>
+      <ul>
+        <li><a href="#共享变量通信">共享变量通信</a>
+          <ul>
+            <li><a href="#volatile变量">volatile变量</a></li>
+            <li><a href="#原子变量">原子变量</a></li>
+          </ul>
+        </li>
+        <li><a href="#管道通信">管道通信</a></li>
+        <li><a href="#信号量semaphore">信号量Semaphore</a></li>
+        <li><a href="#同步辅助类">同步辅助类</a>
+          <ul>
+            <li><a href="#countdownlatch">CountDownLatch</a></li>
+            <li><a href="#cyclicbarrier">CyclicBarrier</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据交换exchanger">数据交换Exchanger</a></li>
+        <li><a href="#实践建议">实践建议</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <p>同步机制：线程安全问题、同步机制详解、高级锁机制、线程间通信。</p>
+
+<h2 class="relative group">线程安全问题
+    <div id="线程安全问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ba%bf%e7%a8%8b%e5%ae%89%e5%85%a8%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">什么是线程安全问题
+    <div id="什么是线程安全问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bb%80%e4%b9%88%e6%98%af%e7%ba%bf%e7%a8%8b%e5%ae%89%e5%85%a8%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>线程安全问题是指在多线程环境下，多个线程同时访问共享资源时，可能导致数据不一致或程序崩溃的问题。</p>
+<blockquote>
+<p>多个线程对共享数据的并发访问缺乏适当的同步机制，导致数据竞争和不一致状态。</p>
+</blockquote>
+<ul>
+<li>不确定性：相同的代码在不同的执行环境下可能产生不同的结果，难以预测和重现。</li>
+<li>时序依赖：程序的正确性依赖于线程的执行时序，时序的微小变化可能导致错误。</li>
+<li>隐蔽性：问题可能在生产环境中偶发出现，在测试环境中难以发现和调试。</li>
+</ul>
+
+<h3 class="relative group">竞条条件
+    <div id="竞条条件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ab%9e%e6%9d%a1%e6%9d%a1%e4%bb%b6" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>是指程序的正确性依赖于多个程序的相对执行时序。当多个线程同时访问和修改共享数据时，最终结果取决于线程调度的时序，这种不确定性就是竞态条件。</p>
+<p>如不安全的计数器count++问题、银行转帐的竞态条件。</p>
+
+<h3 class="relative group">原子性问题
+    <div id="原子性问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8e%9f%e5%ad%90%e6%80%a7%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>原子性问题是指一个操作在执行过程中不被中断，要么全部执行成功，要么全部执行失败。</p>
+<p>如银行转帐问题，从一个账户转出金额后，要么成功，要么失败，不能出现部分转出的情况。</p>
+<p>非原子性操作</p>
+<ul>
+<li>复合操作：i++ 和 ++i；i += 5；复合赋值操作。</li>
+<li>检查后执行：if（condition）{action()；}；懒加载模式；单例模式的双重检查。</li>
+<li>64位数据操作：long类型的读写、double类型的读写、在32位jvm上可能不是原子操作。</li>
+</ul>
+
+<h3 class="relative group">可见性问题
+    <div id="可见性问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8f%af%e8%a7%81%e6%80%a7%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>可见性问题是指当一个线程修改了共享数据，其他线程能够立即看到这个修改。这是由于现代计算机的内存模型和cpu缓存机制导致的。</p>
+<p>如一个线程修改了共享变量flag，其他线程能够立即看到这个修改，而不是从缓存中读取旧值。</p>
+<p>可见性问题的原因：</p>
+<ul>
+<li>cpu缓存：每个cpu核心都有自己的缓存，变量的修改可能只存在于某个cpu的缓存中，没有同步到主内存。</li>
+<li>编译器优化：编译器可能会对代码进行优化，将变量缓存到寄存器中，导致其他线程看不到最新值。</li>
+<li>内存模型：java内存模型允许线程在本地内存中缓存共享变量的副本，导致可见性问题。</li>
+</ul>
+
+<h4 class="relative group">volatile关键字
+    <div id="volatile关键字" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#volatile%e5%85%b3%e9%94%ae%e5%ad%97" aria-label="">#</a>
+    </span>
+    
+</h4>
+<blockquote>
+<p>volatile关键字可以解决可见性问题：</p>
+<ul>
+<li>确保变量的可见性：当一个线程修改了volatile变量，其他线程能够立即看到这个修改。<strong>volatile确保变量的读写操作直接在主内存中进行，确保了可见性。</strong></li>
+<li>禁止指令重排序优化：volatile变量的读写操作不会被重排序，确保了可见性。<strong>volatile确保了变量的读写操作按照程序的顺序执行，避免了指令重排序导致的可见性问题。</strong></li>
+</ul>
+</blockquote>
+
+<h3 class="relative group">有序性问题
+    <div id="有序性问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%89%e5%ba%8f%e6%80%a7%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>有序性问题是指程序的执行顺序与代码的顺序不一致。这是由于编译器和cpu的优化机制导致的。</p>
+<p>指令重排序的类型</p>
+<ul>
+<li>编译器重排序：编译器在不改变单线程程序语义的前提下，重新安排语句的执行顺序。</li>
+<li>指令级重排序：cpu在执行指令时，为了提高效率，可能会改变指令的执行顺序。</li>
+<li>内存系统重排序：由于处理器使用缓存和读写缓冲区，加载和存储操作可能在不同的顺序执行。</li>
+</ul>
+
+<h4 class="relative group">happens-before规则
+    <div id="happens-before规则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#happens-before%e8%a7%84%e5%88%99" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>happens-before关系是指在java内存模型中，一个操作happens-before另一个操作，这意味着第一个操作的结果对第二个操作可见。</p>
+<p>如线程A写入volatile变量x，线程B读取volatile变量x，线程A的写入happens-before线程B的读取，确保了可见性。</p>
+<ul>
+<li>程序顺序规则：单线程内，代码的执行顺序与程序的顺序一致。</li>
+<li>监视器锁规则：unlock操作happens-before后续的lock操作，确保了可见性。</li>
+<li>volatile变量规则：对volatile变量的写入happens-before后续对该变量的读取，确保了可见性。</li>
+<li>传递性规则：如果A happens-before B，且B happens-before C，那么A happens-before C。</li>
+</ul>
+
+<h3 class="relative group">线程安全的设计原则
+    <div id="线程安全的设计原则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ba%bf%e7%a8%8b%e5%ae%89%e5%85%a8%e7%9a%84%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>不可变对象：创建不可变的对象，一旦创建就不能修改其状态。</li>
+<li>线程封闭：将数据封闭在单个线程中，避免共享。</li>
+<li>同步机制：使用适当的同步机制保护共享数据。</li>
+</ul>
+<blockquote>
+<ul>
+<li>最小化共享：尽量减少线程间的数据共享</li>
+<li>使用并发工具类：优先使用java.util.concurrent包中的工具</li>
+<li>避免过度同步：同步的粒度要适当，避免性能问题。</li>
+<li>文档化线程安全性：明确标注类的线程安全级别。</li>
+<li>测试并发代码：使用压力测试和并发测试工具。</li>
+</ul>
+</blockquote>
+
+<h2 class="relative group">同步机制详解
+    <div id="同步机制详解" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%90%8c%e6%ad%a5%e6%9c%ba%e5%88%b6%e8%af%a6%e8%a7%a3" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">synchronized原理
+    <div id="synchronized原理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#synchronized%e5%8e%9f%e7%90%86" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>synchronized是java中最基本的同步机制，它基于对象监视器实现。每个java对象都有一个内置的监视器锁，当线程进去synchronized代码块或方法时，会自动获取这个锁。</p>
+<blockquote>
+<p>synchronized的实现基于jvm的monitorenter和monitorexit指令，以及对象头中的Mark Word来存储锁信息。</p>
+</blockquote>
+<p>监视器锁机制</p>
+<ul>
+<li>对象头：每个java对象的对象头都包含Mark Word，用于存储锁信息。
+<ul>
+<li>锁状态：Mark Word中包含锁状态位，用于表示对象是否被锁定。</li>
+<li>哈希码：Mark Word中还包含对象的哈希码，用于快速计算哈希值。</li>
+<li>gc分代年龄：Mark Word中还包含gc分代年龄，用于记录对象的分代年龄。</li>
+<li>锁计数器：Mark Word中还包含锁计数器，用于记录获取锁的线程数量。</li>
+</ul>
+</li>
+<li>监视器：每个对象都关联一个监视器，包含Owner、EntryList、WaitSet等组件。
+<ul>
+<li>Owner：指向获取到锁的线程。</li>
+<li>EntryList：包含所有等待获取锁的线程。</li>
+<li>WaitSet：包含所有调用wait()方法的线程。</li>
+</ul>
+</li>
+<li>锁升级：从偏向锁到轻量级锁再到重量级锁到升级过程，优化性能。</li>
+</ul>
+<p>锁状态转换：</p>
+<ul>
+<li>无锁状态：对象创建时的初始状态，Mark Word存储哈希码；</li>
+<li>偏向锁：当只有一个线程访问时，偏向该线程，减少同步开销</li>
+<li>轻量级锁：多个线程竞争锁时，使用cas操作自旋等待，减少线程切换开销。</li>
+<li>重量级锁：当自旋等待超过一定次数时，升级为重量级锁，阻塞线程。（即竞争激烈时，使用操作系统的互斥量实现）</li>
+</ul>
+
+<h3 class="relative group">synchronized使用方式
+    <div id="synchronized使用方式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#synchronized%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>用于修饰方法和代码块，根据不同的使用方式，锁定的对象也不同。（实例锁、对象锁、类锁）</p>
+<ul>
+<li>修饰实例同步方法：锁定当前对象（实例锁）</li>
+<li>修饰静态同步方法：锁定类对象（类锁）</li>
+<li>修饰代码块时，可以指定锁定的对象，如synchronized(this)或synchronized(MyClass.class)。</li>
+</ul>
+
+<h3 class="relative group">死锁问题
+    <div id="死锁问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%ad%bb%e9%94%81%e9%97%ae%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>死锁是指两个或多个线程互相等待对方释放锁，导致所有线程都无法继续执行的情况。</p>
+<p>死锁的四个必要条件：</p>
+<ul>
+<li>互斥条件：线程对共享资源的访问是互斥的，一次只能有一个线程访问。</li>
+<li>请求和保持条件：线程在请求资源的同时保持已获取的资源。</li>
+<li>不剥夺条件：线程已获取的资源在未使用完之前不能被其他线程剥夺。</li>
+<li>循环等待条件：存在一个线程循环等待链，每个线程都在等待下一个线程释放锁。</li>
+</ul>
+<p>死锁预防策略</p>
+<ul>
+<li>锁排序：对所有锁进行排序，线程在获取锁时，按照排序顺序获取，避免循环等待。</li>
+<li>超时机制：在获取锁时设置超时时间，超过时间未获取到锁，线程可以放弃等待。</li>
+<li>避免嵌套锁：尽量避免在一个同步方法中调用另一个同步方法，避免死锁。</li>
+<li>死锁检测：定期检测系统中的死锁并采取恢复措施。</li>
+</ul>
+
+<h3 class="relative group">wait/notify机制
+    <div id="waitnotify机制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#waitnotify%e6%9c%ba%e5%88%b6" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>wait/notify机制是java中用于线程间通信的机制，它基于对象的监视器锁实现。</p>
+<ul>
+<li>wait()：使当前线程进入等待状态，释放锁，直到其他线程调用notify()或notifyAll()方法唤醒它。</li>
+<li>notify()：唤醒等待在该对象监视器锁上的一个线程。</li>
+<li>notifyAll()：唤醒等待在该对象监视器锁上的所有线程。</li>
+</ul>
+<blockquote>
+<p>注意：wait()、notify()、notifyAll()方法必须在synchronized代码块或方法中调用，且必须是锁对象的方法，否则会抛出IllegalMonitorStateException异常。</p>
+</blockquote>
+<ul>
+<li>总是在while循环中使用wait()方法，而不是if语句。</li>
+<li>优先使用notifyAll()方法，而不是notify()方法，避免信号丢失。</li>
+<li>wait方法会抛出InterruptedException异常，需要在catch块中处理。</li>
+<li>确保wait和notify操作的是同一个对象。</li>
+</ul>
+
+<h2 class="relative group">高级锁机制
+    <div id="高级锁机制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%ab%98%e7%ba%a7%e9%94%81%e6%9c%ba%e5%88%b6" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">ReentrantLock详解
+    <div id="reentrantlock详解" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#reentrantlock%e8%af%a6%e8%a7%a3" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>ReentrantLock是java并发包中提供的可重入锁，它提供了比synchronized更灵活的锁机制。与synchronized相比，ReentrantLock提供了更多的功能，如超时等待、可中断等待、公平锁等。</p>
+<blockquote>
+<p>ReentrantLock支持重入锁，同一个线程可以多次获取同一把锁，每次获取锁时计数器都加1，释放锁时计数器减1，当计数器为0时锁才被真正释放。</p>
+</blockquote>
+<p>与synchronized区别</p>
+<ul>
+<li>ReentrantLock是api层面的锁，手动获取和释放锁，可中断锁，支持公平锁和非公平锁，支持超时机制tryLock()。</li>
+<li>synchronized是jvm内置的关键字层面的锁，自动获取和释放锁，不可中断锁，非公平锁，无设置超时时间。</li>
+</ul>
+
+<h3 class="relative group">公平锁和非公平锁
+    <div id="公平锁和非公平锁" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%85%ac%e5%b9%b3%e9%94%81%e5%92%8c%e9%9d%9e%e5%85%ac%e5%b9%b3%e9%94%81" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>公平锁：按照线程请求锁的顺序来分配锁，先请求的线程先获得锁，避免了线程饥饿问题，性能相对较低，适合对公平性要求较高的场景，如银行排队取款。</li>
+<li>非公平锁：不按照线程请求锁的顺序来分配锁，可能会导致某些线程一直等待锁，允许插队获取锁，性能相对较高，适合对性能要求较高的场景。</li>
+</ul>
+
+<h3 class="relative group">ReadWriteLock读写锁
+    <div id="readwritelock读写锁" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#readwritelock%e8%af%bb%e5%86%99%e9%94%81" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>ReadWriteLock是java并发包中提供的读写锁，它提供了比synchronized更灵活的锁机制。与synchronized相比，ReadWriteLock提供了更多的功能，如读写分离、读读共享等。它允许多个线程同时读取共享资源，但只允许一个线程写入。</p>
+<ul>
+<li>读写锁：读写锁分为读锁和写锁，多个线程可以同时获取读锁，但是只能有一个线程获取写锁。</li>
+<li>读读共享：多个线程可以同时获取读锁，因为读操作不会修改数据，所以多个线程可以同时读取数据。</li>
+<li>写写互斥和读写互斥：当一个线程获取写锁时，其他线程无论是获取读锁还是写锁，都必须等待。</li>
+</ul>
+<p>锁降级示例</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReadWriteLock</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantReadWriteLock</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ReadWriteLockExample</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ReadWriteLock</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReentrantReadWriteLock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">dataReady</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getData</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">lock</span><span class="p">.</span><span class="na">readLock</span><span class="p">().</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dataReady</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">//释放读锁，获取写锁</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">lock</span><span class="p">.</span><span class="na">readLock</span><span class="p">().</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">lock</span><span class="p">.</span><span class="na">writeLock</span><span class="p">().</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">try</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="c1">//双重检查</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dataReady</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="c1">//模拟耗时操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">1000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;new data&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">dataReady</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="c1">//锁降级，写锁降级为读锁</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">lock</span><span class="p">.</span><span class="na">readLock</span><span class="p">().</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="k">finally</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="c1">//获取写锁后，需要重新获取读锁，才能继续读取数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">lock</span><span class="p">.</span><span class="na">writeLock</span><span class="p">().</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="k">finally</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">lock</span><span class="p">.</span><span class="na">readLock</span><span class="p">().</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">Condition接口
+    <div id="condition接口" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#condition%e6%8e%a5%e5%8f%a3" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Condition接口提供了类似Object.wait()和Object.notify()的功能，用于线程间通信。它可以与ReentrantLock或ReentrantReadWriteLock一起使用，实现线程的等待和唤醒。一个Lock对象可以创建多个Condition对象，每个Condition对象对应一个等待队列，实现更精确的线程通信。</p>
+<ul>
+<li>await()：使当前线程进入等待状态，释放锁，直到其他线程调用signal()或signalAll()方法唤醒它。</li>
+<li>signal()：唤醒等待在该Condition上的一个线程。</li>
+<li>signalAll()：唤醒等待在该Condition上的所有线程。</li>
+</ul>
+<p>生产者消费者模式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.Condition</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.LinkedList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Queue</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BlockingQueue</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ReentrantLock</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReentrantLock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Condition</span><span class="w"> </span><span class="n">notEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lock</span><span class="p">.</span><span class="na">newCondition</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Condition</span><span class="w"> </span><span class="n">notFull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lock</span><span class="p">.</span><span class="na">newCondition</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">BlockingQueue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">capacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">lock</span><span class="p">.</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">queue</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">capacity</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">//队列已满，生产者线程等待</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">notFull</span><span class="p">.</span><span class="na">await</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">queue</span><span class="p">.</span><span class="na">offer</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//生产一个元素，唤醒等待在notEmpty条件上的消费者线程</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">notEmpty</span><span class="p">.</span><span class="na">signal</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="k">finally</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">lock</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">take</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">lock</span><span class="p">.</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">queue</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">//队列为空，消费者线程等待</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">notEmpty</span><span class="p">.</span><span class="na">await</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">T</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="na">poll</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//消费一个元素，唤醒等待在notFull条件上的生产者线程</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">notFull</span><span class="p">.</span><span class="na">signal</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="k">finally</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">lock</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">lock</span><span class="p">.</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="k">finally</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">lock</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">StampedLock高级特性
+    <div id="stampedlock高级特性" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#stampedlock%e9%ab%98%e7%ba%a7%e7%89%b9%e6%80%a7" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>StampedLock是java8引入的新锁机制，它提供了乐观读锁机制。在读多写少场景下性能更优。StampedLock不支持重入和Condition。</p>
+<blockquote>
+<p>乐观读锁不会阻塞写操作，读取时先获取一个stamp，读取完成后验证stamp是否有效。如果stamp无效，说明有其他线程修改了数据，需要重新读取，并升级为悲观读锁。</p>
+</blockquote>
+<p>优势：</p>
+<ul>
+<li>StampedLock乐观读不阻塞写操作，读多写少的场景性能优异，支持锁升级和降级，内存占用更小。</li>
+<li>但是不支持重入、不支持Condition、使用复杂度较高，适合特定场景使用。</li>
+</ul>
+
+<h3 class="relative group">练习
+    <div id="练习" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%bb%83%e4%b9%a0" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>使用ReentrantLock实现银行转帐功能，避免死锁。
+<ul>
+<li>全局顺序（hashCode定序）
+<ul>
+<li>按账户顺序（按账户号定序）</li>
+<li></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Account</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Account</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">first</span><span class="p">.</span><span class="na">lock</span><span class="p">.</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">second</span><span class="p">.</span><span class="na">lock</span><span class="p">.</span><span class="na">lock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">try</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//转账操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="k">finally</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">second</span><span class="p">.</span><span class="na">lock</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">first</span><span class="p">.</span><span class="na">lock</span><span class="p">.</span><span class="na">unlock</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//使用ReentrantLock代替synchronized，可以手动控制加锁顺序，从而破坏死锁四个必要条件中的“循环等待”。</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>尝试锁（tryLock+回退）：希望“不阻塞，失败就重试”。</li>
+</ul>
+</li>
+<li>使用ReadWriteLock实现一个高性能的线程安全缓存系统。
+<ul>
+<li>读完全并发，写独占，支持过期策略（惰性过期删除）、容量淘汰（lru）、缓存穿透保护（computeIfAbsent:先乐观读、没命中，加写锁再查一次（双重检查），再读一次，加载）。</li>
+</ul>
+</li>
+<li>使用Condition接口实现一个支持多生产者多消费者的阻塞队列。
+<ul>
+<li>使用ReentrantLock和Condition，支持公平和非公平锁。</li>
+<li>支持多生产者多消费者模式，每个生产者对应一个等待队列，每个消费者对应一个等待队列。使用ReentrantLock创建两个Condition对象（notFull和notEmpty），分别对应生产和消费操作。await()之前一定while判断条件，防止虚假唤醒。公平锁参数可以控制线程先后顺序，代价是少量吞吐量下降。</li>
+<li>与LinkedBlockingQueue对比，支持多生产者多消费者模式，性能持平，但是可以随意定制公平策略、测速和监控。</li>
+</ul>
+</li>
+<li>对于synchronized、ReentrantLock、ReadWriteLock、StampedLock在不同场景下的性能表现。
+<ul>
+<li>synchronized简单够用</li>
+<li>ReentrantLock功能最全，性能一般，支持公平锁和非公平锁，支持超时，支持重入。</li>
+<li>ReadWriteLock读多写少，性能好，读完全并发，写独占。</li>
+<li>StampedLock读极致，写牺牲。乐观读不阻塞写操作，读多写少的场景性能优异，支持锁升级和降级，内存占用更小。但是不支持重入、不支持Condition、使用复杂度较高，适合特定场景使用。</li>
+</ul>
+</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>维度</th>
+          <th>synchronized</th>
+          <th>ReentrantLock(非公平)</th>
+          <th>ReentrantReadWriteLock</th>
+          <th>StampedLock(乐观读)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>jvm内置</td>
+          <td>是</td>
+          <td>否</td>
+          <td>否</td>
+          <td>否</td>
+      </tr>
+      <tr>
+          <td>可中断/超时/公平</td>
+          <td>否</td>
+          <td>是，可配置公平非公平</td>
+          <td>是</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>读写分离</td>
+          <td>否</td>
+          <td>否</td>
+          <td>是</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>乐观读</td>
+          <td>否</td>
+          <td>否</td>
+          <td>否</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>重入</td>
+          <td>是</td>
+          <td>是</td>
+          <td>是</td>
+          <td>否</td>
+      </tr>
+      <tr>
+          <td>条件变量</td>
+          <td>否</td>
+          <td>是</td>
+          <td>否</td>
+          <td>否</td>
+      </tr>
+      <tr>
+          <td>锁升级</td>
+          <td>否</td>
+          <td>否</td>
+          <td>否</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>锁降级</td>
+          <td>否</td>
+          <td>否</td>
+          <td>是</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>内存占用</td>
+          <td>低</td>
+          <td>高</td>
+          <td>高</td>
+          <td>低</td>
+      </tr>
+      <tr>
+          <td>性能</td>
+          <td>一般</td>
+          <td>一般</td>
+          <td>好</td>
+          <td>好</td>
+      </tr>
+  </tbody>
+</table>
+
+<h2 class="relative group">线程间通信
+    <div id="线程间通信" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ba%bf%e7%a8%8b%e9%97%b4%e9%80%9a%e4%bf%a1" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">共享变量通信
+    <div id="共享变量通信" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%85%b1%e4%ba%ab%e5%8f%98%e9%87%8f%e9%80%9a%e4%bf%a1" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>共享变量是线程间通信最基本的方式。多个线程通过访问同一个变量来实现数据交换和状态同步。为了保证线程安全，需要使用适当的同步机制。</p>
+<blockquote>
+<p>共享变量通信的关键在于保证原子性和可见性，避免数据竞争和不一致状态。</p>
+</blockquote>
+
+<h4 class="relative group">volatile变量
+    <div id="volatile变量" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#volatile%e5%8f%98%e9%87%8f" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>volatile变量是一种特殊类型的变量，它可以被多个线程同时访问，但每次访问时，都会从主内存中读取变量的值，而不是从缓存中读取。volatile变量会禁止线程的指令重排序，保证变量的读取和写入操作是原始的顺序执行。能保证变量的可见性和有序性，适用于简单的状态标志和单一变量的读写操作。</p>
+
+<h4 class="relative group">原子变量
+    <div id="原子变量" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8e%9f%e5%ad%90%e5%8f%98%e9%87%8f" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>java.util.concurrent.atomic包提供了原子变量类，如AtomicInteger、AtomicLong、AtomicBoolean、AtomicReference等，这些类都提供了原子操作，如getAndSet、incrementAndGet、compareAndSet等。原子变量能保证变量的读取和写入操作都是无锁原子的，能保证变量的修改是线程安全的。</p>
+
+<h3 class="relative group">管道通信
+    <div id="管道通信" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ae%a1%e9%81%93%e9%80%9a%e4%bf%a1" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>管道通信是一种线程间通信方式，一个生产者线程和一个消费者线程通过管道进行数据交换，提供了一种简单的流式数据传递机制。管道通信的关键在于创建管道，并使用管道的输入输出流进行数据交换。通过PipeInputStream和PipeOutputStream实现线程间的数据交换，适用于生产者消费者模式。</p>
+<ul>
+<li>字节流管道：PipedInputStream和PipedOutputStream</li>
+<li>字符流管道：PipedReader和PipedWriter</li>
+</ul>
+
+<h3 class="relative group">信号量Semaphore
+    <div id="信号量semaphore" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bf%a1%e5%8f%b7%e9%87%8fsemaphore" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>信号量Semaphore是一种用于控制多个线程访问共享资源的工具，它可以限制访问共享资源的线程数量。多个线程可以同时请求信号量，但最多只能有一个线程获得信号量。信号量的作用是保证共享资源被多个线程并发访问时，能按照指定的规则进行访问控制。它维护了一组许可证，线程在访问资源前必须获得许可证。</p>
+<p>应用场景</p>
+<ul>
+<li>
+<p>连接池管理：限制同时使用的数据库连接数</p>
+</li>
+<li>
+<p>限流控制：控制请求并发的数量</p>
+</li>
+<li>
+<p>资源池：管理有限的共享资源。</p>
+</li>
+<li>
+<p>semaphore.acquire()：获取一个许可证，如果当前没有可用的许可证，则阻塞当前线程。</p>
+</li>
+<li>
+<p>semaphore.release()：释放一个许可证，如果当前没有许可证，则抛出异常。</p>
+</li>
+</ul>
+
+<h3 class="relative group">同步辅助类
+    <div id="同步辅助类" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%90%8c%e6%ad%a5%e8%be%85%e5%8a%a9%e7%b1%bb" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>同步辅助类提供了一些用于实现线程间同步的工具类，如CountDownLatch、CyclicBarrier、Semaphore、Exchanger、FutureTask等。这些类提供了一些常用的同步机制，如等待所有线程完成、等待指定数量的线程完成、等待所有线程完成并返回结果、等待指定数量的线程完成并交换数据、等待所有线程完成并返回结果等。</p>
+
+<h4 class="relative group">CountDownLatch
+    <div id="countdownlatch" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#countdownlatch" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>允许一个或多个线程等待其他线程完成操作，它维护一个计数器，当计数器减到0时，等待的线程被唤醒。</p>
+<p>CountDownLatch类提供了两个方法：</p>
+<ul>
+<li>countDown()：递减计数器，当计数器减到0时，等待的线程被唤醒。</li>
+<li>await()：等待所有线程完成。如果当前线程在计数器减到0之前被中断，则抛出InterruptedException异常。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">CountDownLatch</span><span class="w"> </span><span class="n">latch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CountDownLatch</span><span class="p">(</span><span class="n">3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">latch</span><span class="p">.</span><span class="na">await</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">latch</span><span class="p">.</span><span class="na">countDown</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div>
+<h4 class="relative group">CyclicBarrier
+    <div id="cyclicbarrier" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#cyclicbarrier" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>允许一组线程互相等待，直到所有线程都到达某个公共屏障点，然后一起继续执行。与CountDownLatch不同，CyclicBarrier可以重复使用。</p>
+<p>该类提供了两个方法：</p>
+<ul>
+<li>await()：等待所有线程到达屏障点。</li>
+<li>reset()：重置屏障，允许再次使用。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//创建屏障，3个线程都到达执行屏障动作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">CyclicBarrier</span><span class="w"> </span><span class="n">barrier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CyclicBarrier</span><span class="p">(</span><span class="n">3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//等待其他线程到达屏障点</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">barrier</span><span class="p">.</span><span class="na">await</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">数据交换Exchanger
+    <div id="数据交换exchanger" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e6%8d%ae%e4%ba%a4%e6%8d%a2exchanger" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>Exchanger类提供了一个同步点，允许两个线程之间进行数据交换。当一个线程调用exchange()方法时，会等待另一个线程调用exchange()方法，然后两个线程交换数据。用于两个线程间需要定期交换数据的场景，如生产者和消费者模式中的缓冲区交换。</p>
+<p>该类提供了两个方法：</p>
+<ul>
+<li>exchange(V v)：等待另一个线程调用exchange()方法，然后交换数据。</li>
+<li>exchange(V v, long timeout, TimeUnit unit)：等待另一个线程调用exchange()方法，然后交换数据。如果在指定时间内没有其他线程调用exchange()方法，则抛出TimeoutException异常。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Exchanger</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">exchanger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Exchanger</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//线程1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">data1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Thread 1 data&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">exchangedData1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchanger</span><span class="p">.</span><span class="na">exchange</span><span class="p">(</span><span class="n">data1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//线程2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">data2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;Thread 2 data&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">exchangedData2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchanger</span><span class="p">.</span><span class="na">exchange</span><span class="p">(</span><span class="n">data2</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">实践建议
+    <div id="实践建议" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ae%9e%e8%b7%b5%e5%bb%ba%e8%ae%ae" aria-label="">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>选择合适的通信方式：避免过度设计，优先使用高级的同步工具：CountDownLatch、CyclicBarrier等。</li>
+<li>避免死锁：合理设计锁的获取顺序，使用超时机制避免无限等待</li>
+<li>避免忙等待：使用阻塞操作而不是轮询。</li>
+<li>异常处理：正确处理InterruptedException</li>
+<li>资源清理：确保finally块中释放资源。</li>
+<li>性能考虑：评估不同通信方式的性能开销，选择最优方案。</li>
+</ul>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/thread02.md"
+          data-oid-likes="likes_posts/thread02.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/thread01/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;多线程基础
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-01-23T12:44:13&#43;08:00">2021年1月23日</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/thread03/">
+              <span class="leading-6">
+                线程池技术&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-01-25T14:44:13&#43;08:00">2021年1月25日</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+            <div class="pt-3">
+              
+
+<div class="pt-8 mt-8 border-t border-neutral-200 dark:border-neutral-700">
+  <h3 class="text-2xl font-bold mb-4">评论</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="hollyblog/hollyblog.github.io"
+    data-repo-id="R_kgDOQbMzVg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQbMzVs4Cyz-f"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label=""
+    title="">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Holly
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+    
+
+
+  
+  <script defer src="/js/custom.min.4ebb3e0a94262e65bb85593d7e41cefff82843a5373a842f3b91d2baace5f117b01e818abc9a9539776763aff333e6b43cee59a442a6d46e0dd43e1338f769a0.js" integrity="sha512-Trs&#43;CpQmLmW7hVk9fkHO//goQ6U3OoQvO5HSuqzl8RewHoGKvJqVOXdnY6/zM&#43;a0PO5ZpEKm1G4N1D4TOPdpoA=="></script>
+
+
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder=""
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

@@ -1,0 +1,2973 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="zh-CN">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>计算机基础：操作系统与计算机网络 &middot; 永远纯粹</title>
+    <meta name="title" content="计算机基础：操作系统与计算机网络 &middot; 永远纯粹">
+  
+
+  
+  
+    <meta name="description" content="操作系统与计算机网络是计算机基础中的重要内容，主要分享对操作系统的基本原理和功能，以及计算机网络的工作原理和协议学习的内容。">
+  
+  
+    <meta name="keywords" content="计算机基础,操作系统,计算机网络,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/computer01/">
+  
+
+  
+  
+    <meta name="author" content="Holly">
+  
+  
+    
+      
+        
+          <link href="https://github.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://gitee.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/computer01/">
+  <meta property="og:site_name" content="永远纯粹">
+  <meta property="og:title" content="计算机基础：操作系统与计算机网络">
+  <meta property="og:description" content="操作系统与计算机网络是计算机基础中的重要内容，主要分享对操作系统的基本原理和功能，以及计算机网络的工作原理和协议学习的内容。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-12-05T13:18:17+08:00">
+    <meta property="article:modified_time" content="2021-12-05T13:18:17+08:00">
+    <meta property="article:tag" content="计算机基础">
+    <meta property="article:tag" content="操作系统">
+    <meta property="article:tag" content="计算机网络">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="计算机基础：操作系统与计算机网络">
+  <meta name="twitter:description" content="操作系统与计算机网络是计算机基础中的重要内容，主要分享对操作系统的基本原理和功能，以及计算机网络的工作原理和协议学习的内容。">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.391ee07dafc20cca70c5cd4275104dda29a78c8787887fd66963f367c6564348c73c2d276e442aec635a38b762100dc76b354c4fb9abbb38127ea518b3bada36.css"
+    integrity="sha512-OR7gfa/CDMpwxc1CdRBN2imnjIeHiH/WaWPzZ8ZWQ0jHPC0nbkQq7GNaOLdiEA3HazVMT7mruzgSfqUYs7raNg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9df4fc14d50efcc9aa4cfc2b6f348e365f421f5ad491278f8f48c0360cf2f93f08882fda6da162d7ace8e5add57c2df4ac46bd3861306b1d4c452cd31f448d64.js"
+      integrity="sha512-nfT8FNUO/MmqTPwrbzSONl9CH1rUkSePj0jANgzy&#43;T8IiC/abaFi16zo5a3VfC30rEa9OGEwax1MRSzTH0SNZA=="
+      data-copy=""
+      data-copied=""></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "全部文章",
+    "name": "计算机基础：操作系统与计算机网络",
+    "headline": "计算机基础：操作系统与计算机网络",
+    "description": "操作系统与计算机网络是计算机基础中的重要内容，主要分享对操作系统的基本原理和功能，以及计算机网络的工作原理和协议学习的内容。",
+    
+    "inLanguage": "zh-CN",
+    "url" : "http://localhost:1313/posts/computer01/",
+    "author" : {
+      "@type": "Person",
+      "name": "Holly"
+    },
+    "copyrightYear": "2021",
+    "dateCreated": "2021-12-05T13:18:17\u002b08:00",
+    "datePublished": "2021-12-05T13:18:17\u002b08:00",
+    
+    "dateModified": "2021-12-05T13:18:17\u002b08:00",
+    
+    "keywords": ["计算机基础","操作系统","计算机网络"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "5845"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+    
+
+
+  
+  <link rel="stylesheet" href="/css/custom.min.73bf6048d6126134a3a4d080eae4c7d7f266a34e211b8c064c369e863072b5f83301535ff631e803efa5c7fbfbfa9b5b52debdab6f1ca834f108f8cc7f432207.css" integrity="sha512-c79gSNYSYTSjpNCA6uTH1/Jmo04hG4wGTDaehjBytfgzAVNf9jHoA&#43;&#43;lx/v7&#43;ptbUt69q28cqDTxCPjMf0MiBw==" />
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+    
+    
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium">
+          永远纯粹
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="首页"
+  title="永远天真烂漫">
+  
+  
+    <p class="text-base font-medium">
+      首页
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="关于我"
+  title="关于我">
+  
+  
+    <p class="text-base font-medium">
+      关于我
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/distributed/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="分布式"
+  title="分布式系统">
+  
+  
+    <p class="text-base font-medium">
+      分布式
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/cloud/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="云计算"
+  title="云计算">
+  
+  
+    <p class="text-base font-medium">
+      云计算
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/llm/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="大模型"
+  title="大模型">
+  
+  
+    <p class="text-base font-medium">
+      大模型
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="项目"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        项目
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="智能餐饮"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              智能餐饮
+            </p>
+          </a>
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="寻环小程序"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              寻环小程序
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="基础"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        基础
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/computer/"
+            
+            aria-label="计算机基础"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="计算机基础">
+              计算机基础
+            </p>
+          </a>
+        
+          <a
+            href="/categories/java/"
+            
+            aria-label="编程语言"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Java基础">
+              编程语言
+            </p>
+          </a>
+        
+          <a
+            href="/categories/database/"
+            
+            aria-label="数据存储"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="数据库基础">
+              数据存储
+            </p>
+          </a>
+        
+          <a
+            href="/categories/framework/"
+            
+            aria-label="框架应用"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="框架应用">
+              框架应用
+            </p>
+          </a>
+        
+          <a
+            href="/categories/middleware/"
+            
+            aria-label="中间件"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="中间件">
+              中间件
+            </p>
+          </a>
+        
+          <a
+            href="/categories/ops/"
+            
+            aria-label="运维部署"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="运维部署">
+              运维部署
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="进阶"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        进阶
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/juc/"
+            
+            aria-label="JUC"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JUC">
+              JUC
+            </p>
+          </a>
+        
+          <a
+            href="/categories/threadpool/"
+            
+            aria-label="线程池"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="线程池">
+              线程池
+            </p>
+          </a>
+        
+          <a
+            href="/categories/jvm/"
+            
+            aria-label="JVM调优"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JVM">
+              JVM调优
+            </p>
+          </a>
+        
+          <a
+            href="/categories/sa/"
+            
+            aria-label="系统架构"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="系统架构">
+              系统架构
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <a
+  href="/resume/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="我的简历"
+  title="个人简历">
+  
+  
+    <p class="text-base font-medium">
+      我的简历
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="首页"
+    title="永远天真烂漫">
+    
+    
+      <p class="text-bg font-bg">
+        首页
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="关于我"
+    title="关于我">
+    
+    
+      <p class="text-bg font-bg">
+        关于我
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/distributed/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="分布式"
+    title="分布式系统">
+    
+    
+      <p class="text-bg font-bg">
+        分布式
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/cloud/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="云计算"
+    title="云计算">
+    
+    
+      <p class="text-bg font-bg">
+        云计算
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/llm/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="大模型"
+    title="大模型">
+    
+    
+      <p class="text-bg font-bg">
+        大模型
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="项目"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      项目
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="智能餐饮"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        智能餐饮
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="寻环小程序"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        寻环小程序
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="基础"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      基础
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/computer/"
+      
+      aria-label="计算机基础"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="计算机基础">
+        计算机基础
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/java/"
+      
+      aria-label="编程语言"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Java基础">
+        编程语言
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/database/"
+      
+      aria-label="数据存储"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="数据库基础">
+        数据存储
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/framework/"
+      
+      aria-label="框架应用"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="框架应用">
+        框架应用
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/middleware/"
+      
+      aria-label="中间件"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="中间件">
+        中间件
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/ops/"
+      
+      aria-label="运维部署"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="运维部署">
+        运维部署
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="进阶"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      进阶
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/juc/"
+      
+      aria-label="JUC"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JUC">
+        JUC
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/threadpool/"
+      
+      aria-label="线程池"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="线程池">
+        线程池
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/jvm/"
+      
+      aria-label="JVM调优"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JVM">
+        JVM调优
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/sa/"
+      
+      aria-label="系统架构"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="系统架构">
+        系统架构
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/resume/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="我的简历"
+    title="个人简历">
+    
+    
+      <p class="text-bg font-bg">
+        我的简历
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+    
+    
+  
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/img/background_hu_de979b0156ba1693.jpg"
+      alt="计算机基础：操作系统与计算机网络"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+      integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/img/background_hu_de979b0156ba1693.jpg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        计算机基础：操作系统与计算机网络
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2021-12-05T13:18:17&#43;08:00">2021年12月5日</time><span class="px-2 text-primary-500">&middot;</span><span>5845 字</span><span class="px-2 text-primary-500">&middot;</span><span title="">12 分钟</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/categories/computer/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    计算机基础
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    计算机基础
+  </span>
+</span>
+
+              </a>
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    操作系统
+  </span>
+</span>
+
+              </a>
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    计算机网络
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Holly"
+        src="/img/avatar_hu_ac9fd040db4ac989.jpg"
+        data-zoom-src="/img/avatar_hu_7ab8791e041692ec.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Holly
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享。</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/hollyblog/"
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://gitee.com/hollyblog/"
+          target="_blank"
+          aria-label="Gitee"
+          title="Gitee"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.037a.594.594 0 0 1-.592-.593v-1.482a.594.594 0 0 1 .592-.593h6.815c.327 0 .593.266.593.593v3.408a4 4 0 0 1-4 4H5.926a.594.594 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/>
+</svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:2285549633@qq.com"
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640"
+          target="_blank"
+          aria-label="Csdn"
+          title="Csdn"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-模块总览">1. 模块总览</a></li>
+    <li><a href="#2-面试题清单top10高频真题">2. 面试题清单（Top10高频真题）</a></li>
+    <li><a href="#3-逐题深度拆解">3. 逐题深度拆解</a>
+      <ul>
+        <li><a href="#题目1进程与线程的区别进程间通信方式"><strong>题目1：进程与线程的区别、进程间通信方式</strong></a>
+          <ul>
+            <li><a href="#原理">原理</a></li>
+            <li><a href="#场景">场景</a></li>
+            <li><a href="#追问">追问</a></li>
+            <li><a href="#总结">总结</a></li>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#题目2tcp三次握手与四次挥手time_"><strong>题目2：TCP三次握手与四次挥手、TIME_WAIT状态</strong></a>
+          <ul>
+            <li><a href="#原理-1">原理</a></li>
+            <li><a href="#场景-1">场景</a></li>
+            <li><a href="#追问-1">追问</a></li>
+            <li><a href="#总结-1">总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#题目3虚拟内存页面置换算法缺页中断"><strong>题目3：虚拟内存、页面置换算法、缺页中断</strong></a>
+          <ul>
+            <li><a href="#原理-2">原理</a></li>
+            <li><a href="#场景-2">场景</a></li>
+            <li><a href="#追问-2">追问</a></li>
+            <li><a href="#总结-2">总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#题目4httphttps区别ssltls握手过程"><strong>题目4：HTTP/HTTPS区别、SSL/TLS握手过程</strong></a>
+          <ul>
+            <li><a href="#原理-3">原理</a></li>
+            <li><a href="#场景-3">场景</a></li>
+            <li><a href="#追问-3">追问</a></li>
+            <li><a href="#总结-3">总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#题目5cpu缓存一致性协议mesi内存屏障"><strong>题目5：CPU缓存一致性协议（MESI）、内存屏障</strong></a>
+          <ul>
+            <li><a href="#原理-4">原理</a></li>
+            <li><a href="#场景-4">场景</a></li>
+            <li><a href="#追问-4">追问</a></li>
+            <li><a href="#总结-4">总结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-踩坑雷达">4. 踩坑雷达</a>
+      <ul>
+        <li><a href="#案例1tcp连接数耗尽导致服务不可用"><strong>案例1：TCP连接数耗尽导致服务不可用</strong></a></li>
+        <li><a href="#案例2伪共享导致多线程性能下降"><strong>案例2：伪共享导致多线程性能下降</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#5-速记卡片">5. 速记卡片</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-模块总览">1. 模块总览</a></li>
+    <li><a href="#2-面试题清单top10高频真题">2. 面试题清单（Top10高频真题）</a></li>
+    <li><a href="#3-逐题深度拆解">3. 逐题深度拆解</a>
+      <ul>
+        <li><a href="#题目1进程与线程的区别进程间通信方式"><strong>题目1：进程与线程的区别、进程间通信方式</strong></a>
+          <ul>
+            <li><a href="#原理">原理</a></li>
+            <li><a href="#场景">场景</a></li>
+            <li><a href="#追问">追问</a></li>
+            <li><a href="#总结">总结</a></li>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#题目2tcp三次握手与四次挥手time_"><strong>题目2：TCP三次握手与四次挥手、TIME_WAIT状态</strong></a>
+          <ul>
+            <li><a href="#原理-1">原理</a></li>
+            <li><a href="#场景-1">场景</a></li>
+            <li><a href="#追问-1">追问</a></li>
+            <li><a href="#总结-1">总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#题目3虚拟内存页面置换算法缺页中断"><strong>题目3：虚拟内存、页面置换算法、缺页中断</strong></a>
+          <ul>
+            <li><a href="#原理-2">原理</a></li>
+            <li><a href="#场景-2">场景</a></li>
+            <li><a href="#追问-2">追问</a></li>
+            <li><a href="#总结-2">总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#题目4httphttps区别ssltls握手过程"><strong>题目4：HTTP/HTTPS区别、SSL/TLS握手过程</strong></a>
+          <ul>
+            <li><a href="#原理-3">原理</a></li>
+            <li><a href="#场景-3">场景</a></li>
+            <li><a href="#追问-3">追问</a></li>
+            <li><a href="#总结-3">总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#题目5cpu缓存一致性协议mesi内存屏障"><strong>题目5：CPU缓存一致性协议（MESI）、内存屏障</strong></a>
+          <ul>
+            <li><a href="#原理-4">原理</a></li>
+            <li><a href="#场景-4">场景</a></li>
+            <li><a href="#追问-4">追问</a></li>
+            <li><a href="#总结-4">总结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-踩坑雷达">4. 踩坑雷达</a>
+      <ul>
+        <li><a href="#案例1tcp连接数耗尽导致服务不可用"><strong>案例1：TCP连接数耗尽导致服务不可用</strong></a></li>
+        <li><a href="#案例2伪共享导致多线程性能下降"><strong>案例2：伪共享导致多线程性能下降</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#5-速记卡片">5. 速记卡片</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h2 class="relative group">1. 模块总览
+    <div id="1-模块总览" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-%e6%a8%a1%e5%9d%97%e6%80%bb%e8%a7%88" aria-label="">#</a>
+    </span>
+    
+</h2>
+<p>对于3年经验的开发者，<strong>计算机基础复习应聚焦于操作系统进程/内存管理、网络TCP/IP协议栈、计算机组成原理的缓存一致性，面试分值占比25-30%，是评估计算机科班功底和系统思维能力的核心模块。</strong></p>
+
+<h2 class="relative group">2. 面试题清单（Top10高频真题）
+    <div id="2-面试题清单top10高频真题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-%e9%9d%a2%e8%af%95%e9%a2%98%e6%b8%85%e5%8d%95top10%e9%ab%98%e9%a2%91%e7%9c%9f%e9%a2%98" aria-label="">#</a>
+    </span>
+    
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>排名</th>
+          <th>题目</th>
+          <th>所属领域</th>
+          <th>高频出现公司</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>进程与线程的区别、进程间通信方式</td>
+          <td>操作系统</td>
+          <td>所有大厂</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>TCP三次握手与四次挥手、TIME_WAIT状态</td>
+          <td>计算机网络</td>
+          <td>阿里/字节/腾讯</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>虚拟内存、页面置换算法、缺页中断</td>
+          <td>操作系统</td>
+          <td>字节/阿里/美团</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>HTTP/HTTPS区别、SSL/TLS握手过程</td>
+          <td>计算机网络</td>
+          <td>所有大厂</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>CPU缓存一致性协议（MESI）、内存屏障</td>
+          <td>计算机组成原理</td>
+          <td>阿里/字节/华为</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>死锁产生条件与解决方法、银行家算法</td>
+          <td>操作系统</td>
+          <td>腾讯/美团/京东</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>DNS解析过程、CDN工作原理</td>
+          <td>计算机网络</td>
+          <td>字节/阿里/腾讯</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>指令流水线、超标量、乱序执行</td>
+          <td>计算机体系结构</td>
+          <td>华为/阿里/字节</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td>编译过程（词法分析、语法分析、中间代码）</td>
+          <td>编译原理</td>
+          <td>字节/腾讯</td>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td>中断与异常、系统调用过程</td>
+          <td>操作系统</td>
+          <td>华为/阿里</td>
+      </tr>
+  </tbody>
+</table>
+
+<h2 class="relative group">3. 逐题深度拆解
+    <div id="3-逐题深度拆解" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#3-%e9%80%90%e9%a2%98%e6%b7%b1%e5%ba%a6%e6%8b%86%e8%a7%a3" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group"><strong>题目1：进程与线程的区别、进程间通信方式</strong>
+    <div id="题目1进程与线程的区别进程间通信方式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%a2%98%e7%9b%ae1%e8%bf%9b%e7%a8%8b%e4%b8%8e%e7%ba%bf%e7%a8%8b%e7%9a%84%e5%8c%ba%e5%88%ab%e8%bf%9b%e7%a8%8b%e9%97%b4%e9%80%9a%e4%bf%a1%e6%96%b9%e5%bc%8f" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">原理
+    <div id="原理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8e%9f%e7%90%86" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>进程与线程核心对比</strong>：
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="进程与线程的核心对比"
+    width="4008"
+    height="2178"
+    src="/img/computer01-1_hu_e0f29131079ee261.png"
+    srcset="/img/computer01-1_hu_e0f29131079ee261.png 800w, /img/computer01-1_hu_b895fdcfaf19d81f.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/img/computer01-1.png"></figure>
+</p>
+<p><strong>进程间通信（IPC）方式对比</strong>：</p>
+<table>
+  <thead>
+      <tr>
+          <th>通信方式</th>
+          <th>原理</th>
+          <th>特点</th>
+          <th>适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>管道（Pipe）</strong></td>
+          <td>半双工，内核缓冲区</td>
+          <td>单向，父子进程间</td>
+          <td>命令行管道：`ls</td>
+      </tr>
+      <tr>
+          <td><strong>命名管道（FIFO）</strong></td>
+          <td>文件系统中有名管道</td>
+          <td>双向，无亲缘关系进程</td>
+          <td>持久化进程通信</td>
+      </tr>
+      <tr>
+          <td><strong>消息队列</strong></td>
+          <td>内核维护的消息链表</td>
+          <td>异步，有类型区分</td>
+          <td>解耦生产消费</td>
+      </tr>
+      <tr>
+          <td><strong>共享内存</strong></td>
+          <td>映射同一物理内存区域</td>
+          <td>最快，需同步机制</td>
+          <td>高性能数据共享</td>
+      </tr>
+      <tr>
+          <td><strong>信号量</strong></td>
+          <td>计数器，控制资源访问</td>
+          <td>同步原语，不传输数据</td>
+          <td>进程同步互斥</td>
+      </tr>
+      <tr>
+          <td><strong>信号（Signal）</strong></td>
+          <td>软件中断，异步通知</td>
+          <td>简单，不可靠</td>
+          <td>进程控制</td>
+      </tr>
+      <tr>
+          <td><strong>Socket</strong></td>
+          <td>网络/域套接字</td>
+          <td>跨网络，通用</td>
+          <td>分布式系统</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 class="relative group">场景
+    <div id="场景" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9c%ba%e6%99%af" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>微服务架构中的进程模型</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Docker容器：每个容器是一个进程（或进程组）</span>
+</span></span><span class="line"><span class="cl">docker run -d --name service1 myapp:1.0
+</span></span><span class="line"><span class="cl"><span class="c1"># 容器内可能有多个线程（如Java应用）</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 微服务间通过HTTP(Socket)通信</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 容器内进程可通过共享内存通信</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Kubernetes Pod：共享网络和存储的容器组</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 同一个Pod中的容器可通过localhost通信</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 可通过共享卷(Volume)共享文件</span>
+</span></span></code></pre></div>
+<h4 class="relative group">追问
+    <div id="追问" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%bd%e9%97%ae" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>Q：协程与线程的区别？为什么Go语言使用协程？</strong></p>
+<ul>
+<li><strong>线程</strong>：内核调度，上下文切换代价高（需切换页表、寄存器等），创建数有限（约千级）</li>
+<li><strong>协程</strong>：用户态调度，切换代价极低（仅保存寄存器），可创建百万级</li>
+<li><strong>Go的优势</strong>：Goroutine轻量，M:N调度模型，适合高并发I/O密集型应用</li>
+</ul>
+<p><strong>Q：Linux中如何查看进程和线程？</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看进程树</span>
+</span></span><span class="line"><span class="cl">pstree -p
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看进程详细信息</span>
+</span></span><span class="line"><span class="cl">ps -ef <span class="p">|</span> grep java
+</span></span><span class="line"><span class="cl">ps aux --sort<span class="o">=</span>-%mem <span class="p">|</span> head -10  <span class="c1"># 按内存排序</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看线程</span>
+</span></span><span class="line"><span class="cl">top -H -p &lt;pid&gt;  <span class="c1"># 查看指定进程的线程</span>
+</span></span><span class="line"><span class="cl">ps -T -p &lt;pid&gt;   <span class="c1"># 查看进程的线程列表</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看进程打开的文件</span>
+</span></span><span class="line"><span class="cl">lsof -p &lt;pid&gt;
+</span></span></code></pre></div>
+<h4 class="relative group">总结
+    <div id="总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>进程是资源分配的最小单位，线程是CPU调度的最小单位；进程间通信有管道、消息队列、共享内存等方式，选择取决于性能与复杂度需求。</p>
+
+<h4 class="relative group">
+    <div id="" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#" aria-label="">#</a>
+    </span>
+    
+</h4>
+<hr>
+
+<h3 class="relative group"><strong>题目2：TCP三次握手与四次挥手、TIME_WAIT状态</strong>
+    <div id="题目2tcp三次握手与四次挥手time_" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%a2%98%e7%9b%ae2tcp%e4%b8%89%e6%ac%a1%e6%8f%a1%e6%89%8b%e4%b8%8e%e5%9b%9b%e6%ac%a1%e6%8c%a5%e6%89%8btime_" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">原理
+    <div id="原理-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8e%9f%e7%90%86-1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>TCP连接建立与终止状态机</strong>：
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="TCP连接状态机"
+    width="1884"
+    height="8210"
+    src="/img/computer01-2_hu_1a156035d8732608.png"
+    srcset="/img/computer01-2_hu_1a156035d8732608.png 800w, /img/computer01-2_hu_ce3b050775d44546.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/img/computer01-2.png"></figure>
+</p>
+<p><strong>为什么是三次握手？</strong></p>
+<ol>
+<li>第一次：客户端→服务端，证明客户端发送能力正常</li>
+<li>第二次：服务端→客户端，证明服务端接收和发送能力正常</li>
+<li>第三次：客户端→服务端，证明客户端接收能力正常
+<strong>防止失效的连接请求到达服务器导致错误建立连接</strong></li>
+</ol>
+
+<h4 class="relative group">场景
+    <div id="场景-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9c%ba%e6%99%af-1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>高并发服务器TIME_WAIT优化</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看TIME_WAIT连接</span>
+</span></span><span class="line"><span class="cl">netstat -ant <span class="p">|</span> grep TIME_WAIT <span class="p">|</span> wc -l
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 服务器优化参数（Linux内核）</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 启用TIME_WAIT重用（需双方都开启时间戳）</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv4/tcp_tw_reuse
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 启用TIME_WAIT快速回收（有NAT环境风险）</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv4/tcp_tw_recycle  <span class="c1"># Linux 4.12已移除</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 调整端口范围，增加可用端口数</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;1024 65000&#34;</span> &gt; /proc/sys/net/ipv4/ip_local_port_range
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. 调整FIN_WAIT2超时时间</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="m">30</span> &gt; /proc/sys/net/ipv4/tcp_fin_timeout
+</span></span></code></pre></div>
+<h4 class="relative group">追问
+    <div id="追问-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%bd%e9%97%ae-1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>Q：为什么TIME_WAIT需要等待2MSL（Maximum Segment Lifetime）？</strong></p>
+<ol>
+<li><strong>可靠关闭</strong>：确保最后一个ACK能被对方收到（对方超时重传FIN）</li>
+<li><strong>清理旧连接</strong>：确保本次连接的所有报文都从网络中消失，避免被新连接误收</li>
+<li>MSL通常为30秒或2分钟，2MSL=60秒或4分钟</li>
+</ol>
+<p><strong>Q：TCP粘包/拆包问题如何解决？</strong></p>
+<ul>
+<li><strong>原因</strong>：TCP是字节流协议，无消息边界</li>
+<li><strong>解决方案</strong>：
+<ol>
+<li>固定长度：每个消息固定长度，不足补零</li>
+<li>分隔符：如<code>\n</code>、<code>\r\n</code>等</li>
+<li>长度前缀：先发送消息长度，再发送消息内容（如HTTP Content-Length）</li>
+<li>协议设计：如Protobuf、Thrift等自带长度信息</li>
+</ol>
+</li>
+</ul>
+
+<h4 class="relative group">总结
+    <div id="总结-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93-1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>TCP通过三次握手建立可靠连接，四次挥手优雅关闭；TIME_WAIT状态等待2MSL确保连接彻底关闭，避免新旧连接数据混淆。</p>
+<hr>
+
+<h3 class="relative group"><strong>题目3：虚拟内存、页面置换算法、缺页中断</strong>
+    <div id="题目3虚拟内存页面置换算法缺页中断" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%a2%98%e7%9b%ae3%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98%e9%a1%b5%e9%9d%a2%e7%bd%ae%e6%8d%a2%e7%ae%97%e6%b3%95%e7%bc%ba%e9%a1%b5%e4%b8%ad%e6%96%ad" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">原理
+    <div id="原理-2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8e%9f%e7%90%86-2" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>虚拟内存与物理内存映射关系</strong>：
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="虚拟内存与物理内存映射关系"
+    width="1438"
+    height="742"
+    src="/img/computer01-3_hu_826b7f4a374f5a1f.png"
+    srcset="/img/computer01-3_hu_826b7f4a374f5a1f.png 800w, /img/computer01-3_hu_f07f3b3d41bac607.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/img/computer01-3.png"></figure>
+</p>
+<p><strong>页面置换算法对比</strong>：</p>
+<table>
+  <thead>
+      <tr>
+          <th>算法</th>
+          <th>思想</th>
+          <th>优缺点</th>
+          <th>实现复杂度</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>OPT</strong></td>
+          <td>淘汰未来最长时间不使用</td>
+          <td>理论最优，无法实现</td>
+          <td>高（需预知未来）</td>
+      </tr>
+      <tr>
+          <td><strong>FIFO</strong></td>
+          <td>先进先出</td>
+          <td>简单，可能淘汰常用页（Belady异常）</td>
+          <td>低</td>
+      </tr>
+      <tr>
+          <td><strong>LRU</strong></td>
+          <td>最近最少使用</td>
+          <td>效果好，实现较复杂</td>
+          <td>中</td>
+      </tr>
+      <tr>
+          <td><strong>Clock</strong></td>
+          <td>近似LRU，使用访问位</td>
+          <td>平衡性能与实现</td>
+          <td>中</td>
+      </tr>
+      <tr>
+          <td><strong>LFU</strong></td>
+          <td>最不经常使用</td>
+          <td>适合特定场景，对突发访问不友好</td>
+          <td>高</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 class="relative group">场景
+    <div id="场景-2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9c%ba%e6%99%af-2" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>数据库缓冲池管理</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- InnoDB缓冲池类似操作系统页缓存
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 参数配置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_buffer_pool_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="k">G</span><span class="w">  </span><span class="o">#</span><span class="w"> </span><span class="err">类似物理内存</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">innodb_buffer_pool_instances</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w">  </span><span class="o">#</span><span class="w"> </span><span class="err">类似多级缓存</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 页面淘汰：类似LRU，但有改进
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 分为young区（热数据）和old区（新数据）
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 新页面先进入old区，经过一定访问后才进入young区
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 避免全表扫描污染缓冲池
+</span></span></span></code></pre></div>
+<h4 class="relative group">追问
+    <div id="追问-2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%bd%e9%97%ae-2" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>Q：什么是缺页中断？处理流程是什么？</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 缺页中断处理伪代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">handle_page_fault</span><span class="p">(</span><span class="n">virtual_address</span> <span class="n">va</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 1. 检查地址合法性（是否在进程地址空间内）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">is_valid_address</span><span class="p">(</span><span class="n">va</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">send_sigsegv</span><span class="p">();</span>  <span class="c1">// 段错误
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2. 查找空闲物理页框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">page_frame</span> <span class="o">=</span> <span class="nf">find_free_frame</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">page_frame</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 3. 无空闲页框，触发页面置换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">victim_page</span> <span class="o">=</span> <span class="nf">select_victim_by_algorithm</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">victim_page</span><span class="p">.</span><span class="n">is_dirty</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">write_to_disk</span><span class="p">(</span><span class="n">victim_page</span><span class="p">);</span>  <span class="c1">// 写回磁盘
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">page_frame</span> <span class="o">=</span> <span class="n">victim_page</span><span class="p">.</span><span class="n">frame</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 4. 从磁盘加载页面内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">read_from_disk</span><span class="p">(</span><span class="n">page_frame</span><span class="p">,</span> <span class="n">va</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 5. 更新页表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">update_page_table</span><span class="p">(</span><span class="n">va</span><span class="p">,</span> <span class="n">page_frame</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 6. 重新执行引发缺页的指令
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">restart_instruction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>Q：TLB是什么？为什么需要它？</strong></p>
+<ul>
+<li><strong>TLB（Translation Lookaside Buffer）</strong>：页表缓存，存储最近使用的虚拟页到物理页的映射</li>
+<li><strong>作用</strong>：加速地址转换，避免每次访问内存都要查页表（内存访问本身需要查页表，形成死循环）</li>
+<li><strong>工作流程</strong>：虚拟地址→查TLB→命中则直接得到物理地址；未命中则查页表→更新TLB</li>
+</ul>
+
+<h4 class="relative group">总结
+    <div id="总结-2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93-2" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>虚拟内存通过页表映射提供大于物理内存的地址空间，缺页中断实现按需加载，页面置换算法在内存不足时淘汰页面，TLB加速地址转换。</p>
+<hr>
+
+<h3 class="relative group"><strong>题目4：HTTP/HTTPS区别、SSL/TLS握手过程</strong>
+    <div id="题目4httphttps区别ssltls握手过程" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%a2%98%e7%9b%ae4httphttps%e5%8c%ba%e5%88%abssltls%e6%8f%a1%e6%89%8b%e8%bf%87%e7%a8%8b" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">原理
+    <div id="原理-3" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8e%9f%e7%90%86-3" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>HTTP与HTTPS协议栈对比</strong>：
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="HTTP与HTTPS协议栈对比"
+    width="6523"
+    height="462"
+    src="/img/computer01-4_hu_6060fa15d5b52775.png"
+    srcset="/img/computer01-4_hu_6060fa15d5b52775.png 800w, /img/computer01-4_hu_af9011da62549be9.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/img/computer01-4.png"></figure>
+</p>
+<p><strong>TLS 1.2完整握手过程</strong>：
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="TLS 1.2完整握手过程"
+    width="2300"
+    height="4136"
+    src="/img/computer01-5_hu_5cfdb7235e4b3eb0.png"
+    srcset="/img/computer01-5_hu_5cfdb7235e4b3eb0.png 800w, /img/computer01-5_hu_4da665e02c8fd54a.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/img/computer01-5.png"></figure>
+</p>
+
+<h4 class="relative group">场景
+    <div id="场景-3" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9c%ba%e6%99%af-3" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>微服务间HTTPS通信配置</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Spring Cloud Gateway HTTPS配置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8443</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ssl</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-store</span><span class="p">:</span><span class="w"> </span><span class="l">classpath:keystore.p12</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-store-password</span><span class="p">:</span><span class="w"> </span><span class="l">changeit</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-store-type</span><span class="p">:</span><span class="w"> </span><span class="l">PKCS12</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">key-alias</span><span class="p">:</span><span class="w"> </span><span class="l">myserver</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 服务间调用使用HTTPS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">feign</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">connectTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">5000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">readTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">5000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">loggerLevel</span><span class="p">:</span><span class="w"> </span><span class="l">basic</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">httpclient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">disableSslValidation</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c"># 生产环境应为false，使用正式证书</span><span class="w">
+</span></span></span></code></pre></div>
+<h4 class="relative group">追问
+    <div id="追问-3" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%bd%e9%97%ae-3" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>Q：HTTPS如何防止中间人攻击？</strong></p>
+<ol>
+<li><strong>证书验证</strong>：客户端验证服务器证书的合法性（颁发机构、有效期、域名匹配等）</li>
+<li><strong>公钥加密</strong>：预主密钥用服务器公钥加密，只有拥有私钥的服务器能解密</li>
+<li><strong>数字签名</strong>：证书由CA私钥签名，防止篡改</li>
+<li><strong>密钥协商</strong>：使用Diffie-Hellman等密钥交换算法，即使私钥泄露，过去的通信也不会被解密（前向保密）</li>
+</ol>
+<p><strong>Q：TLS 1.3相比1.2有哪些改进？</strong></p>
+<ol>
+<li><strong>握手更快</strong>：1-RTT（首次）或0-RTT（重连），减少往返次数</li>
+<li><strong>更安全</strong>：移除不安全的加密算法（如RC4、SHA-1、CBC模式等）</li>
+<li><strong>简化流程</strong>：合并多个消息，减少握手步骤</li>
+<li><strong>密钥分离</strong>：不同用途使用不同密钥，提高安全性</li>
+</ol>
+
+<h4 class="relative group">总结
+    <div id="总结-3" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93-3" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>HTTPS=HTTP+SSL/TLS，通过证书验证身份，非对称加密协商密钥，对称加密传输数据，TLS 1.3进一步优化了安全性和性能。</p>
+<hr>
+
+<h3 class="relative group"><strong>题目5：CPU缓存一致性协议（MESI）、内存屏障</strong>
+    <div id="题目5cpu缓存一致性协议mesi内存屏障" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%a2%98%e7%9b%ae5cpu%e7%bc%93%e5%ad%98%e4%b8%80%e8%87%b4%e6%80%a7%e5%8d%8f%e8%ae%aemesi%e5%86%85%e5%ad%98%e5%b1%8f%e9%9a%9c" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">原理
+    <div id="原理-4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%8e%9f%e7%90%86-4" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>MESI协议状态转换</strong>：
+<figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt="MESI协议状态转换"
+    width="1529"
+    height="1945"
+    src="/img/computer01-6_hu_9b9ada73a8ce164d.png"
+    srcset="/img/computer01-6_hu_9b9ada73a8ce164d.png 800w, /img/computer01-6_hu_20ad66a62395ba5d.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/img/computer01-6.png"></figure>
+</p>
+<p><strong>缓存行与伪共享</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 伪共享（False Sharing）示例</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FalseSharingExample</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 两个变量可能在同一个缓存行（通常64字节）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">variableA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">variableB</span><span class="p">;</span><span class="w">  </span><span class="c1">// 可能与variableA在同一缓存行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 优化：使用填充避免伪共享</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">variableA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span><span class="w"> </span><span class="n">p3</span><span class="p">,</span><span class="w"> </span><span class="n">p4</span><span class="p">,</span><span class="w"> </span><span class="n">p5</span><span class="p">,</span><span class="w"> </span><span class="n">p6</span><span class="p">,</span><span class="w"> </span><span class="n">p7</span><span class="p">;</span><span class="w"> </span><span class="c1">// 56字节填充</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">variableB</span><span class="p">;</span><span class="w">  </span><span class="c1">// 现在在不同缓存行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h4 class="relative group">场景
+    <div id="场景-4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9c%ba%e6%99%af-4" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>Java并发编程中的内存屏障</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// Java内存模型与内存屏障</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MemoryBarrierExample</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">42</span><span class="p">;</span><span class="w">                 </span><span class="c1">// 普通写</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">            </span><span class="c1">// volatile写，插入StoreStore屏障</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// StoreStore屏障确保x=42对其他线程可见</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">reader</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">             </span><span class="c1">// volatile读，插入LoadLoad屏障</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// LoadLoad屏障确保读取x时能看到writer()的所有写</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">  </span><span class="c1">// 保证看到42</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h4 class="relative group">追问
+    <div id="追问-4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%bd%e9%97%ae-4" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p><strong>Q：什么是内存屏障？有哪几种类型？</strong></p>
+<ol>
+<li><strong>LoadLoad屏障</strong>：确保屏障前的读操作先于屏障后的读操作完成</li>
+<li><strong>StoreStore屏障</strong>：确保屏障前的写操作先于屏障后的写操作完成，并对其他处理器可见</li>
+<li><strong>LoadStore屏障</strong>：确保屏障前的读操作先于屏障后的写操作完成</li>
+<li><strong>StoreLoad屏障</strong>：确保屏障前的写操作对其他处理器可见后，才执行屏障后的读操作（全能屏障，开销最大）</li>
+</ol>
+<p><strong>Q：MESI协议如何保证缓存一致性？</strong></p>
+<ol>
+<li><strong>监听总线</strong>：每个CPU监听其他CPU的读写操作</li>
+<li><strong>状态转换</strong>：根据监听到的操作更新自己的缓存行状态</li>
+<li><strong>写传播</strong>：修改缓存行时，通过总线通知其他CPU置为无效</li>
+<li><strong>写串行化</strong>：同一时刻只能有一个CPU修改缓存行</li>
+</ol>
+
+<h4 class="relative group">总结
+    <div id="总结-4" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93-4" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>MESI协议通过Modified/Exclusive/Shared/Invalid四种状态维护多核CPU缓存一致性；内存屏障确保指令执行顺序和内存可见性，避免重排序问题。</p>
+
+<h2 class="relative group">4. 踩坑雷达
+    <div id="4-踩坑雷达" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#4-%e8%b8%a9%e5%9d%91%e9%9b%b7%e8%be%be" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group"><strong>案例1：TCP连接数耗尽导致服务不可用</strong>
+    <div id="案例1tcp连接数耗尽导致服务不可用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%a1%88%e4%be%8b1tcp%e8%bf%9e%e6%8e%a5%e6%95%b0%e8%80%97%e5%b0%bd%e5%af%bc%e8%87%b4%e6%9c%8d%e5%8a%a1%e4%b8%8d%e5%8f%af%e7%94%a8" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p><strong>故障现象</strong>：某电商系统大促期间，网关服务器出现大量<code>Cannot assign requested address</code>错误，新用户无法访问。</p>
+<p><strong>根本原因</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看连接状态</span>
+</span></span><span class="line"><span class="cl">netstat -ant <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出：</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   5000 ESTABLISHED</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   30000 TIME_WAIT  # 大量TIME_WAIT连接！</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 分析：</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 服务器作为客户端调用下游服务，使用短连接</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 每次调用后立即关闭，产生大量TIME_WAIT</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. Linux默认本地端口范围：32768-61000，约28000个</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. TIME_WAIT占用端口，导致新连接无可用端口</span>
+</span></span></code></pre></div><p><strong>如何避免</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 解决方案1：使用连接池，复用TCP连接</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># HTTP客户端配置连接池</span>
+</span></span><span class="line"><span class="cl">httpclient:
+</span></span><span class="line"><span class="cl">  max-total: <span class="m">200</span>      <span class="c1"># 最大连接数</span>
+</span></span><span class="line"><span class="cl">  default-max-per-route: <span class="m">50</span>  <span class="c1"># 每个路由最大连接数</span>
+</span></span><span class="line"><span class="cl">  validate-after-inactivity: <span class="m">5000</span>  <span class="c1"># 空闲连接验证间隔</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 解决方案2：调整内核参数</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 扩大本地端口范围</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;1024 65535&#34;</span> &gt; /proc/sys/net/ipv4/ip_local_port_range
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 启用TIME_WAIT重用（需确保没有NAT问题）</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv4/tcp_tw_reuse
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 解决方案3：调整TCP参数，减少TIME_WAIT时间</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改FIN超时时间（默认60秒）</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="m">30</span> &gt; /proc/sys/net/ipv4/tcp_fin_timeout
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 解决方案4：服务端使用长连接</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Nginx配置</span>
+</span></span><span class="line"><span class="cl">upstream backend <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    server 10.0.0.1:8080<span class="p">;</span>
+</span></span><span class="line"><span class="cl">    keepalive 100<span class="p">;</span>  <span class="c1"># 保持长连接</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
+<h3 class="relative group"><strong>案例2：伪共享导致多线程性能下降</strong>
+    <div id="案例2伪共享导致多线程性能下降" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%a1%88%e4%be%8b2%e4%bc%aa%e5%85%b1%e4%ba%ab%e5%af%bc%e8%87%b4%e5%a4%9a%e7%ba%bf%e7%a8%8b%e6%80%a7%e8%83%bd%e4%b8%8b%e9%99%8d" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p><strong>故障现象</strong>：某高频交易系统，使用多线程统计各交易对的成交量，线程数增加时性能不升反降。</p>
+<p><strong>根本原因</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 原始代码：伪共享问题</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TradeStats</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 多个计数器在同一个缓存行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countA</span><span class="p">;</span><span class="w">  </span><span class="c1">// 交易对A的成交量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countB</span><span class="p">;</span><span class="w">  </span><span class="c1">// 交易对B的成交量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countC</span><span class="p">;</span><span class="w">  </span><span class="c1">// 交易对C的成交量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 线程1更新countA，线程2更新countB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 由于在同一缓存行，每次更新都会使其他CPU的缓存行失效</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 导致缓存行在CPU间来回传递，性能严重下降</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 性能测试结果：</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 1线程：QPS 100万</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 2线程：QPS 60万（不升反降！）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 4线程：QPS 30万</span><span class="w">
+</span></span></span></code></pre></div><p><strong>如何避免</strong>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 解决方案1：使用填充（JDK8之前）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PaddedTradeStats</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span><span class="w"> </span><span class="n">p3</span><span class="p">,</span><span class="w"> </span><span class="n">p4</span><span class="p">,</span><span class="w"> </span><span class="n">p5</span><span class="p">,</span><span class="w"> </span><span class="n">p6</span><span class="p">,</span><span class="w"> </span><span class="n">p7</span><span class="p">;</span><span class="w"> </span><span class="c1">// 56字节填充</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countB</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">p8</span><span class="p">,</span><span class="w"> </span><span class="n">p9</span><span class="p">,</span><span class="w"> </span><span class="n">p10</span><span class="p">,</span><span class="w"> </span><span class="n">p11</span><span class="p">,</span><span class="w"> </span><span class="n">p12</span><span class="p">,</span><span class="w"> </span><span class="n">p13</span><span class="p">,</span><span class="w"> </span><span class="n">p14</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countC</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 每个变量独占一个缓存行（64字节）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 解决方案2：使用JDK8的@Contended注解（需开启JVM参数）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">sun.misc.Contended</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ContendedTradeStats</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Contended</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Contended</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countB</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Contended</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">volatile</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">countC</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// JVM自动填充，确保不在同一缓存行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// JVM参数：-XX:-RestrictContended  // 允许用户类使用@Contended</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 解决方案3：使用数组+线程局部索引</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ArrayTradeStats</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="n">counts</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">threadIndices</span><span class="p">;</span><span class="w">  </span><span class="c1">// 每个线程使用不同数组位置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 每个线程更新自己的数组位置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 最后再汇总，避免并发更新同一缓存行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h2 class="relative group">5. 速记卡片
+    <div id="5-速记卡片" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#5-%e9%80%9f%e8%ae%b0%e5%8d%a1%e7%89%87" aria-label="">#</a>
+    </span>
+    
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>类别</th>
+          <th>概念/命令</th>
+          <th>关键点</th>
+          <th>记忆口诀</th>
+          <th>应用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>操作系统</strong></td>
+          <td>进程状态</td>
+          <td>创建、就绪、运行、阻塞、终止</td>
+          <td>&ldquo;创就运阻终&rdquo;</td>
+          <td>进程调度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>页面置换算法</td>
+          <td>OPT/FIFO/LRU/Clock</td>
+          <td>&ldquo;最佳先进最近时钟&rdquo;</td>
+          <td>虚拟内存管理</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>死锁条件</td>
+          <td>互斥、占有等待、不可剥夺、循环等待</td>
+          <td>&ldquo;互占不循&rdquo;</td>
+          <td>死锁避免</td>
+      </tr>
+      <tr>
+          <td><strong>网络协议</strong></td>
+          <td>TCP状态</td>
+          <td>LISTEN/SYN_SENT/ESTABLISHED等11种</td>
+          <td>&ldquo;三次握手四次挥手&rdquo;</td>
+          <td>连接管理</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>HTTP状态码</td>
+          <td>1xx信息 2xx成功 3xx重定向 4xx客户端错 5xx服务器错</td>
+          <td>&ldquo;1信2成3重4客5服&rdquo;</td>
+          <td>API设计</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>DNS记录类型</td>
+          <td>A/AAAA/CNAME/MX/NS/TXT</td>
+          <td>&ldquo;地址别名邮件域名文本&rdquo;</td>
+          <td>域名解析</td>
+      </tr>
+      <tr>
+          <td><strong>计算机组成</strong></td>
+          <td>MESI状态</td>
+          <td>Modified/Exclusive/Shared/Invalid</td>
+          <td>&ldquo;修改独占共享无效&rdquo;</td>
+          <td>缓存一致性</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>内存屏障</td>
+          <td>LoadLoad/StoreStore/LoadStore/StoreLoad</td>
+          <td>&ldquo;读读写写读写写读&rdquo;</td>
+          <td>并发编程</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>流水线阶段</td>
+          <td>取指IF/译码ID/执行EX/访存MEM/写回WB</td>
+          <td>&ldquo;取译执访写&rdquo;</td>
+          <td>CPU设计</td>
+      </tr>
+      <tr>
+          <td><strong>编译原理</strong></td>
+          <td>编译阶段</td>
+          <td>词法分析→语法分析→语义分析→中间代码→优化→目标代码</td>
+          <td>&ldquo;词法语法语义中间优化目标&rdquo;</td>
+          <td>编译器</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>文法类型</td>
+          <td>0型无限制 1型上下文有关 2型上下文无关 3型正则</td>
+          <td>&ldquo;无上上下正&rdquo;</td>
+          <td>语言设计</td>
+      </tr>
+      <tr>
+          <td><strong>Linux命令</strong></td>
+          <td>进程查看</td>
+          <td>ps/top/htop</td>
+          <td>&ldquo;进程三剑客&rdquo;</td>
+          <td>系统监控</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>网络诊断</td>
+          <td>netstat/ss/ping/traceroute/tcpdump</td>
+          <td>&ldquo;网络五工具&rdquo;</td>
+          <td>网络排查</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>性能分析</td>
+          <td>perf/vmstat/iostat/sar</td>
+          <td>&ldquo;性能四法宝&rdquo;</td>
+          <td>性能调优</td>
+      </tr>
+      <tr>
+          <td><strong>JVM相关</strong></td>
+          <td>内存参数</td>
+          <td>-Xms/-Xmx/-Xmn/-XX:MetaspaceSize</td>
+          <td>&ldquo;启大新元&rdquo;</td>
+          <td>JVM调优</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>GC收集器</td>
+          <td>Serial/Parallel/CMS/G1/ZGC</td>
+          <td>&ldquo;串并CMS G1 Z&rdquo;</td>
+          <td>GC选择</td>
+      </tr>
+      <tr>
+          <td><strong>数据库</strong></td>
+          <td>隔离级别</td>
+          <td>读未提交/读已提交/可重复读/串行化</td>
+          <td>&ldquo;未提交读读串行&rdquo;</td>
+          <td>事务设计</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>索引类型</td>
+          <td>B-Tree/Hash/R-Tree/Full-text</td>
+          <td>&ldquo;B哈希R全文&rdquo;</td>
+          <td>查询优化</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p><strong>考前最后提醒</strong>：</p>
+<ol>
+<li><strong>进程线程区别</strong>要能画图说明资源分配与调度的不同</li>
+<li><strong>TCP状态机</strong>必须能画出三次握手和四次挥手全过程</li>
+<li><strong>虚拟内存映射</strong>要理解页表、TLB、缺页中断的完整流程</li>
+<li><strong>缓存一致性</strong>要掌握MESI状态转换和内存屏障作用</li>
+<li>准备一个<strong>线上系统性能问题排查案例</strong>，体现从现象到根因的分析过程</li>
+</ol>
+<p><strong>新兴技术趋势</strong>：</p>
+<ol>
+<li><strong>eBPF</strong>：Linux内核的观测与跟踪技术，无需修改内核</li>
+<li><strong>QUIC</strong>：基于UDP的下一代传输协议，解决TCP队头阻塞</li>
+<li><strong>DPU</strong>：数据处理器，专用硬件加速网络、存储、安全</li>
+<li><strong>RISC-V</strong>：开源指令集架构，打破x86/ARM垄断</li>
+</ol>
+<p><strong>学习资源推荐</strong>：</p>
+<ol>
+<li><strong>书籍</strong>：《深入理解计算机系统》《现代操作系统》《计算机网络：自顶向下方法》</li>
+<li><strong>课程</strong>：CMU 15-213 CSAPP、Stanford CS144计算机网络</li>
+<li><strong>实践</strong>：Linux内核源码阅读、Wireshark抓包分析、QEMU模拟器实验</li>
+</ol>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/computer01.md"
+          data-oid-likes="likes_posts/computer01.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/mysql09/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;MySQL模块深度解析
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-12-04T22:47:08&#43;08:00">2021年12月4日</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/computer02/">
+              <span class="leading-6">
+                计算机基础：数据结构与算法&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-12-06T13:18:17&#43;08:00">2021年12月6日</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+            <div class="pt-3">
+              
+
+<div class="pt-8 mt-8 border-t border-neutral-200 dark:border-neutral-700">
+  <h3 class="text-2xl font-bold mb-4">评论</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="hollyblog/hollyblog.github.io"
+    data-repo-id="R_kgDOQbMzVg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQbMzVs4Cyz-f"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label=""
+    title="">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Holly
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+    
+
+
+  
+  <script defer src="/js/custom.min.4ebb3e0a94262e65bb85593d7e41cefff82843a5373a842f3b91d2baace5f117b01e818abc9a9539776763aff333e6b43cee59a442a6d46e0dd43e1338f769a0.js" integrity="sha512-Trs&#43;CpQmLmW7hVk9fkHO//goQ6U3OoQvO5HSuqzl8RewHoGKvJqVOXdnY6/zM&#43;a0PO5ZpEKm1G4N1D4TOPdpoA=="></script>
+
+
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder=""
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

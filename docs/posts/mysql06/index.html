@@ -1,0 +1,3560 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="zh-CN">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>MySQL函数与运算 &middot; 永远纯粹</title>
+    <meta name="title" content="MySQL函数与运算 &middot; 永远纯粹">
+  
+
+  
+  
+    <meta name="description" content="MySQL函数与运算：数学函数、字符串函数、日期函数、时间函数、控制流程函数等。">
+  
+  
+    <meta name="keywords" content="MySQL,mysql函数,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/mysql06/">
+  
+
+  
+  
+    <meta name="author" content="Holly">
+  
+  
+    
+      
+        
+          <link href="https://github.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://gitee.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/mysql06/">
+  <meta property="og:site_name" content="永远纯粹">
+  <meta property="og:title" content="MySQL函数与运算">
+  <meta property="og:description" content="MySQL函数与运算：数学函数、字符串函数、日期函数、时间函数、控制流程函数等。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-02-11T11:00:00+08:00">
+    <meta property="article:modified_time" content="2021-02-11T11:00:00+08:00">
+    <meta property="article:tag" content="MySQL">
+    <meta property="article:tag" content="Mysql函数">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MySQL函数与运算">
+  <meta name="twitter:description" content="MySQL函数与运算：数学函数、字符串函数、日期函数、时间函数、控制流程函数等。">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.391ee07dafc20cca70c5cd4275104dda29a78c8787887fd66963f367c6564348c73c2d276e442aec635a38b762100dc76b354c4fb9abbb38127ea518b3bada36.css"
+    integrity="sha512-OR7gfa/CDMpwxc1CdRBN2imnjIeHiH/WaWPzZ8ZWQ0jHPC0nbkQq7GNaOLdiEA3HazVMT7mruzgSfqUYs7raNg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9df4fc14d50efcc9aa4cfc2b6f348e365f421f5ad491278f8f48c0360cf2f93f08882fda6da162d7ace8e5add57c2df4ac46bd3861306b1d4c452cd31f448d64.js"
+      integrity="sha512-nfT8FNUO/MmqTPwrbzSONl9CH1rUkSePj0jANgzy&#43;T8IiC/abaFi16zo5a3VfC30rEa9OGEwax1MRSzTH0SNZA=="
+      data-copy=""
+      data-copied=""></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "全部文章",
+    "name": "MySQL函数与运算",
+    "headline": "MySQL函数与运算",
+    "description": "MySQL函数与运算：数学函数、字符串函数、日期函数、时间函数、控制流程函数等。",
+    
+    "inLanguage": "zh-CN",
+    "url" : "http://localhost:1313/posts/mysql06/",
+    "author" : {
+      "@type": "Person",
+      "name": "Holly"
+    },
+    "copyrightYear": "2021",
+    "dateCreated": "2021-02-11T11:00:00\u002b08:00",
+    "datePublished": "2021-02-11T11:00:00\u002b08:00",
+    
+    "dateModified": "2021-02-11T11:00:00\u002b08:00",
+    
+    "keywords": ["MySQL","mysql函数"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "11637"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+    
+
+
+  
+  <link rel="stylesheet" href="/css/custom.min.73bf6048d6126134a3a4d080eae4c7d7f266a34e211b8c064c369e863072b5f83301535ff631e803efa5c7fbfbfa9b5b52debdab6f1ca834f108f8cc7f432207.css" integrity="sha512-c79gSNYSYTSjpNCA6uTH1/Jmo04hG4wGTDaehjBytfgzAVNf9jHoA&#43;&#43;lx/v7&#43;ptbUt69q28cqDTxCPjMf0MiBw==" />
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+    
+    
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium">
+          永远纯粹
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="首页"
+  title="永远天真烂漫">
+  
+  
+    <p class="text-base font-medium">
+      首页
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="关于我"
+  title="关于我">
+  
+  
+    <p class="text-base font-medium">
+      关于我
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/distributed/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="分布式"
+  title="分布式系统">
+  
+  
+    <p class="text-base font-medium">
+      分布式
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/cloud/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="云计算"
+  title="云计算">
+  
+  
+    <p class="text-base font-medium">
+      云计算
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/llm/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="大模型"
+  title="大模型">
+  
+  
+    <p class="text-base font-medium">
+      大模型
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="项目"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        项目
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="智能餐饮"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              智能餐饮
+            </p>
+          </a>
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="寻环小程序"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              寻环小程序
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="基础"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        基础
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/computer/"
+            
+            aria-label="计算机基础"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="计算机基础">
+              计算机基础
+            </p>
+          </a>
+        
+          <a
+            href="/categories/java/"
+            
+            aria-label="编程语言"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Java基础">
+              编程语言
+            </p>
+          </a>
+        
+          <a
+            href="/categories/database/"
+            
+            aria-label="数据存储"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="数据库基础">
+              数据存储
+            </p>
+          </a>
+        
+          <a
+            href="/categories/framework/"
+            
+            aria-label="框架应用"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="框架应用">
+              框架应用
+            </p>
+          </a>
+        
+          <a
+            href="/categories/middleware/"
+            
+            aria-label="中间件"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="中间件">
+              中间件
+            </p>
+          </a>
+        
+          <a
+            href="/categories/ops/"
+            
+            aria-label="运维部署"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="运维部署">
+              运维部署
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="进阶"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        进阶
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/juc/"
+            
+            aria-label="JUC"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JUC">
+              JUC
+            </p>
+          </a>
+        
+          <a
+            href="/categories/threadpool/"
+            
+            aria-label="线程池"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="线程池">
+              线程池
+            </p>
+          </a>
+        
+          <a
+            href="/categories/jvm/"
+            
+            aria-label="JVM调优"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JVM">
+              JVM调优
+            </p>
+          </a>
+        
+          <a
+            href="/categories/sa/"
+            
+            aria-label="系统架构"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="系统架构">
+              系统架构
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <a
+  href="/resume/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="我的简历"
+  title="个人简历">
+  
+  
+    <p class="text-base font-medium">
+      我的简历
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="首页"
+    title="永远天真烂漫">
+    
+    
+      <p class="text-bg font-bg">
+        首页
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="关于我"
+    title="关于我">
+    
+    
+      <p class="text-bg font-bg">
+        关于我
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/distributed/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="分布式"
+    title="分布式系统">
+    
+    
+      <p class="text-bg font-bg">
+        分布式
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/cloud/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="云计算"
+    title="云计算">
+    
+    
+      <p class="text-bg font-bg">
+        云计算
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/llm/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="大模型"
+    title="大模型">
+    
+    
+      <p class="text-bg font-bg">
+        大模型
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="项目"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      项目
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="智能餐饮"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        智能餐饮
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="寻环小程序"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        寻环小程序
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="基础"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      基础
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/computer/"
+      
+      aria-label="计算机基础"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="计算机基础">
+        计算机基础
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/java/"
+      
+      aria-label="编程语言"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Java基础">
+        编程语言
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/database/"
+      
+      aria-label="数据存储"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="数据库基础">
+        数据存储
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/framework/"
+      
+      aria-label="框架应用"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="框架应用">
+        框架应用
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/middleware/"
+      
+      aria-label="中间件"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="中间件">
+        中间件
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/ops/"
+      
+      aria-label="运维部署"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="运维部署">
+        运维部署
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="进阶"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      进阶
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/juc/"
+      
+      aria-label="JUC"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JUC">
+        JUC
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/threadpool/"
+      
+      aria-label="线程池"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="线程池">
+        线程池
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/jvm/"
+      
+      aria-label="JVM调优"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JVM">
+        JVM调优
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/sa/"
+      
+      aria-label="系统架构"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="系统架构">
+        系统架构
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/resume/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="我的简历"
+    title="个人简历">
+    
+    
+      <p class="text-bg font-bg">
+        我的简历
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+    
+    
+  
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/img/background_hu_de979b0156ba1693.jpg"
+      alt="MySQL函数与运算"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+      integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/img/background_hu_de979b0156ba1693.jpg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        MySQL函数与运算
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2021-02-11T11:00:00&#43;08:00">2021年2月11日</time><span class="px-2 text-primary-500">&middot;</span><span>11637 字</span><span class="px-2 text-primary-500">&middot;</span><span title="">24 分钟</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/categories/database/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    数据库基础
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/mysql/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    MySQL
+  </span>
+</span>
+
+              </a>
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/mysql%E5%87%BD%E6%95%B0/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Mysql函数
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Holly"
+        src="/img/avatar_hu_ac9fd040db4ac989.jpg"
+        data-zoom-src="/img/avatar_hu_7ab8791e041692ec.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Holly
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享。</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/hollyblog/"
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://gitee.com/hollyblog/"
+          target="_blank"
+          aria-label="Gitee"
+          title="Gitee"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.037a.594.594 0 0 1-.592-.593v-1.482a.594.594 0 0 1 .592-.593h6.815c.327 0 .593.266.593.593v3.408a4 4 0 0 1-4 4H5.926a.594.594 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/>
+</svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:2285549633@qq.com"
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640"
+          target="_blank"
+          aria-label="Csdn"
+          title="Csdn"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mysql-函数">MySQL 函数</a>
+      <ul>
+        <li><a href="#函数概述">函数概述</a></li>
+        <li><a href="#准备测试环境">准备测试环境</a></li>
+        <li><a href="#字符串函数">字符串函数</a>
+          <ul>
+            <li><a href="#基本字符串操作">基本字符串操作</a></li>
+            <li><a href="#高级字符串处理">高级字符串处理</a></li>
+            <li><a href="#常用字符串函数总结">常用字符串函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#数值函数">数值函数</a>
+          <ul>
+            <li><a href="#基本数学运算">基本数学运算</a></li>
+            <li><a href="#数值格式化和转换">数值格式化和转换</a></li>
+            <li><a href="#常用数值函数总结">常用数值函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#日期时间函数">日期时间函数</a>
+          <ul>
+            <li><a href="#获取当前日期时间">获取当前日期时间</a></li>
+            <li><a href="#日期时间计算">日期时间计算</a></li>
+            <li><a href="#日期时间转换">日期时间转换</a></li>
+            <li><a href="#常用日期时间函数总结">常用日期时间函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#聚合函数">聚合函数</a>
+          <ul>
+            <li><a href="#基本聚合函数">基本聚合函数</a></li>
+            <li><a href="#高级聚合和窗口函数">高级聚合和窗口函数</a></li>
+            <li><a href="#自定义聚合函数">自定义聚合函数</a></li>
+            <li><a href="#常用聚合函数总结">常用聚合函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#控制流函数">控制流函数</a>
+          <ul>
+            <li><a href="#条件判断函数">条件判断函数</a></li>
+            <li><a href="#空值处理函数">空值处理函数</a></li>
+            <li><a href="#常用控制流函数总结">常用控制流函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#信息函数">信息函数</a>
+          <ul>
+            <li><a href="#常用信息函数总结">常用信息函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#实际应用示例">实际应用示例</a>
+          <ul>
+            <li><a href="#数据清洗和格式化">数据清洗和格式化</a></li>
+            <li><a href="#报表和统计分析">报表和统计分析</a></li>
+            <li><a href="#业务逻辑处理">业务逻辑处理</a></li>
+          </ul>
+        </li>
+        <li><a href="#函数性能优化">函数性能优化</a>
+          <ul>
+            <li><a href="#性能优化建议">性能优化建议</a></li>
+            <li><a href="#常见陷阱">常见陷阱</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结">总结</a>
+          <ul>
+            <li><a href="#学习建议">学习建议</a></li>
+            <li><a href="#扩展学习">扩展学习</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#mysql-运算符">MySQL 运算符</a>
+      <ul>
+        <li><a href="#运算符概述">运算符概述</a></li>
+        <li><a href="#准备测试环境-1">准备测试环境</a></li>
+        <li><a href="#算术运算符">算术运算符</a>
+          <ul>
+            <li><a href="#基本算术运算">基本算术运算</a></li>
+            <li><a href="#算术运算的实际应用">算术运算的实际应用</a></li>
+            <li><a href="#算术运算符总结">算术运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#比较运算符">比较运算符</a>
+          <ul>
+            <li><a href="#基本比较运算">基本比较运算</a></li>
+            <li><a href="#高级比较操作">高级比较操作</a></li>
+            <li><a href="#比较运算符总结">比较运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#逻辑运算符">逻辑运算符</a>
+          <ul>
+            <li><a href="#基本逻辑运算">基本逻辑运算</a></li>
+            <li><a href="#逻辑运算的实际应用">逻辑运算的实际应用</a></li>
+            <li><a href="#逻辑运算符总结">逻辑运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#位运算符">位运算符</a>
+          <ul>
+            <li><a href="#基本位运算">基本位运算</a></li>
+            <li><a href="#位运算符总结">位运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#赋值运算符">赋值运算符</a>
+          <ul>
+            <li><a href="#赋值运算符总结">赋值运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#运算符优先级">运算符优先级</a></li>
+        <li><a href="#实际应用案例">实际应用案例</a>
+          <ul>
+            <li><a href="#复杂查询条件">复杂查询条件</a></li>
+            <li><a href="#数据分析和统计">数据分析和统计</a></li>
+          </ul>
+        </li>
+        <li><a href="#最佳实践和注意事项">最佳实践和注意事项</a>
+          <ul>
+            <li><a href="#运算符使用建议">运算符使用建议</a></li>
+            <li><a href="#常见陷阱-1">常见陷阱</a></li>
+            <li><a href="#性能优化技巧">性能优化技巧</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结-1">总结</a>
+          <ul>
+            <li><a href="#学习要点回顾">学习要点回顾</a></li>
+            <li><a href="#进阶学习建议">进阶学习建议</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mysql-函数">MySQL 函数</a>
+      <ul>
+        <li><a href="#函数概述">函数概述</a></li>
+        <li><a href="#准备测试环境">准备测试环境</a></li>
+        <li><a href="#字符串函数">字符串函数</a>
+          <ul>
+            <li><a href="#基本字符串操作">基本字符串操作</a></li>
+            <li><a href="#高级字符串处理">高级字符串处理</a></li>
+            <li><a href="#常用字符串函数总结">常用字符串函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#数值函数">数值函数</a>
+          <ul>
+            <li><a href="#基本数学运算">基本数学运算</a></li>
+            <li><a href="#数值格式化和转换">数值格式化和转换</a></li>
+            <li><a href="#常用数值函数总结">常用数值函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#日期时间函数">日期时间函数</a>
+          <ul>
+            <li><a href="#获取当前日期时间">获取当前日期时间</a></li>
+            <li><a href="#日期时间计算">日期时间计算</a></li>
+            <li><a href="#日期时间转换">日期时间转换</a></li>
+            <li><a href="#常用日期时间函数总结">常用日期时间函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#聚合函数">聚合函数</a>
+          <ul>
+            <li><a href="#基本聚合函数">基本聚合函数</a></li>
+            <li><a href="#高级聚合和窗口函数">高级聚合和窗口函数</a></li>
+            <li><a href="#自定义聚合函数">自定义聚合函数</a></li>
+            <li><a href="#常用聚合函数总结">常用聚合函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#控制流函数">控制流函数</a>
+          <ul>
+            <li><a href="#条件判断函数">条件判断函数</a></li>
+            <li><a href="#空值处理函数">空值处理函数</a></li>
+            <li><a href="#常用控制流函数总结">常用控制流函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#信息函数">信息函数</a>
+          <ul>
+            <li><a href="#常用信息函数总结">常用信息函数总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#实际应用示例">实际应用示例</a>
+          <ul>
+            <li><a href="#数据清洗和格式化">数据清洗和格式化</a></li>
+            <li><a href="#报表和统计分析">报表和统计分析</a></li>
+            <li><a href="#业务逻辑处理">业务逻辑处理</a></li>
+          </ul>
+        </li>
+        <li><a href="#函数性能优化">函数性能优化</a>
+          <ul>
+            <li><a href="#性能优化建议">性能优化建议</a></li>
+            <li><a href="#常见陷阱">常见陷阱</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结">总结</a>
+          <ul>
+            <li><a href="#学习建议">学习建议</a></li>
+            <li><a href="#扩展学习">扩展学习</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#mysql-运算符">MySQL 运算符</a>
+      <ul>
+        <li><a href="#运算符概述">运算符概述</a></li>
+        <li><a href="#准备测试环境-1">准备测试环境</a></li>
+        <li><a href="#算术运算符">算术运算符</a>
+          <ul>
+            <li><a href="#基本算术运算">基本算术运算</a></li>
+            <li><a href="#算术运算的实际应用">算术运算的实际应用</a></li>
+            <li><a href="#算术运算符总结">算术运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#比较运算符">比较运算符</a>
+          <ul>
+            <li><a href="#基本比较运算">基本比较运算</a></li>
+            <li><a href="#高级比较操作">高级比较操作</a></li>
+            <li><a href="#比较运算符总结">比较运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#逻辑运算符">逻辑运算符</a>
+          <ul>
+            <li><a href="#基本逻辑运算">基本逻辑运算</a></li>
+            <li><a href="#逻辑运算的实际应用">逻辑运算的实际应用</a></li>
+            <li><a href="#逻辑运算符总结">逻辑运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#位运算符">位运算符</a>
+          <ul>
+            <li><a href="#基本位运算">基本位运算</a></li>
+            <li><a href="#位运算符总结">位运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#赋值运算符">赋值运算符</a>
+          <ul>
+            <li><a href="#赋值运算符总结">赋值运算符总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#运算符优先级">运算符优先级</a></li>
+        <li><a href="#实际应用案例">实际应用案例</a>
+          <ul>
+            <li><a href="#复杂查询条件">复杂查询条件</a></li>
+            <li><a href="#数据分析和统计">数据分析和统计</a></li>
+          </ul>
+        </li>
+        <li><a href="#最佳实践和注意事项">最佳实践和注意事项</a>
+          <ul>
+            <li><a href="#运算符使用建议">运算符使用建议</a></li>
+            <li><a href="#常见陷阱-1">常见陷阱</a></li>
+            <li><a href="#性能优化技巧">性能优化技巧</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结-1">总结</a>
+          <ul>
+            <li><a href="#学习要点回顾">学习要点回顾</a></li>
+            <li><a href="#进阶学习建议">进阶学习建议</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <p>MySQL函数与运算：数学函数、字符串函数、日期函数、时间函数、控制流程函数等。</p>
+
+<h2 class="relative group">MySQL 函数
+    <div id="mysql-函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mysql-%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">函数概述
+    <div id="函数概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%87%bd%e6%95%b0%e6%a6%82%e8%bf%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+<blockquote>
+<p>MySQL 提供了丰富的内置函数，用于处理字符串、数值、日期时间等数据类型。合理使用函数可以简化查询逻辑，提高开发效率。</p>
+</blockquote>
+<ul>
+<li>
+<p>字符串函数
+处理文本数据，包括连接、截取、替换、格式化等操作</p>
+</li>
+<li>
+<p>数值函数
+数学运算、取整、随机数、三角函数等数值处理</p>
+</li>
+<li>
+<p>日期时间函数
+日期时间的格式化、计算、提取和转换操作</p>
+</li>
+<li>
+<p>聚合函数
+统计计算，如求和、平均值、计数、最值等</p>
+</li>
+<li>
+<p>控制流函数
+条件判断、空值处理、流程控制等逻辑操作</p>
+</li>
+<li>
+<p>信息函数
+获取系统信息、连接信息、版本信息等</p>
+</li>
+</ul>
+
+<h3 class="relative group">准备测试环境
+    <div id="准备测试环境" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%87%86%e5%a4%87%e6%b5%8b%e8%af%95%e7%8e%af%e5%a2%83" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 创建测试数据库 CREATE DATABASE function_demo; USE function_demo; -- 创建员工表 CREATE TABLE employees ( id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(50), last_name VARCHAR(50), email VARCHAR(100), phone VARCHAR(20), hire_date DATE, salary DECIMAL(10,2), department VARCHAR(50), birth_date DATE, is_active BOOLEAN DEFAULT TRUE ); -- 插入测试数据 INSERT INTO employees (first_name, last_name, email, phone, hire_date, salary, department, birth_date) VALUES (&#39;张&#39;, &#39;三&#39;, &#39;zhang.san@company.com&#39;, &#39;13800138001&#39;, &#39;2020-01-15&#39;, 8500.00, &#39;技术部&#39;, &#39;1990-05-20&#39;), (&#39;李&#39;, &#39;四&#39;, &#39;li.si@company.com&#39;, &#39;13800138002&#39;, &#39;2019-03-22&#39;, 9200.00, &#39;销售部&#39;, &#39;1988-08-15&#39;), (&#39;王&#39;, &#39;五&#39;, &#39;wang.wu@company.com&#39;, &#39;13800138003&#39;, &#39;2021-06-10&#39;, 7800.00, &#39;技术部&#39;, &#39;1992-12-03&#39;), (&#39;赵&#39;, &#39;六&#39;, &#39;zhao.liu@company.com&#39;, &#39;13800138004&#39;, &#39;2018-09-05&#39;, 10500.00, &#39;管理部&#39;, &#39;1985-03-28&#39;), (&#39;钱&#39;, &#39;七&#39;, &#39;qian.qi@company.com&#39;, &#39;13800138005&#39;, &#39;2022-02-14&#39;, 6500.00, &#39;人事部&#39;, &#39;1995-07-12&#39;), (&#39;孙&#39;, &#39;八&#39;, &#39;sun.ba@company.com&#39;, &#39;13800138006&#39;, &#39;2020-11-30&#39;, 8800.00, &#39;财务部&#39;, &#39;1987-11-25&#39;), (&#39;周&#39;, &#39;九&#39;, &#39;zhou.jiu@company.com&#39;, &#39;13800138007&#39;, &#39;2019-07-18&#39;, 9500.00, &#39;技术部&#39;, &#39;1991-04-08&#39;), (&#39;吴&#39;, &#39;十&#39;, &#39;wu.shi@company.com&#39;, &#39;13800138008&#39;, &#39;2021-12-01&#39;, 7200.00, &#39;销售部&#39;, &#39;1993-09-17&#39;); -- 创建产品表 CREATE TABLE products ( id INT AUTO_INCREMENT PRIMARY KEY, product_name VARCHAR(100), price DECIMAL(10,2), stock_quantity INT, category VARCHAR(50), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, description TEXT ); -- 插入产品数据 INSERT INTO products (product_name, price, stock_quantity, category, description) VALUES (&#39;iPhone 15 Pro&#39;, 7999.00, 50, &#39;手机&#39;, &#39;苹果最新旗舰手机&#39;), (&#39;MacBook Pro 16&#34;&#39;, 19999.00, 20, &#39;电脑&#39;, &#39;专业级笔记本电脑&#39;), (&#39;iPad Air&#39;, 4599.00, 30, &#39;平板&#39;, &#39;轻薄便携平板电脑&#39;), (&#39;AirPods Pro&#39;, 1899.00, 100, &#39;耳机&#39;, &#39;主动降噪无线耳机&#39;), (&#39;Apple Watch Series 9&#39;, 2999.00, 80, &#39;手表&#39;, &#39;智能运动手表&#39;); SELECT &#39;Test data created successfully&#39; AS message;
+</span></span></span></code></pre></div>
+<h3 class="relative group">字符串函数
+    <div id="字符串函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">基本字符串操作
+    <div id="基本字符串操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9f%ba%e6%9c%ac%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%93%8d%e4%bd%9c" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 字符串连接 -- CONCAT() - 连接多个字符串 SELECT first_name, last_name, CONCAT(first_name, &#39; &#39;, last_name) AS full_name, CONCAT(first_name, &#39;(&#39;, department, &#39;)&#39;) AS name_with_dept FROM employees; -- CONCAT_WS() - 使用分隔符连接 SELECT CONCAT_WS(&#39; - &#39;, first_name, last_name, department) AS employee_info, CONCAT_WS(&#39;@&#39;, LOWER(first_name), &#39;company.com&#39;) AS generated_email FROM employees; -- 2. 字符串长度和截取 -- LENGTH() - 字节长度, CHAR_LENGTH() - 字符长度 SELECT product_name, LENGTH(product_name) AS byte_length, CHAR_LENGTH(product_name) AS char_length, LEFT(product_name, 10) AS left_10, RIGHT(product_name, 5) AS right_5, SUBSTRING(product_name, 1, 8) AS substr_8 FROM products; -- 3. 字符串查找和替换 -- LOCATE(), POSITION(), INSTR() - 查找子字符串位置 SELECT email, LOCATE(&#39;@&#39;, email) AS at_position, SUBSTRING(email, 1, LOCATE(&#39;@&#39;, email) - 1) AS username, SUBSTRING(email, LOCATE(&#39;@&#39;, email) + 1) AS domain, REPLACE(email, &#39;@company.com&#39;, &#39;@newcompany.com&#39;) AS new_email FROM employees; -- 4. 大小写转换 SELECT product_name, UPPER(product_name) AS uppercase, LOWER(product_name) AS lowercase, INITCAP(product_name) AS title_case -- MySQL 8.0+ FROM products; -- 5. 字符串修剪和填充 SELECT &#39; hello world &#39; AS original, TRIM(&#39; hello world &#39;) AS trimmed, LTRIM(&#39; hello world &#39;) AS left_trimmed, RTRIM(&#39; hello world &#39;) AS right_trimmed, LPAD(&#39;123&#39;, 8, &#39;0&#39;) AS left_padded, RPAD(&#39;abc&#39;, 10, &#39;*&#39;) AS right_padded;
+</span></span></span></code></pre></div>
+<h4 class="relative group">高级字符串处理
+    <div id="高级字符串处理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%ab%98%e7%ba%a7%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%a4%84%e7%90%86" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 字符串反转和重复 SELECT first_name, REVERSE(first_name) AS reversed_name, REPEAT(first_name, 3) AS repeated_name, REPEAT(&#39;*&#39;, CHAR_LENGTH(first_name)) AS masked_name FROM employees; -- 2. 字符串比较 SELECT first_name, last_name, STRCMP(first_name, last_name) AS name_comparison, CASE WHEN STRCMP(first_name, last_name) = 0 THEN &#39;相同&#39; WHEN STRCMP(first_name, last_name) &lt; 0 THEN &#39;姓小于名&#39; ELSE &#39;姓大于名&#39; END AS comparison_result FROM employees; -- 3. 字符串格式化 SELECT first_name, salary, FORMAT(salary, 2) AS formatted_salary, CONCAT(&#39;¥&#39;, FORMAT(salary, 2)) AS currency_format, INSERT(phone, 4, 4, &#39;****&#39;) AS masked_phone -- 手机号脱敏 FROM employees; -- 4. 字符串编码和解码 SELECT product_name, HEX(product_name) AS hex_encoded, UNHEX(HEX(product_name)) AS hex_decoded, TO_BASE64(product_name) AS base64_encoded, FROM_BASE64(TO_BASE64(product_name)) AS base64_decoded FROM products LIMIT 3; -- 5. 正则表达式匹配 SELECT email, email REGEXP &#39;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$&#39; AS is_valid_email, REGEXP_REPLACE(phone, &#39;(\d{3})(\d{4})(\d{4})&#39;, &#39;$1-$2-$3&#39;) AS formatted_phone FROM employees;
+</span></span></span></code></pre></div>
+<h4 class="relative group">常用字符串函数总结
+    <div id="常用字符串函数总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e7%94%a8%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%87%bd%e6%95%b0%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>语法</th>
+          <th>说明</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CONCAT</td>
+          <td>CONCAT(str1, str2, &hellip;)</td>
+          <td>连接字符串</td>
+          <td>CONCAT(&lsquo;Hello&rsquo;, &rsquo; &lsquo;, &lsquo;World&rsquo;)</td>
+      </tr>
+      <tr>
+          <td>SUBSTRING</td>
+          <td>SUBSTRING(str, pos, len)</td>
+          <td>截取子字符串</td>
+          <td>SUBSTRING(&lsquo;Hello&rsquo;, 2, 3) → &rsquo;ell&rsquo;</td>
+      </tr>
+      <tr>
+          <td>LENGTH</td>
+          <td>LENGTH(str)</td>
+          <td>字符串字节长度</td>
+          <td>LENGTH(&lsquo;Hello&rsquo;) → 5</td>
+      </tr>
+      <tr>
+          <td>UPPER/LOWER</td>
+          <td>UPPER(str), LOWER(str)</td>
+          <td>大小写转换</td>
+          <td>UPPER(&lsquo;hello&rsquo;) → &lsquo;HELLO&rsquo;</td>
+      </tr>
+      <tr>
+          <td>TRIM</td>
+          <td>TRIM(str)</td>
+          <td>去除首尾空格</td>
+          <td>TRIM(&rsquo; hello &lsquo;) → &lsquo;hello&rsquo;</td>
+      </tr>
+      <tr>
+          <td>REPLACE</td>
+          <td>REPLACE(str, from, to)</td>
+          <td>字符串替换</td>
+          <td>REPLACE(&lsquo;hello&rsquo;, &rsquo;l&rsquo;, &lsquo;x&rsquo;) → &lsquo;hexxo&rsquo;</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">数值函数
+    <div id="数值函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e5%80%bc%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">基本数学运算
+    <div id="基本数学运算" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9f%ba%e6%9c%ac%e6%95%b0%e5%ad%a6%e8%bf%90%e7%ae%97" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 基本数学函数 SELECT salary, ABS(salary - 8000) AS salary_diff, ROUND(salary / 12, 2) AS monthly_salary, CEIL(salary / 1000) AS salary_k_ceil, FLOOR(salary / 1000) AS salary_k_floor, TRUNCATE(salary / 12, 1) AS monthly_truncated FROM employees; -- 2. 幂运算和开方 SELECT stock_quantity, POWER(stock_quantity, 2) AS quantity_squared, SQRT(stock_quantity) AS quantity_sqrt, EXP(1) AS euler_number, LOG(stock_quantity) AS natural_log, LOG10(stock_quantity) AS log_base_10 FROM products WHERE stock_quantity &gt; 0; -- 3. 三角函数 SELECT PI() AS pi_value, SIN(PI()/2) AS sin_90_degrees, COS(0) AS cos_0_degrees, TAN(PI()/4) AS tan_45_degrees, DEGREES(PI()) AS pi_in_degrees, RADIANS(180) AS degrees_180_in_radians; -- 4. 随机数和符号函数 SELECT RAND() AS random_0_to_1, RAND(123) AS seeded_random, FLOOR(RAND() * 100) + 1 AS random_1_to_100, SIGN(-15) AS negative_sign, SIGN(0) AS zero_sign, SIGN(25) AS positive_sign; -- 5. 取模和最值 SELECT id, salary, MOD(salary, 1000) AS salary_mod_1000, GREATEST(salary, 8000, 9000) AS max_value, LEAST(salary, 8000, 9000) AS min_value FROM employees;
+</span></span></span></code></pre></div>
+<h4 class="relative group">数值格式化和转换
+    <div id="数值格式化和转换" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e5%80%bc%e6%a0%bc%e5%bc%8f%e5%8c%96%e5%92%8c%e8%bd%ac%e6%8d%a2" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 数值格式化 SELECT salary, FORMAT(salary, 0) AS formatted_no_decimal, FORMAT(salary, 2) AS formatted_2_decimal, CONV(id, 10, 2) AS id_binary, CONV(id, 10, 16) AS id_hex, BIN(id) AS id_binary_func, HEX(id) AS id_hex_func FROM employees; -- 2. 数值统计函数在查询中的应用 SELECT department, COUNT(*) AS employee_count, AVG(salary) AS avg_salary, ROUND(AVG(salary), 2) AS avg_salary_rounded, STDDEV(salary) AS salary_stddev, VARIANCE(salary) AS salary_variance FROM employees GROUP BY department; -- 3. 累积计算 SELECT id, first_name, salary, @running_total := @running_total + salary AS running_total, @row_number := @row_number + 1 AS row_num FROM employees, (SELECT @running_total := 0, @row_number := 0) AS vars ORDER BY salary DESC;
+</span></span></span></code></pre></div>
+<h4 class="relative group">常用数值函数总结
+    <div id="常用数值函数总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e7%94%a8%e6%95%b0%e5%80%bc%e5%87%bd%e6%95%b0%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>语法</th>
+          <th>说明</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ROUND</td>
+          <td>ROUND(num, decimals)</td>
+          <td>四舍五入</td>
+          <td>ROUND(3.14159, 2) → 3.14</td>
+      </tr>
+      <tr>
+          <td>CEIL/CEILING</td>
+          <td>CEIL(num)</td>
+          <td>向上取整</td>
+          <td>CEIL(3.1) → 4</td>
+      </tr>
+      <tr>
+          <td>FLOOR</td>
+          <td>FLOOR(num)</td>
+          <td>向下取整</td>
+          <td>FLOOR(3.9) → 3</td>
+      </tr>
+      <tr>
+          <td>ABS</td>
+          <td>ABS(num)</td>
+          <td>绝对值</td>
+          <td>ABS(-5) → 5</td>
+      </tr>
+      <tr>
+          <td>MOD</td>
+          <td>MOD(num, divisor)</td>
+          <td>取模运算</td>
+          <td>MOD(10, 3) → 1</td>
+      </tr>
+      <tr>
+          <td>SIN/COS/TAN</td>
+          <td>SIN(angle), COS(angle), TAN(angle)</td>
+          <td>三角函数</td>
+          <td>SIN(PI()/2) → 1</td>
+      </tr>
+      <tr>
+          <td>POWER</td>
+          <td>POWER(base, exponent)</td>
+          <td>幂运算</td>
+          <td>POWER(2, 3) → 8</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">日期时间函数
+    <div id="日期时间函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">获取当前日期时间
+    <div id="获取当前日期时间" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%8e%b7%e5%8f%96%e5%bd%93%e5%89%8d%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 当前日期时间函数 SELECT NOW() AS current_datetime, CURDATE() AS current_date, CURTIME() AS current_time, CURRENT_TIMESTAMP AS current_timestamp, UTC_TIMESTAMP() AS utc_timestamp, UNIX_TIMESTAMP() AS unix_timestamp, FROM_UNIXTIME(UNIX_TIMESTAMP()) AS from_unix; -- 2. 日期时间提取 SELECT hire_date, YEAR(hire_date) AS hire_year, MONTH(hire_date) AS hire_month, DAY(hire_date) AS hire_day, DAYNAME(hire_date) AS hire_day_name, MONTHNAME(hire_date) AS hire_month_name, QUARTER(hire_date) AS hire_quarter, WEEK(hire_date) AS hire_week, DAYOFYEAR(hire_date) AS hire_day_of_year, WEEKDAY(hire_date) AS hire_weekday FROM employees; -- 3. 日期时间格式化 SELECT hire_date, DATE_FORMAT(hire_date, &#39;%Y-%m-%d&#39;) AS formatted_date, DATE_FORMAT(hire_date, &#39;%Y年%m月%d日&#39;) AS chinese_date, DATE_FORMAT(hire_date, &#39;%W, %M %d, %Y&#39;) AS english_date, TIME_FORMAT(NOW(), &#39;%H:%i:%s&#39;) AS formatted_time, DATE_FORMAT(NOW(), &#39;%Y-%m-%d %H:%i:%s&#39;) AS full_datetime FROM employees;
+</span></span></span></code></pre></div>
+<h4 class="relative group">日期时间计算
+    <div id="日期时间计算" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4%e8%ae%a1%e7%ae%97" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 日期加减运算 SELECT hire_date, DATE_ADD(hire_date, INTERVAL 1 YEAR) AS one_year_later, DATE_SUB(hire_date, INTERVAL 6 MONTH) AS six_months_before, ADDDATE(hire_date, 30) AS thirty_days_later, SUBDATE(hire_date, 15) AS fifteen_days_before, hire_date + INTERVAL 1 WEEK AS one_week_later FROM employees; -- 2. 日期差值计算 SELECT first_name, hire_date, birth_date, DATEDIFF(CURDATE(), hire_date) AS days_since_hire, DATEDIFF(CURDATE(), birth_date) AS days_since_birth, TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) AS age_years, TIMESTAMPDIFF(MONTH, hire_date, CURDATE()) AS months_employed, TIMESTAMPDIFF(DAY, hire_date, CURDATE()) AS days_employed FROM employees; -- 3. 工作日和周末计算 SELECT hire_date, DAYOFWEEK(hire_date) AS day_of_week_num, CASE DAYOFWEEK(hire_date) WHEN 1 THEN &#39;周日&#39; WHEN 2 THEN &#39;周一&#39; WHEN 3 THEN &#39;周二&#39; WHEN 4 THEN &#39;周三&#39; WHEN 5 THEN &#39;周四&#39; WHEN 6 THEN &#39;周五&#39; WHEN 7 THEN &#39;周六&#39; END AS day_of_week_chinese, CASE WHEN DAYOFWEEK(hire_date) IN (1, 7) THEN &#39;周末&#39; ELSE &#39;工作日&#39; END AS day_type FROM employees; -- 4. 月份和季度处理 SELECT hire_date, LAST_DAY(hire_date) AS last_day_of_month, DATE_FORMAT(hire_date, &#39;%Y-%m-01&#39;) AS first_day_of_month, MAKEDATE(YEAR(hire_date), 1) AS first_day_of_year, STR_TO_DATE(CONCAT(YEAR(hire_date), &#39;-12-31&#39;), &#39;%Y-%m-%d&#39;) AS last_day_of_year, CASE QUARTER(hire_date) WHEN 1 THEN CONCAT(YEAR(hire_date), &#39;-01-01&#39;) WHEN 2 THEN CONCAT(YEAR(hire_date), &#39;-04-01&#39;) WHEN 3 THEN CONCAT(YEAR(hire_date), &#39;-07-01&#39;) WHEN 4 THEN CONCAT(YEAR(hire_date), &#39;-10-01&#39;) END AS quarter_start FROM employees;
+</span></span></span></code></pre></div>
+<h4 class="relative group">日期时间转换
+    <div id="日期时间转换" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4%e8%bd%ac%e6%8d%a2" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 字符串与日期转换 SELECT &#39;2021-01-15&#39; AS date_string, STR_TO_DATE(&#39;2021-01-15&#39;, &#39;%Y-%m-%d&#39;) AS parsed_date, STR_TO_DATE(&#39;15/01/2021&#39;, &#39;%d/%m/%Y&#39;) AS parsed_date_dmy, STR_TO_DATE(&#39;2021-01-15 14:30:00&#39;, &#39;%Y-%m-%d %H:%i:%s&#39;) AS parsed_datetime, DATE(&#39;2021-01-15 14:30:00&#39;) AS extract_date, TIME(&#39;2021-01-15 14:30:00&#39;) AS extract_time; -- 2. Unix 时间戳转换 SELECT UNIX_TIMESTAMP(&#39;2021-01-15 12:00:00&#39;) AS to_unix_timestamp, FROM_UNIXTIME(1705294800) AS from_unix_timestamp, FROM_UNIXTIME(1705294800, &#39;%Y-%m-%d %H:%i:%s&#39;) AS formatted_from_unix; -- 3. 时区转换 SELECT NOW() AS local_time, UTC_TIMESTAMP() AS utc_time, CONVERT_TZ(NOW(), @@session.time_zone, &#39;+00:00&#39;) AS converted_to_utc, CONVERT_TZ(NOW(), &#39;+08:00&#39;, &#39;+00:00&#39;) AS beijing_to_utc; -- 4. 实际应用示例 -- 计算员工年龄和工作年限 SELECT CONCAT(first_name, &#39; &#39;, last_name) AS full_name, birth_date, hire_date, TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) AS age, TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) AS years_of_service, CASE WHEN TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 5 THEN &#39;资深员工&#39; WHEN TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 2 THEN &#39;经验员工&#39; ELSE &#39;新员工&#39; END AS employee_level, DATE_ADD(hire_date, INTERVAL 5 YEAR) AS five_year_anniversary FROM employees ORDER BY years_of_service DESC;
+</span></span></span></code></pre></div>
+<h4 class="relative group">常用日期时间函数总结
+    <div id="常用日期时间函数总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e7%94%a8%e6%97%a5%e6%9c%9f%e6%97%b6%e9%97%b4%e5%87%bd%e6%95%b0%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>语法</th>
+          <th>说明</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>NOW</td>
+          <td>NOW()</td>
+          <td>当前日期时间</td>
+          <td>2021-01-15 14:30:00</td>
+      </tr>
+      <tr>
+          <td>DATE_FORMAT</td>
+          <td>DATE_FORMAT(date, format)</td>
+          <td>日期格式化</td>
+          <td>DATE_FORMAT(NOW(), &lsquo;%Y-%m-%d&rsquo;)</td>
+      </tr>
+      <tr>
+          <td>DATE_ADD</td>
+          <td>DATE_ADD(date, INTERVAL expr unit)</td>
+          <td>日期加法</td>
+          <td>DATE_ADD(NOW(), INTERVAL 1 DAY)</td>
+      </tr>
+      <tr>
+          <td>DATEDIFF</td>
+          <td>DATEDIFF(date1, date2)</td>
+          <td>日期差值（天数）</td>
+          <td>DATEDIFF(&lsquo;2021-01-15&rsquo;, &lsquo;2021-01-01&rsquo;)</td>
+      </tr>
+      <tr>
+          <td>YEAR/MONTH/DAY</td>
+          <td>YEAR(date), MONTH(date), DAY(date)</td>
+          <td>提取年月日</td>
+          <td>YEAR(&lsquo;2021-01-15&rsquo;) → 2021</td>
+      </tr>
+      <tr>
+          <td>STR_TO_DATE</td>
+          <td>STR_TO_DATE(str, format)</td>
+          <td>字符串转日期</td>
+          <td>STR_TO_DATE(&lsquo;2021-01-15&rsquo;, &lsquo;%Y-%m-%d&rsquo;)</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">聚合函数
+    <div id="聚合函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%81%9a%e5%90%88%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">基本聚合函数
+    <div id="基本聚合函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9f%ba%e6%9c%ac%e8%81%9a%e5%90%88%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 基本统计函数 SELECT COUNT(*) AS total_employees, COUNT(DISTINCT department) AS unique_departments, SUM(salary) AS total_salary, AVG(salary) AS average_salary, MIN(salary) AS minimum_salary, MAX(salary) AS maximum_salary, MIN(hire_date) AS earliest_hire, MAX(hire_date) AS latest_hire FROM employees; -- 2. 按部门分组统计 SELECT department, COUNT(*) AS employee_count, ROUND(AVG(salary), 2) AS avg_salary, MIN(salary) AS min_salary, MAX(salary) AS max_salary, SUM(salary) AS total_salary, STDDEV(salary) AS salary_stddev, VARIANCE(salary) AS salary_variance FROM employees GROUP BY department ORDER BY avg_salary DESC; -- 3. 条件聚合 SELECT department, COUNT(*) AS total_count, COUNT(CASE WHEN salary &gt; 8000 THEN 1 END) AS high_salary_count, COUNT(CASE WHEN TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 3 THEN 1 END) AS senior_count, ROUND(AVG(CASE WHEN salary &gt; 8000 THEN salary END), 2) AS avg_high_salary, SUM(CASE WHEN salary &gt; 8000 THEN salary ELSE 0 END) AS total_high_salary FROM employees GROUP BY department; -- 4. 产品统计 SELECT category, COUNT(*) AS product_count, ROUND(AVG(price), 2) AS avg_price, MIN(price) AS min_price, MAX(price) AS max_price, SUM(stock_quantity) AS total_stock, ROUND(AVG(stock_quantity), 0) AS avg_stock FROM products GROUP BY category ORDER BY avg_price DESC;
+</span></span></span></code></pre></div>
+<h4 class="relative group">高级聚合和窗口函数
+    <div id="高级聚合和窗口函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%ab%98%e7%ba%a7%e8%81%9a%e5%90%88%e5%92%8c%e7%aa%97%e5%8f%a3%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 窗口函数（MySQL 8.0+） SELECT first_name, last_name, department, salary, ROW_NUMBER() OVER (ORDER BY salary DESC) AS salary_rank, RANK() OVER (ORDER BY salary DESC) AS salary_rank_with_ties, DENSE_RANK() OVER (ORDER BY salary DESC) AS salary_dense_rank, PERCENT_RANK() OVER (ORDER BY salary) AS salary_percentile, NTILE(4) OVER (ORDER BY salary) AS salary_quartile FROM employees; -- 2. 部门内排名 SELECT first_name, last_name, department, salary, ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) AS dept_rank, LAG(salary) OVER (PARTITION BY department ORDER BY salary DESC) AS prev_salary, LEAD(salary) OVER (PARTITION BY department ORDER BY salary DESC) AS next_salary, salary - LAG(salary) OVER (PARTITION BY department ORDER BY salary DESC) AS salary_diff FROM employees; -- 3. 累积计算 SELECT first_name, department, salary, SUM(salary) OVER (ORDER BY hire_date) AS running_total, AVG(salary) OVER (ORDER BY hire_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_avg_3, COUNT(*) OVER (PARTITION BY department) AS dept_total_count, SUM(salary) OVER (PARTITION BY department) AS dept_total_salary FROM employees ORDER BY hire_date; -- 4. 分组集合函数（MySQL 8.0+） SELECT department, YEAR(hire_date) AS hire_year, COUNT(*) AS employee_count, ROUND(AVG(salary), 2) AS avg_salary FROM employees GROUP BY department, YEAR(hire_date) WITH ROLLUP;
+</span></span></span></code></pre></div>
+<h4 class="relative group">自定义聚合函数
+    <div id="自定义聚合函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e8%81%9a%e5%90%88%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 使用 GROUP_CONCAT 创建聚合字符串 SELECT department, COUNT(*) AS employee_count, GROUP_CONCAT(CONCAT(first_name, &#39; &#39;, last_name) ORDER BY salary DESC SEPARATOR &#39;, &#39;) AS employees, GROUP_CONCAT(DISTINCT YEAR(hire_date) ORDER BY YEAR(hire_date) SEPARATOR &#39;, &#39;) AS hire_years, GROUP_CONCAT(salary ORDER BY salary DESC SEPARATOR &#39; | &#39;) AS salaries FROM employees GROUP BY department; -- 2. 计算中位数（模拟） SELECT department, COUNT(*) AS total_count, ROUND(AVG(salary), 2) AS mean_salary, ( SELECT ROUND(AVG(salary), 2) FROM ( SELECT salary FROM employees e2 WHERE e2.department = e1.department ORDER BY salary LIMIT 2 - (SELECT COUNT(*) FROM employees e3 WHERE e3.department = e1.department) % 2 OFFSET (SELECT (COUNT(*) - 1) DIV 2 FROM employees e3 WHERE e3.department = e1.department) ) AS median_calc ) AS median_salary FROM employees e1 GROUP BY department; -- 3. 自定义统计指标 SELECT department, COUNT(*) AS employee_count, ROUND(AVG(salary), 2) AS avg_salary, ROUND(STDDEV(salary), 2) AS salary_stddev, ROUND((MAX(salary) - MIN(salary)), 2) AS salary_range, ROUND(AVG(TIMESTAMPDIFF(YEAR, birth_date, CURDATE())), 1) AS avg_age, ROUND(AVG(TIMESTAMPDIFF(YEAR, hire_date, CURDATE())), 1) AS avg_tenure, COUNT(CASE WHEN salary &gt; (SELECT AVG(salary) FROM employees) THEN 1 END) AS above_avg_count FROM employees GROUP BY department ORDER BY avg_salary DESC;
+</span></span></span></code></pre></div>
+<h4 class="relative group">常用聚合函数总结
+    <div id="常用聚合函数总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e7%94%a8%e8%81%9a%e5%90%88%e5%87%bd%e6%95%b0%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>语法</th>
+          <th>说明</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>COUNT</td>
+          <td>COUNT(*), COUNT(column)</td>
+          <td>计数</td>
+          <td>COUNT(*) → 总行数</td>
+      </tr>
+      <tr>
+          <td>SUM</td>
+          <td>SUM(column)</td>
+          <td>求和</td>
+          <td>SUM(salary) → 工资总和</td>
+      </tr>
+      <tr>
+          <td>AVG</td>
+          <td>AVG(column)</td>
+          <td>平均值</td>
+          <td>AVG(salary) → 平均工资</td>
+      </tr>
+      <tr>
+          <td>MIN/MAX</td>
+          <td>MIN(column), MAX(column)</td>
+          <td>最小值/最大值</td>
+          <td>MIN(salary), MAX(salary)</td>
+      </tr>
+      <tr>
+          <td>GROUP_CONCAT</td>
+          <td>GROUP_CONCAT(column SEPARATOR sep)</td>
+          <td>字符串聚合</td>
+          <td>GROUP_CONCAT(name SEPARATOR &lsquo;, &lsquo;)</td>
+      </tr>
+      <tr>
+          <td>STDDEV</td>
+          <td>STDDEV(column)</td>
+          <td>标准差</td>
+          <td>STDDEV(salary) → 工资标准差</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">控制流函数
+    <div id="控制流函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%8e%a7%e5%88%b6%e6%b5%81%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">条件判断函数
+    <div id="条件判断函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9d%a1%e4%bb%b6%e5%88%a4%e6%96%ad%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. IF 函数 SELECT first_name, salary, IF(salary &gt; 8000, &#39;高薪&#39;, &#39;普通&#39;) AS salary_level, IF(TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 3, &#39;资深&#39;, &#39;新人&#39;) AS experience_level, IF(department = &#39;技术部&#39;, salary * 1.1, salary) AS adjusted_salary FROM employees; -- 2. CASE 语句 SELECT first_name, last_name, salary, department, CASE WHEN salary &gt;= 10000 THEN &#39;A级&#39; WHEN salary &gt;= 8000 THEN &#39;B级&#39; WHEN salary &gt;= 6000 THEN &#39;C级&#39; ELSE &#39;D级&#39; END AS salary_grade, CASE department WHEN &#39;技术部&#39; THEN &#39;核心部门&#39; WHEN &#39;销售部&#39; THEN &#39;业务部门&#39; WHEN &#39;管理部&#39; THEN &#39;管理部门&#39; ELSE &#39;支持部门&#39; END AS department_type FROM employees; -- 3. NULLIF 和 IFNULL SELECT product_name, price, stock_quantity, IFNULL(description, &#39;暂无描述&#39;) AS product_description, NULLIF(stock_quantity, 0) AS non_zero_stock, COALESCE(description, product_name, &#39;未知产品&#39;) AS display_name FROM products; -- 4. 复杂条件判断 SELECT first_name, birth_date, hire_date, salary, CASE WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) &lt; 30 THEN &#39;年轻员工&#39; WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) BETWEEN 30 AND 40 THEN &#39;中年员工&#39; ELSE &#39;资深员工&#39; END AS age_group, CASE WHEN salary &gt; (SELECT AVG(salary) FROM employees) AND TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 2 THEN &#39;优秀员工&#39; WHEN salary &gt; (SELECT AVG(salary) FROM employees) THEN &#39;高薪新人&#39; WHEN TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 3 THEN &#39;忠诚员工&#39; ELSE &#39;普通员工&#39; END AS employee_category FROM employees;
+</span></span></span></code></pre></div>
+<h4 class="relative group">空值处理函数
+    <div id="空值处理函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%a9%ba%e5%80%bc%e5%a4%84%e7%90%86%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 空值检测和处理 SELECT product_name, description, ISNULL(description) AS is_desc_null, description IS NULL AS is_null_check, description IS NOT NULL AS is_not_null_check, IFNULL(description, &#39;暂无描述&#39;) AS desc_with_default, COALESCE(description, product_name, &#39;未知&#39;) AS coalesced_value FROM products; -- 2. 空值替换和转换 SELECT first_name, email, phone, CASE WHEN email IS NULL THEN &#39;邮箱未填写&#39; WHEN email = &#39;&#39; THEN &#39;邮箱为空&#39; ELSE email END AS email_status, NULLIF(phone, &#39;&#39;) AS clean_phone, -- 将空字符串转为 NULL IF(phone IS NULL OR phone = &#39;&#39;, &#39;未提供&#39;, phone) AS phone_display FROM employees; -- 3. 条件聚合中的空值处理 SELECT department, COUNT(*) AS total_employees, COUNT(email) AS employees_with_email, COUNT(*) - COUNT(email) AS employees_without_email, ROUND(COUNT(email) * 100.0 / COUNT(*), 2) AS email_completion_rate FROM employees GROUP BY department;
+</span></span></span></code></pre></div>
+<h4 class="relative group">常用控制流函数总结
+    <div id="常用控制流函数总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e7%94%a8%e6%8e%a7%e5%88%b6%e6%b5%81%e5%87%bd%e6%95%b0%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>语法</th>
+          <th>说明</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>IF</td>
+          <td>IF(condition, true_value, false_value)</td>
+          <td>条件判断</td>
+          <td>IF(salary &gt; 8000, &lsquo;高薪&rsquo;, &lsquo;普通&rsquo;)</td>
+      </tr>
+      <tr>
+          <td>CASE</td>
+          <td>CASE WHEN condition THEN value END</td>
+          <td>多条件判断</td>
+          <td>CASE WHEN salary &gt; 8000 THEN &lsquo;高薪&rsquo; ELSE &lsquo;普通&rsquo; END</td>
+      </tr>
+      <tr>
+          <td>IFNULL</td>
+          <td>IFNULL(expr, default_value)</td>
+          <td>空值替换</td>
+          <td>IFNULL(description, &lsquo;暂无描述&rsquo;)</td>
+      </tr>
+      <tr>
+          <td>COALESCE</td>
+          <td>COALESCE(expr1, expr2, &hellip;)</td>
+          <td>返回第一个非空值</td>
+          <td>COALESCE(desc, name, &lsquo;未知&rsquo;)</td>
+      </tr>
+      <tr>
+          <td>NULLIF</td>
+          <td>NULLIF(expr1, expr2)</td>
+          <td>相等时返回NULL</td>
+          <td>NULLIF(quantity, 0)</td>
+      </tr>
+      <tr>
+          <td>ISNULL</td>
+          <td>ISNULL(expr)</td>
+          <td>检查是否为空</td>
+          <td>ISNULL(description)</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">信息函数
+    <div id="信息函数" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bf%a1%e6%81%af%e5%87%bd%e6%95%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 系统信息函数 SELECT VERSION() AS mysql_version, USER() AS current_user, CURRENT_USER() AS current_user_host, DATABASE() AS current_database, CONNECTION_ID() AS connection_id, CHARSET(&#39;hello&#39;) AS default_charset, COLLATION(&#39;hello&#39;) AS default_collation; -- 2. 会话和连接信息 SELECT @@version AS version_variable, @@hostname AS hostname, @@port AS port, @@datadir AS data_directory, @@character_set_server AS server_charset, @@collation_server AS server_collation, @@time_zone AS time_zone; -- 3. 最后插入ID和影响行数 -- 这些函数通常在INSERT/UPDATE/DELETE后使用 SELECT LAST_INSERT_ID() AS last_insert_id, ROW_COUNT() AS affected_rows, FOUND_ROWS() AS found_rows; -- 需要在SELECT中使用SQL_CALC_FOUND_ROWS -- 4. 表和列信息 SELECT TABLE_NAME, TABLE_ROWS, DATA_LENGTH, INDEX_LENGTH, CREATE_TIME, UPDATE_TIME FROM information_schema.TABLES WHERE TABLE_SCHEMA = &#39;function_demo&#39;; -- 5. 性能和状态信息 SELECT BENCHMARK(1000000, 1+1) AS benchmark_result; -- 性能测试 SHOW STATUS LIKE &#39;Connections&#39;; SHOW STATUS LIKE &#39;Uptime&#39;; SHOW STATUS LIKE &#39;Questions&#39;;
+</span></span></span></code></pre></div>
+<h4 class="relative group">常用信息函数总结
+    <div id="常用信息函数总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e7%94%a8%e4%bf%a1%e6%81%af%e5%87%bd%e6%95%b0%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>函数</th>
+          <th>说明</th>
+          <th>返回值示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>VERSION()</td>
+          <td>MySQL版本</td>
+          <td>8.0.35</td>
+      </tr>
+      <tr>
+          <td>USER()</td>
+          <td>当前用户</td>
+          <td>root@localhost</td>
+      </tr>
+      <tr>
+          <td>DATABASE()</td>
+          <td>当前数据库</td>
+          <td>function_demo</td>
+      </tr>
+      <tr>
+          <td>CONNECTION_ID()</td>
+          <td>连接ID</td>
+          <td>123</td>
+      </tr>
+      <tr>
+          <td>LAST_INSERT_ID()</td>
+          <td>最后插入的自增ID</td>
+          <td>15</td>
+      </tr>
+      <tr>
+          <td>ROW_COUNT()</td>
+          <td>影响的行数</td>
+          <td>3</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">实际应用示例
+    <div id="实际应用示例" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8%e7%a4%ba%e4%be%8b" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">数据清洗和格式化
+    <div id="数据清洗和格式化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e6%8d%ae%e6%b8%85%e6%b4%97%e5%92%8c%e6%a0%bc%e5%bc%8f%e5%8c%96" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 员工数据清洗 SELECT id, TRIM(CONCAT(first_name, &#39; &#39;, last_name)) AS full_name, LOWER(TRIM(email)) AS clean_email, REGEXP_REPLACE(phone, &#39;[^0-9]&#39;, &#39;&#39;) AS clean_phone, UPPER(TRIM(department)) AS clean_department, CASE WHEN salary &lt; 0 THEN 0 WHEN salary &gt; 50000 THEN 50000 ELSE salary END AS validated_salary FROM employees; -- 2. 产品数据标准化 SELECT id, TRIM(product_name) AS clean_name, ROUND(price, 2) AS formatted_price, GREATEST(0, stock_quantity) AS positive_stock, UPPER(TRIM(category)) AS standard_category, COALESCE(NULLIF(TRIM(description), &#39;&#39;), &#39;暂无描述&#39;) AS clean_description, CONCAT(&#39;¥&#39;, FORMAT(price, 2)) AS display_price FROM products;
+</span></span></span></code></pre></div>
+<h4 class="relative group">报表和统计分析
+    <div id="报表和统计分析" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%8a%a5%e8%a1%a8%e5%92%8c%e7%bb%9f%e8%ae%a1%e5%88%86%e6%9e%90" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 员工统计报表 SELECT &#39;总体统计&#39; AS category, COUNT(*) AS employee_count, CONCAT(&#39;¥&#39;, FORMAT(AVG(salary), 2)) AS avg_salary, CONCAT(&#39;¥&#39;, FORMAT(MIN(salary), 2)) AS min_salary, CONCAT(&#39;¥&#39;, FORMAT(MAX(salary), 2)) AS max_salary, ROUND(AVG(TIMESTAMPDIFF(YEAR, birth_date, CURDATE())), 1) AS avg_age, ROUND(AVG(TIMESTAMPDIFF(YEAR, hire_date, CURDATE())), 1) AS avg_tenure FROM employees UNION ALL SELECT CONCAT(department, &#39;部门&#39;) AS category, COUNT(*) AS employee_count, CONCAT(&#39;¥&#39;, FORMAT(AVG(salary), 2)) AS avg_salary, CONCAT(&#39;¥&#39;, FORMAT(MIN(salary), 2)) AS min_salary, CONCAT(&#39;¥&#39;, FORMAT(MAX(salary), 2)) AS max_salary, ROUND(AVG(TIMESTAMPDIFF(YEAR, birth_date, CURDATE())), 1) AS avg_age, ROUND(AVG(TIMESTAMPDIFF(YEAR, hire_date, CURDATE())), 1) AS avg_tenure FROM employees GROUP BY department ORDER BY category; -- 2. 月度入职统计 SELECT YEAR(hire_date) AS hire_year, MONTH(hire_date) AS hire_month, MONTHNAME(hire_date) AS month_name, COUNT(*) AS new_hires, GROUP_CONCAT(CONCAT(first_name, &#39; &#39;, last_name) SEPARATOR &#39;, &#39;) AS new_employees, ROUND(AVG(salary), 2) AS avg_starting_salary FROM employees GROUP BY YEAR(hire_date), MONTH(hire_date) ORDER BY hire_year DESC, hire_month DESC; -- 3. 薪资分布分析 SELECT CASE WHEN salary &lt; 7000 THEN &#39;&lt; 7K&#39; WHEN salary &lt; 8000 THEN &#39;7K-8K&#39; WHEN salary &lt; 9000 THEN &#39;8K-9K&#39; WHEN salary &lt; 10000 THEN &#39;9K-10K&#39; ELSE &#39;&gt; 10K&#39; END AS salary_range, COUNT(*) AS employee_count, ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM employees), 2) AS percentage, GROUP_CONCAT(department ORDER BY department SEPARATOR &#39;, &#39;) AS departments FROM employees GROUP BY CASE WHEN salary &lt; 7000 THEN &#39;&lt; 7K&#39; WHEN salary &lt; 8000 THEN &#39;7K-8K&#39; WHEN salary &lt; 9000 THEN &#39;8K-9K&#39; WHEN salary &lt; 10000 THEN &#39;9K-10K&#39; ELSE &#39;&gt; 10K&#39; END ORDER BY MIN(salary);
+</span></span></span></code></pre></div>
+<h4 class="relative group">业务逻辑处理
+    <div id="业务逻辑处理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%b8%9a%e5%8a%a1%e9%80%bb%e8%be%91%e5%a4%84%e7%90%86" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 员工绩效评估 SELECT CONCAT(first_name, &#39; &#39;, last_name) AS employee_name, department, salary, TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) AS years_of_service, CASE WHEN salary &gt;= 10000 AND TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 3 THEN &#39;A+&#39; WHEN salary &gt;= 9000 AND TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 2 THEN &#39;A&#39; WHEN salary &gt;= 8000 OR TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 3 THEN &#39;B+&#39; WHEN salary &gt;= 7000 OR TIMESTAMPDIFF(YEAR, hire_date, CURDATE()) &gt;= 1 THEN &#39;B&#39; ELSE &#39;C&#39; END AS performance_grade, CASE WHEN salary &lt; (SELECT AVG(salary) FROM employees e2 WHERE e2.department = employees.department) * 0.8 THEN &#39;需要关注&#39; WHEN salary &gt; (SELECT AVG(salary) FROM employees e2 WHERE e2.department = employees.department) * 1.2 THEN &#39;表现优秀&#39; ELSE &#39;表现正常&#39; END AS salary_status, DATE_ADD(hire_date, INTERVAL 1 YEAR) AS first_review_date, DATE_ADD(hire_date, INTERVAL 5 YEAR) AS five_year_milestone FROM employees ORDER BY performance_grade, salary DESC; -- 2. 产品库存预警 SELECT product_name, category, stock_quantity, price, stock_quantity * price AS inventory_value, CASE WHEN stock_quantity = 0 THEN &#39;缺货&#39; WHEN stock_quantity &lt;= 10 THEN &#39;库存不足&#39; WHEN stock_quantity &lt;= 30 THEN &#39;库存偏低&#39; ELSE &#39;库存充足&#39; END AS stock_status, CASE WHEN stock_quantity &lt;= 10 THEN &#39;紧急补货&#39; WHEN stock_quantity &lt;= 30 THEN &#39;计划补货&#39; ELSE &#39;无需补货&#39; END AS restock_action, GREATEST(50 - stock_quantity, 0) AS suggested_restock_quantity FROM products ORDER BY stock_quantity ASC, inventory_value DESC;
+</span></span></span></code></pre></div>
+<h3 class="relative group">函数性能优化
+    <div id="函数性能优化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%87%bd%e6%95%b0%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">性能优化建议
+    <div id="性能优化建议" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e5%bb%ba%e8%ae%ae" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>避免在WHERE子句中使用函数：会导致索引失效</li>
+<li>合理使用聚合函数：配合适当的索引提高查询效率</li>
+<li>字符串函数优化：大量数据时考虑在应用层处理</li>
+<li>日期函数缓存：重复计算的日期可以预先计算存储</li>
+</ul>
+
+<h4 class="relative group">常见陷阱
+    <div id="常见陷阱" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e8%a7%81%e9%99%b7%e9%98%b1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>NULL值处理：函数遇到NULL通常返回NULL</li>
+<li>数据类型转换：隐式转换可能影响性能</li>
+<li>字符集问题：字符串函数受字符集影响</li>
+<li>时区问题：日期时间函数要注意时区设置</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 性能对比示例 -- 不推荐：在WHERE中使用函数 SELECT * FROM employees WHERE YEAR(hire_date) = 2020; -- 推荐：使用范围查询 SELECT * FROM employees WHERE hire_date &gt;= &#39;2020-01-01&#39; AND hire_date &lt; &#39;2021-01-01&#39;; -- 不推荐：重复计算 SELECT first_name, TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) AS age, CASE WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) &gt;= 30 THEN &#39;成熟&#39; ELSE &#39;年轻&#39; END FROM employees; -- 推荐：使用变量或子查询 SELECT first_name, age, CASE WHEN age &gt;= 30 THEN &#39;成熟&#39; ELSE &#39;年轻&#39; END AS age_group FROM ( SELECT first_name, TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) AS age FROM employees ) AS emp_with_age;
+</span></span></span></code></pre></div>
+<h3 class="relative group">总结
+    <div id="总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h3>
+<blockquote>
+<p>MySQL函数是数据处理的强大工具，合理使用可以大大简化查询逻辑，提高开发效率。掌握各类函数的特点和使用场景，是成为MySQL专家的必经之路。</p>
+</blockquote>
+
+<h4 class="relative group">学习建议
+    <div id="学习建议" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%a6%e4%b9%a0%e5%bb%ba%e8%ae%ae" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>分类学习：按功能分类逐步掌握各类函数</li>
+<li>实践应用：在实际项目中多使用函数解决问题</li>
+<li>性能意识：时刻关注函数对查询性能的影响</li>
+<li>版本差异：了解不同MySQL版本的函数差异</li>
+<li>组合使用：学会组合多个函数解决复杂问题</li>
+</ul>
+
+<h4 class="relative group">扩展学习
+    <div id="扩展学习" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%89%a9%e5%b1%95%e5%ad%a6%e4%b9%a0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>自定义函数：学习创建用户定义函数(UDF)</li>
+<li>存储过程：在存储过程中使用函数</li>
+<li>触发器：在触发器中应用函数</li>
+<li>视图：在视图定义中使用函数</li>
+</ul>
+
+<h2 class="relative group">MySQL 运算符
+    <div id="mysql-运算符" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mysql-%e8%bf%90%e7%ae%97%e7%ac%a6" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">运算符概述
+    <div id="运算符概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%90%e7%ae%97%e7%ac%a6%e6%a6%82%e8%bf%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+<blockquote>
+<p>MySQL 运算符用于在查询中执行各种计算和比较操作。理解运算符的优先级和使用方法对编写高效的SQL查询至关重要。</p>
+</blockquote>
+<ul>
+<li>
+<p>算术运算符
+执行基本的数学运算：加、减、乘、除、取模</p>
+</li>
+<li>
+<p>比较运算符
+比较两个值的大小关系：等于、大于、小于等</p>
+</li>
+<li>
+<p>逻辑运算符
+组合多个条件：AND、OR、NOT等逻辑操作</p>
+</li>
+<li>
+<p>位运算符
+对二进制位进行操作：位与、位或、位异或等</p>
+</li>
+<li>
+<p>赋值运算符
+为变量或列赋值：等号赋值和复合赋值</p>
+</li>
+<li>
+<p>特殊运算符
+特殊用途运算符：LIKE、IN、BETWEEN等</p>
+</li>
+</ul>
+
+<h3 class="relative group">准备测试环境
+    <div id="准备测试环境-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%87%86%e5%a4%87%e6%b5%8b%e8%af%95%e7%8e%af%e5%a2%83-1" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 创建测试数据库 CREATE DATABASE operator_demo; USE operator_demo; -- 创建测试表 CREATE TABLE test_data ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), age INT, salary DECIMAL(10,2), department VARCHAR(50), is_active BOOLEAN, join_date DATE, score FLOAT, status_code INT ); -- 插入测试数据 INSERT INTO test_data (name, age, salary, department, is_active, join_date, score, status_code) VALUES (&#39;张三&#39;, 25, 8500.00, &#39;技术部&#39;, TRUE, &#39;2022-01-15&#39;, 85.5, 1), (&#39;李四&#39;, 30, 9200.00, &#39;销售部&#39;, TRUE, &#39;2021-03-22&#39;, 92.0, 2), (&#39;王五&#39;, 28, 7800.00, &#39;技术部&#39;, FALSE, &#39;2023-06-10&#39;, 78.5, 1), (&#39;赵六&#39;, 35, 12000.00, &#39;管理部&#39;, TRUE, &#39;2020-09-05&#39;, 95.0, 4), (&#39;钱七&#39;, 22, 6500.00, &#39;人事部&#39;, TRUE, &#39;2023-02-14&#39;, 88.0, 2), (&#39;孙八&#39;, 32, 10500.00, &#39;财务部&#39;, TRUE, &#39;2019-11-30&#39;, 90.5, 3), (&#39;周九&#39;, 27, 8800.00, &#39;技术部&#39;, TRUE, &#39;2022-07-18&#39;, 82.0, 1), (&#39;吴十&#39;, 29, 7200.00, &#39;销售部&#39;, FALSE, &#39;2023-12-01&#39;, 75.5, 2); -- 创建数值测试表 CREATE TABLE numbers ( id INT AUTO_INCREMENT PRIMARY KEY, value1 INT, value2 INT, decimal_val DECIMAL(5,2), binary_val INT ); -- 插入数值数据 INSERT INTO numbers (value1, value2, decimal_val, binary_val) VALUES (10, 3, 15.75, 12), -- 1100 in binary (20, 4, 25.50, 10), -- 1010 in binary (15, 5, 30.25, 6), -- 0110 in binary (8, 2, 12.80, 9), -- 1001 in binary (25, 7, 45.00, 15); -- 1111 in binary SELECT &#39;Test data created successfully&#39; AS message;
+</span></span></span></code></pre></div>
+<h3 class="relative group">算术运算符
+    <div id="算术运算符" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ae%97%e6%9c%af%e8%bf%90%e7%ae%97%e7%ac%a6" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">基本算术运算
+    <div id="基本算术运算" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9f%ba%e6%9c%ac%e7%ae%97%e6%9c%af%e8%bf%90%e7%ae%97" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 基本算术运算符 SELECT value1, value2, value1 + value2 AS addition, -- 加法 value1 - value2 AS subtraction, -- 减法 value1 * value2 AS multiplication, -- 乘法 value1 / value2 AS division, -- 除法 value1 % value2 AS modulo, -- 取模 value1 DIV value2 AS integer_division -- 整数除法 FROM numbers; -- 2. 在实际查询中使用算术运算 SELECT name, salary, salary * 12 AS annual_salary, salary * 0.1 AS tax_deduction, salary - (salary * 0.1) AS net_salary, salary + 1000 AS salary_with_bonus, ROUND(salary / 30, 2) AS daily_salary FROM test_data; -- 3. 复杂算术表达式 SELECT name, age, salary, score, (salary * 0.3 + score * 100) AS performance_index, POWER(score / 10, 2) AS score_squared, SQRT(salary / 1000) AS salary_sqrt, ABS(score - 85) AS score_deviation FROM test_data; -- 4. 处理NULL值的算术运算 SELECT 10 + NULL AS add_null, 10 - NULL AS subtract_null, 10 * NULL AS multiply_null, 10 / NULL AS divide_null, IFNULL(10 + NULL, 0) AS handle_null_addition ;
+</span></span></span></code></pre></div>
+<h4 class="relative group">算术运算的实际应用
+    <div id="算术运算的实际应用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ae%97%e6%9c%af%e8%bf%90%e7%ae%97%e7%9a%84%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 薪资计算 SELECT name, salary, CASE WHEN department = &#39;技术部&#39; THEN salary * 1.15 -- 技术部加薪15% WHEN department = &#39;销售部&#39; THEN salary * 1.10 -- 销售部加薪10% ELSE salary * 1.05 -- 其他部门加薪5% END AS adjusted_salary, CASE WHEN department = &#39;技术部&#39; THEN (salary * 1.15) - salary WHEN department = &#39;销售部&#39; THEN (salary * 1.10) - salary ELSE (salary * 1.05) - salary END AS salary_increase FROM test_data; -- 2. 年龄和工作年限计算 SELECT name, age, join_date, YEAR(CURDATE()) - YEAR(join_date) AS years_of_service, 65 - age AS years_to_retirement, DATEDIFF(CURDATE(), join_date) / 365.25 AS precise_years_service, age + (YEAR(CURDATE()) - YEAR(join_date)) AS age_when_started FROM test_data; -- 3. 绩效评分计算 SELECT name, score, salary, age, (score * 0.4 + (salary / 100) * 0.3 + (40 - age) * 0.3) AS composite_score, CASE WHEN score &gt;= 90 THEN score + 5 -- 优秀加分 WHEN score &gt;= 80 THEN score + 2 -- 良好加分 WHEN score &lt; 70 THEN score - 3 -- 不及格扣分 ELSE score END AS adjusted_score FROM test_data;
+</span></span></span></code></pre></div>
+<h4 class="relative group">算术运算符总结
+    <div id="算术运算符总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%ae%97%e6%9c%af%e8%bf%90%e7%ae%97%e7%ac%a6%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>示例</th>
+          <th>结果</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>+</td>
+          <td>加法</td>
+          <td>10 + 3</td>
+          <td>13</td>
+          <td>两个数相加</td>
+      </tr>
+      <tr>
+          <td>-</td>
+          <td>减法</td>
+          <td>10 - 3</td>
+          <td>7</td>
+          <td>两个数相减</td>
+      </tr>
+      <tr>
+          <td>*</td>
+          <td>乘法</td>
+          <td>10 * 3</td>
+          <td>30</td>
+          <td>两个数相乘</td>
+      </tr>
+      <tr>
+          <td>/</td>
+          <td>除法</td>
+          <td>10 / 3</td>
+          <td>3.3333</td>
+          <td>浮点数除法</td>
+      </tr>
+      <tr>
+          <td>DIV</td>
+          <td>整数除法</td>
+          <td>10 DIV 3</td>
+          <td>3</td>
+          <td>返回整数部分</td>
+      </tr>
+      <tr>
+          <td>% 或 MOD</td>
+          <td>取模</td>
+          <td>10 % 3</td>
+          <td>1</td>
+          <td>返回余数</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">比较运算符
+    <div id="比较运算符" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%af%94%e8%be%83%e8%bf%90%e7%ae%97%e7%ac%a6" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">基本比较运算
+    <div id="基本比较运算" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9f%ba%e6%9c%ac%e6%af%94%e8%be%83%e8%bf%90%e7%ae%97" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 基本比较运算符 SELECT name, age, salary, age = 30 AS is_thirty, -- 等于 age != 30 AS not_thirty, -- 不等于 age &lt;&gt; 30 AS not_equal_thirty, -- 不等于（另一种写法） age &gt; 30 AS older_than_thirty, -- 大于 age &lt; 30 AS younger_than_thirty, -- 小于 age &gt;= 30 AS thirty_or_older, -- 大于等于 age &lt;= 30 AS thirty_or_younger, -- 小于等于 salary &lt;=&gt; NULL AS safe_equal_null -- 安全等于（NULL安全） FROM test_data; -- 2. 字符串比较 SELECT name, department, name = &#39;张三&#39; AS is_zhangsan, department != &#39;技术部&#39; AS not_tech_dept, name &gt; &#39;王&#39; AS name_after_wang, department LIKE &#39;%部&#39; AS ends_with_bu, name REGEXP &#39;^[张李王]&#39; AS surname_zhang_li_wang FROM test_data; -- 3. 日期比较 SELECT name, join_date, join_date = &#39;2022-01-15&#39; AS joined_specific_date, join_date &gt; &#39;2022-01-01&#39; AS joined_after_2022, join_date BETWEEN &#39;2022-01-01&#39; AND &#39;2022-12-31&#39; AS joined_in_2022, YEAR(join_date) = 2023 AS joined_in_2023 FROM test_data; -- 4. NULL值比较 SELECT name, department, department IS NULL AS dept_is_null, department IS NOT NULL AS dept_not_null, department &lt;=&gt; NULL AS safe_equal_null, ISNULL(department) AS isnull_check FROM test_data;
+</span></span></span></code></pre></div>
+<h4 class="relative group">高级比较操作
+    <div id="高级比较操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%ab%98%e7%ba%a7%e6%af%94%e8%be%83%e6%93%8d%e4%bd%9c" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. BETWEEN 范围比较 SELECT name, age, salary, score, age BETWEEN 25 AND 30 AS age_in_range, salary BETWEEN 8000 AND 10000 AS salary_in_range, score NOT BETWEEN 80 AND 90 AS score_out_range, join_date BETWEEN &#39;2022-01-01&#39; AND &#39;2022-12-31&#39; AS joined_2022 FROM test_data; -- 2. IN 集合比较 SELECT name, department, age, status_code, department IN (&#39;技术部&#39;, &#39;销售部&#39;) AS is_core_dept, age IN (25, 30, 35) AS specific_ages, status_code NOT IN (1, 2) AS special_status, name IN (&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;) AS is_top_three FROM test_data; -- 3. LIKE 模式匹配 SELECT name, department, name LIKE &#39;张%&#39; AS starts_with_zhang, name LIKE &#39;%三&#39; AS ends_with_san, name LIKE &#39;_四&#39; AS second_char_si, department LIKE &#39;%技术%&#39; AS contains_tech, name NOT LIKE &#39;%五%&#39; AS not_contains_wu FROM test_data; -- 4. 正则表达式比较 SELECT name, department, name REGEXP &#39;^[张李王]&#39; AS common_surname, name REGEXP &#39;[三四五]$&#39; AS number_ending, department REGEXP &#39;技术|销售&#39; AS tech_or_sales, name NOT REGEXP &#39;[六七八九十]&#39; AS not_high_numbers FROM test_data;
+</span></span></span></code></pre></div>
+<h4 class="relative group">比较运算符总结
+    <div id="比较运算符总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%af%94%e8%be%83%e8%bf%90%e7%ae%97%e7%ac%a6%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>示例</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>=</td>
+          <td>等于</td>
+          <td>age = 30</td>
+          <td>值相等返回TRUE</td>
+      </tr>
+      <tr>
+          <td>!= 或 &lt;&gt;</td>
+          <td>不等于</td>
+          <td>age != 30</td>
+          <td>值不相等返回TRUE</td>
+      </tr>
+      <tr>
+          <td>&gt;</td>
+          <td>大于</td>
+          <td>age &gt; 30</td>
+          <td>左值大于右值</td>
+      </tr>
+      <tr>
+          <td>&lt;</td>
+          <td>小于</td>
+          <td>age &lt; 30</td>
+          <td>左值小于右值</td>
+      </tr>
+      <tr>
+          <td>&gt;=</td>
+          <td>大于等于</td>
+          <td>age &gt;= 30</td>
+          <td>左值大于或等于右值</td>
+      </tr>
+      <tr>
+          <td>&lt;=</td>
+          <td>小于等于</td>
+          <td>age &lt;= 30</td>
+          <td>左值小于或等于右值</td>
+      </tr>
+      <tr>
+          <td>&lt;=&gt;</td>
+          <td>安全等于</td>
+          <td>value &lt;=&gt; NULL</td>
+          <td>NULL安全的等于比较</td>
+      </tr>
+      <tr>
+          <td>IS NULL</td>
+          <td>为空</td>
+          <td>value IS NULL</td>
+          <td>检查是否为NULL</td>
+      </tr>
+      <tr>
+          <td>IS NOT NULL</td>
+          <td>非空</td>
+          <td>value IS NOT NULL</td>
+          <td>检查是否不为NULL</td>
+      </tr>
+      <tr>
+          <td>BETWEEN</td>
+          <td>范围内</td>
+          <td>age BETWEEN 20 AND 30</td>
+          <td>值在指定范围内</td>
+      </tr>
+      <tr>
+          <td>IN</td>
+          <td>在集合中</td>
+          <td>dept IN (&lsquo;技术部&rsquo;, &lsquo;销售部&rsquo;)</td>
+          <td>值在指定集合中</td>
+      </tr>
+      <tr>
+          <td>LIKE</td>
+          <td>模式匹配</td>
+          <td>name LIKE &lsquo;张%&rsquo;</td>
+          <td>字符串模式匹配</td>
+      </tr>
+      <tr>
+          <td>REGEXP</td>
+          <td>正则表达式</td>
+          <td>name REGEXP &lsquo;^[张李王]&rsquo;</td>
+          <td>字符串正则匹配</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">逻辑运算符
+    <div id="逻辑运算符" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">基本逻辑运算
+    <div id="基本逻辑运算" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9f%ba%e6%9c%ac%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. AND 逻辑与 SELECT name, age, salary, department, (age &gt; 25 AND salary &gt; 8000) AS senior_high_paid, (department = &#39;技术部&#39; AND is_active = TRUE) AS active_tech, (age BETWEEN 25 AND 35 AND score &gt; 80) AS prime_performer FROM test_data; -- 2. OR 逻辑或 SELECT name, age, salary, department, (age &lt; 25 OR salary &gt; 10000) AS young_or_high_paid, (department = &#39;技术部&#39; OR department = &#39;销售部&#39;) AS core_departments, (score &gt; 90 OR salary &gt; 11000) AS top_performer FROM test_data; -- 3. NOT 逻辑非 SELECT name, age, department, is_active, NOT (age &gt; 30) AS not_over_thirty, NOT (department = &#39;技术部&#39;) AS not_tech_dept, NOT is_active AS inactive, !(score &lt; 80) AS not_low_score FROM test_data; -- 4. 复杂逻辑组合 SELECT name, age, salary, department, score, ( (age BETWEEN 25 AND 35) AND (salary &gt; 8000) AND (department IN (&#39;技术部&#39;, &#39;销售部&#39;)) AND (score &gt;= 80) ) AS ideal_candidate, ( (age &lt; 30 AND score &gt; 85) OR (age &gt;= 30 AND salary &gt; 10000) ) AS promotion_candidate FROM test_data;
+</span></span></span></code></pre></div>
+<h4 class="relative group">逻辑运算的实际应用
+    <div id="逻辑运算的实际应用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%9a%84%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 员工分类 SELECT name, age, salary, department, score, CASE WHEN (age &lt; 30 AND score &gt; 85 AND salary &gt; 8000) THEN &#39;潜力股&#39; WHEN (age &gt;= 30 AND salary &gt; 10000 AND score &gt; 80) THEN &#39;骨干员工&#39; WHEN (department = &#39;技术部&#39; AND score &gt; 80) THEN &#39;技术专家&#39; WHEN (is_active = FALSE) THEN &#39;待激活&#39; ELSE &#39;普通员工&#39; END AS employee_category, ( (score &gt; 85) AND (salary &gt; (SELECT AVG(salary) FROM test_data)) AND (YEAR(CURDATE()) - YEAR(join_date) &gt;= 1) ) AS eligible_for_bonus FROM test_data; -- 2. 薪资调整逻辑 SELECT name, salary, department, score, age, CASE WHEN (score &gt;= 90 AND salary &lt; 10000) THEN salary * 1.20 -- 高分低薪大幅调整 WHEN (score &gt;= 85 OR age &gt;= 35) THEN salary * 1.15 -- 高分或资深适度调整 WHEN (department = &#39;技术部&#39; AND score &gt;= 80) THEN salary * 1.10 -- 技术部门小幅调整 WHEN (is_active = TRUE AND score &gt;= 75) THEN salary * 1.05 -- 在职及格小幅调整 ELSE salary -- 无调整 END AS adjusted_salary, ( (score &lt; 70) OR (is_active = FALSE AND YEAR(CURDATE()) - YEAR(join_date) &lt; 1) ) AS needs_attention FROM test_data; -- 3. 查询条件组合 -- 查找符合特定条件的员工 SELECT name, age, salary, department, score FROM test_data WHERE ( -- 条件组1：年轻高潜力 (age &lt;= 28 AND score &gt;= 85) OR -- 条件组2：资深高薪 (age &gt;= 32 AND salary &gt;= 10000) OR -- 条件组3：技术部门优秀员工 (department = &#39;技术部&#39; AND score &gt;= 80 AND is_active = TRUE) ) AND ( -- 排除条件：不要低分员工 score &gt;= 75 );
+</span></span></span></code></pre></div>
+<h4 class="relative group">逻辑运算符总结
+    <div id="逻辑运算符总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>说明</th>
+          <th>示例</th>
+          <th>结果</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>AND 或 &amp;&amp;</td>
+          <td>逻辑与</td>
+          <td>两个条件都为真时返回真</td>
+          <td>TRUE AND FALSE</td>
+          <td>FALSE</td>
+      </tr>
+      <tr>
+          <td>OR 或｜｜</td>
+          <td>逻辑或</td>
+          <td>任一条件为真时返回真</td>
+          <td>TRUE OR FALSE</td>
+          <td>TRUE</td>
+      </tr>
+      <tr>
+          <td>NOT 或 !</td>
+          <td>逻辑非</td>
+          <td>条件取反</td>
+          <td>NOT TRUE</td>
+          <td>FALSE</td>
+      </tr>
+      <tr>
+          <td>XOR</td>
+          <td>逻辑异或</td>
+          <td>两个条件不同时返回真</td>
+          <td>TRUE XOR FALSE</td>
+          <td>TRUE</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">位运算符
+    <div id="位运算符" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bd%8d%e8%bf%90%e7%ae%97%e7%ac%a6" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">基本位运算
+    <div id="基本位运算" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%9f%ba%e6%9c%ac%e4%bd%8d%e8%bf%90%e7%ae%97" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 基本位运算符 SELECT binary_val, BIN(binary_val) AS binary_representation, binary_val &amp; 8 AS bitwise_and, -- 位与 binary_val | 8 AS bitwise_or, -- 位或 binary_val ^ 8 AS bitwise_xor, -- 位异或 ~binary_val AS bitwise_not, -- 位非 binary_val &lt;&lt; 1 AS left_shift, -- 左移 binary_val &gt;&gt; 1 AS right_shift -- 右移 FROM numbers; -- 2. 位运算的实际应用 -- 权限系统示例（使用位掩码） SELECT name, status_code, BIN(status_code) AS status_binary, status_code &amp; 1 AS has_read_permission, -- 检查读权限（第1位） status_code &amp; 2 AS has_write_permission, -- 检查写权限（第2位） status_code &amp; 4 AS has_execute_permission, -- 检查执行权限（第3位） status_code | 1 AS add_read_permission, -- 添加读权限 status_code | 2 AS add_write_permission, -- 添加写权限 status_code &amp; ~1 AS remove_read_permission -- 移除读权限 FROM test_data; -- 3. 状态标志位操作 SELECT id, status_code, BIN(status_code) AS current_status, CASE WHEN status_code &amp; 1 = 1 THEN &#39;活跃&#39; ELSE &#39;非活跃&#39; END AS activity_status, CASE WHEN status_code &amp; 2 = 2 THEN &#39;已验证&#39; ELSE &#39;未验证&#39; END AS verification_status, CASE WHEN status_code &amp; 4 = 4 THEN &#39;管理员&#39; ELSE &#39;普通用户&#39; END AS user_type FROM test_data; -- 4. 位运算在数据压缩中的应用 SELECT value1, value2, (value1 &lt;&lt; 8) | value2 AS packed_values, -- 将两个8位值打包成16位 ((value1 &lt;&lt; 8) | value2) &gt;&gt; 8 AS unpacked_high, -- 解包高8位 ((value1 &lt;&lt; 8) | value2) &amp; 255 AS unpacked_low -- 解包低8位 FROM numbers WHERE value1 &lt; 256 AND value2 &lt; 256; -- 确保是8位值
+</span></span></span></code></pre></div>
+<h4 class="relative group">位运算符总结
+    <div id="位运算符总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bd%8d%e8%bf%90%e7%ae%97%e7%ac%a6%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>说明</th>
+          <th>示例</th>
+          <th>结果</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>&amp;</td>
+          <td>位与</td>
+          <td>对应位都为1时结果为1</td>
+          <td>12 &amp; 10 (1100 &amp; 1010)</td>
+          <td>8 (1000)</td>
+      </tr>
+      <tr>
+          <td>|</td>
+          <td>位或</td>
+          <td>对应位有一个为1时结果为1</td>
+          <td>12 | 10 (1100 | 1010)</td>
+          <td>14 (1110)</td>
+      </tr>
+      <tr>
+          <td>^</td>
+          <td>位异或</td>
+          <td>对应位不同时结果为1</td>
+          <td>12 ^ 10 (1100 ^ 1010)</td>
+          <td>6 (0110)</td>
+      </tr>
+      <tr>
+          <td>~</td>
+          <td>位非</td>
+          <td>按位取反</td>
+          <td>~12</td>
+          <td>-13</td>
+      </tr>
+      <tr>
+          <td>&laquo;</td>
+          <td>左移</td>
+          <td>向左移动指定位数</td>
+          <td>12 &laquo; 1</td>
+          <td>24</td>
+      </tr>
+      <tr>
+          <td>&raquo;</td>
+          <td>右移</td>
+          <td>向右移动指定位数</td>
+          <td>12 &raquo; 1</td>
+          <td>6</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">赋值运算符
+    <div id="赋值运算符" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%b5%8b%e5%80%bc%e8%bf%90%e7%ae%97%e7%ac%a6" aria-label="">#</a>
+    </span>
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 基本赋值运算符 -- 在变量中使用赋值运算符 SET @var1 = 10; SET @var2 := 20; -- := 也是赋值运算符 SELECT @var1 AS variable1, @var2 AS variable2, @var3 := @var1 + @var2 AS sum_result, @var4 := @var1 * 2 AS double_var1; -- 2. 在查询中使用赋值 SELECT name, salary, @running_total := @running_total + salary AS running_total, @max_salary := GREATEST(@max_salary, salary) AS max_so_far, @row_num := @row_num + 1 AS row_number FROM test_data, (SELECT @running_total := 0, @max_salary := 0, @row_num := 0) AS init ORDER BY salary; -- 3. UPDATE 语句中的赋值运算符 -- 创建临时表进行演示 CREATE TEMPORARY TABLE temp_salary AS SELECT * FROM test_data; -- 使用复合赋值运算符（MySQL 8.0+） UPDATE temp_salary SET salary = salary * 1.1 WHERE department = &#39;技术部&#39;; UPDATE temp_salary SET score = score + 5 WHERE score &gt;= 85; SELECT name, salary, score FROM temp_salary; -- 4. 条件赋值 SELECT name, age, salary, @bonus := CASE WHEN age &lt; 30 AND salary &gt; 8000 THEN salary * 0.15 WHEN age &gt;= 30 AND salary &gt; 10000 THEN salary * 0.20 ELSE salary * 0.10 END AS calculated_bonus, @total_compensation := salary + @bonus AS total_compensation FROM test_data;
+</span></span></span></code></pre></div>
+<h4 class="relative group">赋值运算符总结
+    <div id="赋值运算符总结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%b5%8b%e5%80%bc%e8%bf%90%e7%ae%97%e7%ac%a6%e6%80%bb%e7%bb%93" aria-label="">#</a>
+    </span>
+    
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>运算符</th>
+          <th>名称</th>
+          <th>说明</th>
+          <th>示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>=</td>
+          <td>赋值</td>
+          <td>将右边的值赋给左边的变量</td>
+          <td>SET @var = 10</td>
+      </tr>
+      <tr>
+          <td>:=</td>
+          <td>赋值</td>
+          <td>赋值运算符，可在表达式中使用</td>
+          <td>@var := 10</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">运算符优先级
+    <div id="运算符优先级" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%90%e7%ae%97%e7%ac%a6%e4%bc%98%e5%85%88%e7%ba%a7" aria-label="">#</a>
+    </span>
+    
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>优先级</th>
+          <th>运算符</th>
+          <th>结合性</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1 (最高)</td>
+          <td>INTERVAL</td>
+          <td>左结合</td>
+          <td>时间间隔</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>BINARY, COLLATE</td>
+          <td>左结合</td>
+          <td>二进制转换，排序规则</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>!</td>
+          <td>右结合</td>
+          <td>逻辑非</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>- (一元), ~ (位非)</td>
+          <td>右结合</td>
+          <td>一元减号，位非</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>^</td>
+          <td>左结合</td>
+          <td>异或</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>*, /, DIV, %, MOD</td>
+          <td>左结合</td>
+          <td>乘法，除法，取模</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>-, +</td>
+          <td>左结合</td>
+          <td>减法，加法</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>&laquo;, &raquo;</td>
+          <td>左结合</td>
+          <td>位移</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td>&amp;</td>
+          <td>左结合</td>
+          <td>位与</td>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td>|</td>
+          <td>左结合</td>
+          <td>位或</td>
+      </tr>
+      <tr>
+          <td>11</td>
+          <td>=, &gt;=, &gt;, &lt;=, &lt;, &lt;&gt;, !=, IS, LIKE, REGEXP, IN</td>
+          <td>左结合</td>
+          <td>比较运算符</td>
+      </tr>
+      <tr>
+          <td>12</td>
+          <td>BETWEEN, CASE, WHEN, THEN, ELSE</td>
+          <td>左结合</td>
+          <td>范围，条件</td>
+      </tr>
+      <tr>
+          <td>13</td>
+          <td>NOT</td>
+          <td>右结合</td>
+          <td>逻辑非</td>
+      </tr>
+      <tr>
+          <td>14</td>
+          <td>AND, &amp;&amp;</td>
+          <td>左结合</td>
+          <td>逻辑与</td>
+      </tr>
+      <tr>
+          <td>15</td>
+          <td>XOR</td>
+          <td>左结合</td>
+          <td>逻辑异或</td>
+      </tr>
+      <tr>
+          <td>16</td>
+          <td>OR, ||</td>
+          <td>左结合</td>
+          <td>逻辑或</td>
+      </tr>
+      <tr>
+          <td>17</td>
+          <td>(最低) =, :=</td>
+          <td>右结合</td>
+          <td>赋值</td>
+      </tr>
+  </tbody>
+</table>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 运算符优先级示例 SELECT -- 算术运算优先级 2 + 3 * 4 AS arithmetic1, -- 结果：14 (不是20) (2 + 3) * 4 AS arithmetic2, -- 结果：20 -- 比较和逻辑运算优先级 1 = 1 AND 2 = 3 OR 4 = 4 AS logic1, -- 结果：1 (TRUE) 1 = 1 AND (2 = 3 OR 4 = 4) AS logic2, -- 结果：1 (TRUE) (1 = 1 AND 2 = 3) OR 4 = 4 AS logic3, -- 结果：1 (TRUE) -- 位运算优先级 12 | 3 &amp; 5 AS bitwise1, -- 结果：13 (12 | 3) &amp; 5 AS bitwise2, -- 结果：5 12 | (3 &amp; 5) AS bitwise3; -- 结果：13 -- 复杂表达式的优先级 SELECT name, age, salary, -- 不使用括号（依赖优先级） age &gt; 25 AND salary &gt; 8000 OR department = &#39;管理部&#39; AS condition1, -- 使用括号明确优先级 (age &gt; 25 AND salary &gt; 8000) OR department = &#39;管理部&#39; AS condition2, age &gt; 25 AND (salary &gt; 8000 OR department = &#39;管理部&#39;) AS condition3 FROM test_data;
+</span></span></span></code></pre></div>
+<h3 class="relative group">实际应用案例
+    <div id="实际应用案例" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8%e6%a1%88%e4%be%8b" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">复杂查询条件
+    <div id="复杂查询条件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%a4%8d%e6%9d%82%e6%9f%a5%e8%af%a2%e6%9d%a1%e4%bb%b6" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 员工筛选的复杂条件 SELECT name, age, salary, department, score, join_date FROM test_data WHERE ( -- 高潜力年轻员工 (age &lt;= 28 AND score &gt;= 85 AND salary &gt;= 7000) OR -- 资深高薪员工 (age &gt;= 32 AND salary &gt;= 10000) OR -- 核心部门优秀员工 (department IN (&#39;技术部&#39;, &#39;销售部&#39;) AND score &gt;= 80 AND is_active = TRUE) ) AND ( -- 排除试用期员工（入职不满3个月） DATEDIFF(CURDATE(), join_date) &gt;= 90 ) AND ( -- 排除低分员工 score &gt;= 75 ) ORDER BY CASE WHEN department = &#39;技术部&#39; THEN 1 WHEN department = &#39;销售部&#39; THEN 2 ELSE 3 END, score DESC, salary DESC; -- 2. 薪资调整计算 SELECT name, current_salary, department, performance_score, years_service, new_salary, salary_increase, increase_percentage FROM ( SELECT name, salary AS current_salary, department, score AS performance_score, TIMESTAMPDIFF(YEAR, join_date, CURDATE()) AS years_service, CASE -- 顶级表现者：20%增长 WHEN score &gt;= 95 AND salary &lt; 15000 THEN salary * 1.20 -- 优秀表现者：15%增长 WHEN score &gt;= 90 AND salary &lt; 12000 THEN salary * 1.15 -- 良好表现者：10%增长 WHEN score &gt;= 85 OR (department = &#39;技术部&#39; AND score &gt;= 80) THEN salary * 1.10 -- 合格表现者：5%增长 WHEN score &gt;= 75 AND is_active = TRUE THEN salary * 1.05 -- 其他情况：无增长 ELSE salary END AS new_salary FROM test_data ) AS salary_calc CROSS JOIN ( SELECT new_salary - current_salary AS salary_increase, ROUND((new_salary - current_salary) / current_salary * 100, 2) AS increase_percentage ) AS calc WHERE new_salary &gt; current_salary ORDER BY increase_percentage DESC;
+</span></span></span></code></pre></div>
+<h4 class="relative group">数据分析和统计
+    <div id="数据分析和统计" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e6%8d%ae%e5%88%86%e6%9e%90%e5%92%8c%e7%bb%9f%e8%ae%a1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 1. 员工分布分析 SELECT department, COUNT(*) AS total_employees, SUM(CASE WHEN age &lt; 30 THEN 1 ELSE 0 END) AS young_employees, SUM(CASE WHEN age BETWEEN 30 AND 40 THEN 1 ELSE 0 END) AS middle_age_employees, SUM(CASE WHEN age &gt; 40 THEN 1 ELSE 0 END) AS senior_employees, ROUND(AVG(salary), 2) AS avg_salary, ROUND(AVG(score), 2) AS avg_score, SUM(CASE WHEN score &gt;= 85 THEN 1 ELSE 0 END) AS high_performers, ROUND( SUM(CASE WHEN score &gt;= 85 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2 ) AS high_performer_percentage FROM test_data GROUP BY department HAVING COUNT(*) &gt; 1 -- 只显示有多个员工的部门 ORDER BY avg_score DESC, avg_salary DESC; -- 2. 绩效等级分布 SELECT performance_grade, COUNT(*) AS employee_count, ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM test_data), 2) AS percentage, ROUND(AVG(salary), 2) AS avg_salary, ROUND(AVG(age), 1) AS avg_age, GROUP_CONCAT(name ORDER BY score DESC SEPARATOR &#39;, &#39;) AS employees FROM ( SELECT name, age, salary, score, CASE WHEN score &gt;= 95 THEN &#39;A+&#39; WHEN score &gt;= 90 THEN &#39;A&#39; WHEN score &gt;= 85 THEN &#39;B+&#39; WHEN score &gt;= 80 THEN &#39;B&#39; WHEN score &gt;= 75 THEN &#39;C+&#39; WHEN score &gt;= 70 THEN &#39;C&#39; ELSE &#39;D&#39; END AS performance_grade FROM test_data ) AS graded_employees GROUP BY performance_grade ORDER BY CASE performance_grade WHEN &#39;A+&#39; THEN 1 WHEN &#39;A&#39; THEN 2 WHEN &#39;B+&#39; THEN 3 WHEN &#39;B&#39; THEN 4 WHEN &#39;C+&#39; THEN 5 WHEN &#39;C&#39; THEN 6 ELSE 7 END;
+</span></span></span></code></pre></div>
+<h3 class="relative group">最佳实践和注意事项
+    <div id="最佳实践和注意事项" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e5%92%8c%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">运算符使用建议
+    <div id="运算符使用建议" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%90%e7%ae%97%e7%ac%a6%e4%bd%bf%e7%94%a8%e5%bb%ba%e8%ae%ae" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>明确优先级：复杂表达式使用括号明确运算顺序</li>
+<li>NULL值处理：注意NULL值在运算中的特殊行为</li>
+<li>类型转换：避免隐式类型转换导致的性能问题</li>
+<li>索引友好：WHERE子句中避免对列进行函数运算</li>
+<li>可读性优先：复杂逻辑拆分为多个简单条件</li>
+</ul>
+
+<h4 class="relative group">常见陷阱
+    <div id="常见陷阱-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%b8%b8%e8%a7%81%e9%99%b7%e9%98%b1-1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>NULL比较：使用IS NULL而不是= NULL</li>
+<li>字符串比较：注意字符集和排序规则的影响</li>
+<li>浮点数比较：避免直接比较浮点数是否相等</li>
+<li>除零错误：除法运算前检查除数是否为零</li>
+<li>位运算范围：注意整数溢出和符号位的影响</li>
+</ul>
+
+<h4 class="relative group">性能优化技巧
+    <div id="性能优化技巧" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%8a%80%e5%b7%a7" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>短路求值：利用AND和OR的短路特性优化条件顺序</li>
+<li>索引利用：将能使用索引的条件放在WHERE子句前面</li>
+<li>常量折叠：MySQL会自动优化常量表达式</li>
+<li>谓词下推：复杂查询中合理使用子查询和连接</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 性能优化示例 -- 1. 利用短路求值优化条件顺序 SELECT name, age, salary, department FROM test_data WHERE is_active = TRUE -- 先检查简单条件 AND department = &#39;技术部&#39; -- 再检查索引条件 AND salary &gt; 8000 -- 最后检查范围条件 AND score &gt;= (SELECT AVG(score) FROM test_data); -- 最后执行子查询 -- 2. 避免在WHERE子句中对列进行运算 -- 不好的写法 SELECT name FROM test_data WHERE YEAR(join_date) = 2022; -- 好的写法 SELECT name FROM test_data WHERE join_date &gt;= &#39;2022-01-01&#39; AND join_date &lt; &#39;2023-01-01&#39;; -- 3. 合理使用CASE表达式 SELECT name, salary, CASE WHEN salary &gt;= 10000 THEN &#39;高薪&#39; WHEN salary &gt;= 8000 THEN &#39;中等&#39; ELSE &#39;一般&#39; END AS salary_level FROM test_data;
+</span></span></span></code></pre></div>
+<h3 class="relative group">总结
+    <div id="总结-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%bb%e7%bb%93-1" aria-label="">#</a>
+    </span>
+    
+</h3>
+<blockquote>
+<p>MySQL运算符是构建查询条件和表达式的基础工具。掌握各种运算符的使用方法和优先级规则，能够帮助我们编写更高效、更准确的SQL查询。</p>
+</blockquote>
+
+<h4 class="relative group">学习要点回顾
+    <div id="学习要点回顾" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ad%a6%e4%b9%a0%e8%a6%81%e7%82%b9%e5%9b%9e%e9%a1%be" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>算术运算符：用于数值计算，注意除零和NULL值处理</li>
+<li>比较运算符：用于条件判断，掌握各种比较方式</li>
+<li>逻辑运算符：用于组合条件，理解短路求值机制</li>
+<li>位运算符：用于位级操作，适用于权限和状态管理</li>
+<li>运算符优先级：理解优先级规则，合理使用括号</li>
+<li>性能考虑：编写索引友好的查询条件</li>
+</ul>
+
+<h4 class="relative group">进阶学习建议
+    <div id="进阶学习建议" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%bf%9b%e9%98%b6%e5%ad%a6%e4%b9%a0%e5%bb%ba%e8%ae%ae" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>深入学习<strong>MySQL的查询优化器工作原理</strong></li>
+<li>掌握<strong>EXPLAIN</strong>的使用，分析查询执行计划</li>
+<li>学习窗口函数和CTE（公共表表达式）</li>
+<li>了解MySQL 8.0的新特性和改进</li>
+<li>实践复杂的数据分析和报表查询</li>
+</ul>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/mysql06.md"
+          data-oid-likes="likes_posts/mysql06.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/mysql05/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;MySQL高级特性与优化
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-02-10T10:00:00&#43;08:00">2021年2月10日</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/mysql07/">
+              <span class="leading-6">
+                MySQL运维与管理&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-02-12T12:00:00&#43;08:00">2021年2月12日</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+            <div class="pt-3">
+              
+
+<div class="pt-8 mt-8 border-t border-neutral-200 dark:border-neutral-700">
+  <h3 class="text-2xl font-bold mb-4">评论</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="hollyblog/hollyblog.github.io"
+    data-repo-id="R_kgDOQbMzVg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQbMzVs4Cyz-f"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label=""
+    title="">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Holly
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+    
+
+
+  
+  <script defer src="/js/custom.min.4ebb3e0a94262e65bb85593d7e41cefff82843a5373a842f3b91d2baace5f117b01e818abc9a9539776763aff333e6b43cee59a442a6d46e0dd43e1338f769a0.js" integrity="sha512-Trs&#43;CpQmLmW7hVk9fkHO//goQ6U3OoQvO5HSuqzl8RewHoGKvJqVOXdnY6/zM&#43;a0PO5ZpEKm1G4N1D4TOPdpoA=="></script>
+
+
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder=""
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

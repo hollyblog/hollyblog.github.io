@@ -26,6 +26,7 @@ description = "永远保持好奇心，永远天真烂漫"
       { github = "https://github.com/hollyblog/" },
       { gitee = "https://gitee.com/hollyblog/" },
       { email = "mailto:2285549633@qq.com" },
+      { csdn = "https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640" },
     ]
   
 # 菜单配置
@@ -75,28 +76,28 @@ description = "永远保持好奇心，永远天真烂漫"
     name = "基础"
     weight = 7
   [[menu.main]]
+    name = "计算机基础"
+    pageRef = "categories/Computer"
+    parent = "基础"
+    weight = 1
+  [[menu.main]]
     name = "编程语言"
     pageRef = "categories/Java"
     parent = "基础"
-    weight = 1
+    weight = 2
   [[menu.main]]
     name = "数据存储"
     pageRef = "categories/Database"
     parent = "基础"
-    weight = 2
+    weight = 3
   [[menu.main]]
     name = "框架应用"
     pageRef = "categories/Framework"
     parent = "基础"
-    weight = 3
+    weight = 4
   [[menu.main]]
     name = "中间件"
     pageRef = "categories/Middleware"
-    parent = "基础"
-    weight = 4
-  [[menu.main]]
-    name = "系统架构"
-    pageRef = "categories/SA"
     parent = "基础"
     weight = 5
   [[menu.main]]
@@ -104,17 +105,18 @@ description = "永远保持好奇心，永远天真烂漫"
     pageRef = "categories/Ops"
     parent = "基础"
     weight = 6
+
   # 进阶专栏下拉菜单
   [[menu.main]]
     name = "进阶"
     weight = 8
   [[menu.main]]
-    name = "并发编程JUC"
+    name = "JUC"
     pageRef = "categories/JUC"
     parent = "进阶"
     weight = 1
   [[menu.main]]
-    name = "Java线程池"
+    name = "线程池"
     pageRef = "categories/ThreadPool"
     parent = "进阶"
     weight = 2
@@ -123,6 +125,11 @@ description = "永远保持好奇心，永远天真烂漫"
     pageRef = "categories/JVM"
     parent = "进阶"
     weight = 3
+  [[menu.main]]
+    name = "系统架构"
+    pageRef = "categories/SA"
+    parent = "进阶"
+    weight = 4
     
   # 简历
   [[menu.main]]

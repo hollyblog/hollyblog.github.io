@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql函数 on 永远纯粹</title>
+    <link>http://localhost:1313/tags/mysql%E5%87%BD%E6%95%B0/</link>
+    <description>Recent content in Mysql函数 on 永远纯粹</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2025 Holly</copyright>
+    <lastBuildDate>Thu, 11 Feb 2021 11:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/mysql%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MySQL函数与运算</title>
+      <link>http://localhost:1313/posts/mysql06/</link>
+      <pubDate>Thu, 11 Feb 2021 11:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql06/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

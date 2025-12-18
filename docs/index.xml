@@ -2,199 +2,529 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>永远天真烂漫 on 永远纯粹</title>
-    <link>https://hollyblog.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content in 永远天真烂漫 on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2025 Holly</copyright>
-    <lastBuildDate>Mon, 24 Nov 2025 14:30:00 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Nov 2025 14:30:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>MySQL 基础 - 01</title>
-      <link>https://hollyblog.github.io/posts/mysql01/</link>
-      <pubDate>Mon, 24 Nov 2025 11:00:00 +0800</pubDate>
+      <title>Redis模块深度解析</title>
+      <link>http://localhost:1313/posts/redis07/</link>
+      <pubDate>Wed, 08 Dec 2021 12:00:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/mysql01/</guid>
+      <guid>http://localhost:1313/posts/redis07/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>分布式系统设计实践</title>
-      <link>https://hollyblog.github.io/posts/distributed01/</link>
-      <pubDate>Mon, 20 Jan 2025 10:00:00 +0800</pubDate>
+      <title>设计模式与软件工程</title>
+      <link>http://localhost:1313/posts/computer03/</link>
+      <pubDate>Tue, 07 Dec 2021 13:18:17 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/distributed01/</guid>
+      <guid>http://localhost:1313/posts/computer03/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>云原生架构演进</title>
-      <link>https://hollyblog.github.io/posts/cloud01/</link>
-      <pubDate>Sat, 18 Jan 2025 14:30:00 +0800</pubDate>
+      <title>计算机基础：数据结构与算法</title>
+      <link>http://localhost:1313/posts/computer02/</link>
+      <pubDate>Mon, 06 Dec 2021 13:18:17 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/cloud01/</guid>
+      <guid>http://localhost:1313/posts/computer02/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>大模型应用开发实战</title>
-      <link>https://hollyblog.github.io/posts/llm01/</link>
-      <pubDate>Wed, 15 Jan 2025 16:00:00 +0800</pubDate>
+      <title>计算机基础：操作系统与计算机网络</title>
+      <link>http://localhost:1313/posts/computer01/</link>
+      <pubDate>Sun, 05 Dec 2021 13:18:17 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/llm01/</guid>
+      <guid>http://localhost:1313/posts/computer01/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>RabbitMQ 性能优化实践</title>
-      <link>https://hollyblog.github.io/posts/middleware-rabbitmq01/</link>
-      <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
+      <title>MySQL模块深度解析</title>
+      <link>http://localhost:1313/posts/mysql09/</link>
+      <pubDate>Sat, 04 Dec 2021 22:47:08 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/middleware-rabbitmq01/</guid>
+      <guid>http://localhost:1313/posts/mysql09/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>Redis 性能优化实践</title>
-      <link>https://hollyblog.github.io/posts/middleware-redis01/</link>
-      <pubDate>Sun, 12 Jan 2025 09:30:00 +0800</pubDate>
+      <title>JVM模块深度解析</title>
+      <link>http://localhost:1313/posts/jvm09/</link>
+      <pubDate>Fri, 03 Dec 2021 00:24:35 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/middleware-redis01/</guid>
+      <guid>http://localhost:1313/posts/jvm09/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>MySQL 索引优化指南</title>
-      <link>https://hollyblog.github.io/posts/mysql02/</link>
-      <pubDate>Fri, 10 Jan 2025 11:00:00 +0800</pubDate>
+      <title>Java并发编程模块深度解析</title>
+      <link>http://localhost:1313/posts/juc06/</link>
+      <pubDate>Thu, 02 Dec 2021 00:23:32 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/mysql02/</guid>
+      <guid>http://localhost:1313/posts/juc06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java集合模块深度解析</title>
+      <link>http://localhost:1313/posts/java-base12/</link>
+      <pubDate>Wed, 01 Dec 2021 00:21:27 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/java-base12/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL-复习</title>
+      <link>http://localhost:1313/posts/mysql08/</link>
+      <pubDate>Sat, 01 May 2021 00:16:23 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql08/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Redis Java集成</title>
+      <link>http://localhost:1313/posts/redis06/</link>
+      <pubDate>Wed, 17 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/redis06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Redis 持久化与集群</title>
+      <link>http://localhost:1313/posts/redis04/</link>
+      <pubDate>Tue, 16 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/redis04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Redis 高级技术</title>
+      <link>http://localhost:1313/posts/redis05/</link>
+      <pubDate>Tue, 16 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/redis05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Redis 高级</title>
+      <link>http://localhost:1313/posts/redis03/</link>
+      <pubDate>Mon, 15 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/redis03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Redis 命令</title>
+      <link>http://localhost:1313/posts/redis02/</link>
+      <pubDate>Sun, 14 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/redis02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Redis 基础</title>
+      <link>http://localhost:1313/posts/redis01/</link>
+      <pubDate>Sat, 13 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/redis01/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL运维与管理</title>
+      <link>http://localhost:1313/posts/mysql07/</link>
+      <pubDate>Fri, 12 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql07/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL函数与运算</title>
+      <link>http://localhost:1313/posts/mysql06/</link>
+      <pubDate>Thu, 11 Feb 2021 11:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL高级特性与优化</title>
+      <link>http://localhost:1313/posts/mysql05/</link>
+      <pubDate>Wed, 10 Feb 2021 10:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL高级查询与连接</title>
+      <link>http://localhost:1313/posts/mysql04/</link>
+      <pubDate>Tue, 09 Feb 2021 14:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL数据操作与查询</title>
+      <link>http://localhost:1313/posts/mysql03/</link>
+      <pubDate>Mon, 08 Feb 2021 13:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL数据库操作基础</title>
+      <link>http://localhost:1313/posts/mysql02/</link>
+      <pubDate>Sun, 07 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL 基础 - 入门</title>
+      <link>http://localhost:1313/posts/mysql01/</link>
+      <pubDate>Sun, 07 Feb 2021 11:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql01/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM 生产实践</title>
+      <link>http://localhost:1313/posts/jvm08/</link>
+      <pubDate>Sat, 06 Feb 2021 17:10:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm08/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM 版本实战</title>
+      <link>http://localhost:1313/posts/jvm07/</link>
+      <pubDate>Fri, 05 Feb 2021 17:00:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm07/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM 线程模型</title>
+      <link>http://localhost:1313/posts/jvm06/</link>
+      <pubDate>Thu, 04 Feb 2021 16:55:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM 类加载和字节码优化</title>
+      <link>http://localhost:1313/posts/jvm05/</link>
+      <pubDate>Wed, 03 Feb 2021 16:50:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM GC调优</title>
+      <link>http://localhost:1313/posts/jvm04/</link>
+      <pubDate>Tue, 02 Feb 2021 16:45:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM 内存调优</title>
+      <link>http://localhost:1313/posts/jvm03/</link>
+      <pubDate>Mon, 01 Feb 2021 16:45:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM 监控工具</title>
+      <link>http://localhost:1313/posts/jvm02/</link>
+      <pubDate>Fri, 29 Jan 2021 16:45:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JVM 基础理论</title>
+      <link>http://localhost:1313/posts/jvm01/</link>
+      <pubDate>Thu, 28 Jan 2021 16:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/jvm01/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>实战应用</title>
+      <link>http://localhost:1313/posts/thread05/</link>
+      <pubDate>Wed, 27 Jan 2021 16:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>性能优化与监控</title>
+      <link>http://localhost:1313/posts/thread04/</link>
+      <pubDate>Tue, 26 Jan 2021 15:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>线程池技术</title>
+      <link>http://localhost:1313/posts/thread03/</link>
+      <pubDate>Mon, 25 Jan 2021 14:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>同步机制</title>
+      <link>http://localhost:1313/posts/thread02/</link>
+      <pubDate>Sun, 24 Jan 2021 13:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>多线程基础</title>
+      <link>http://localhost:1313/posts/thread01/</link>
+      <pubDate>Sat, 23 Jan 2021 12:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread01/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>并发编程-高级应用</title>
+      <link>http://localhost:1313/posts/juc05/</link>
+      <pubDate>Fri, 22 Jan 2021 16:40:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/juc05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>并发编程-并发工具</title>
+      <link>http://localhost:1313/posts/juc04/</link>
+      <pubDate>Thu, 21 Jan 2021 15:40:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/juc04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>并发编程-线程管理</title>
+      <link>http://localhost:1313/posts/juc03/</link>
+      <pubDate>Wed, 20 Jan 2021 14:40:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/juc03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>并发编程-锁机制</title>
+      <link>http://localhost:1313/posts/juc02/</link>
+      <pubDate>Tue, 19 Jan 2021 13:40:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/juc02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>并发编程-基础理论</title>
+      <link>http://localhost:1313/posts/juc01/</link>
+      <pubDate>Mon, 18 Jan 2021 13:26:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/juc01/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 高级主题</title>
-      <link>https://hollyblog.github.io/posts/java-base11/</link>
-      <pubDate>Sun, 10 Jan 2021 21:22:05 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base11/</link>
+      <pubDate>Sun, 17 Jan 2021 21:22:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base11/</guid>
+      <guid>http://localhost:1313/posts/java-base11/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 输入输出</title>
-      <link>https://hollyblog.github.io/posts/java-base10/</link>
-      <pubDate>Sat, 09 Jan 2021 22:22:05 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base10/</link>
+      <pubDate>Sat, 16 Jan 2021 22:22:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base10/</guid>
+      <guid>http://localhost:1313/posts/java-base10/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 集合框架</title>
-      <link>https://hollyblog.github.io/posts/java-base09/</link>
-      <pubDate>Sat, 09 Jan 2021 22:21:05 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base09/</link>
+      <pubDate>Fri, 15 Jan 2021 22:21:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base09/</guid>
+      <guid>http://localhost:1313/posts/java-base09/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 异常处理</title>
-      <link>https://hollyblog.github.io/posts/java-base08/</link>
-      <pubDate>Sat, 09 Jan 2021 22:20:05 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base08/</link>
+      <pubDate>Thu, 14 Jan 2021 22:20:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base08/</guid>
+      <guid>http://localhost:1313/posts/java-base08/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 高级特性</title>
-      <link>https://hollyblog.github.io/posts/java-base07/</link>
-      <pubDate>Sat, 09 Jan 2021 22:19:05 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base07/</link>
+      <pubDate>Wed, 13 Jan 2021 22:19:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base07/</guid>
+      <guid>http://localhost:1313/posts/java-base07/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 面向对象进阶</title>
-      <link>https://hollyblog.github.io/posts/java-base06/</link>
-      <pubDate>Sat, 09 Jan 2021 22:18:05 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base06/</link>
+      <pubDate>Tue, 12 Jan 2021 22:18:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base06/</guid>
+      <guid>http://localhost:1313/posts/java-base06/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 面向对象基础</title>
-      <link>https://hollyblog.github.io/posts/java-base05/</link>
-      <pubDate>Sat, 09 Jan 2021 21:18:05 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base05/</link>
+      <pubDate>Mon, 11 Jan 2021 21:18:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base05/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>Java 流程控制</title>
-      <link>https://hollyblog.github.io/posts/java-base03/</link>
-      <pubDate>Sat, 09 Jan 2021 20:18:05 +0800</pubDate>
-      
-      <guid>https://hollyblog.github.io/posts/java-base03/</guid>
+      <guid>http://localhost:1313/posts/java-base05/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 数组</title>
-      <link>https://hollyblog.github.io/posts/java-base04/</link>
+      <link>http://localhost:1313/posts/java-base04/</link>
+      <pubDate>Sun, 10 Jan 2021 20:18:05 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/java-base04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Java 流程控制</title>
+      <link>http://localhost:1313/posts/java-base03/</link>
       <pubDate>Sat, 09 Jan 2021 20:18:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base04/</guid>
+      <guid>http://localhost:1313/posts/java-base03/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 基础语法</title>
-      <link>https://hollyblog.github.io/posts/java-base02/</link>
+      <link>http://localhost:1313/posts/java-base02/</link>
       <pubDate>Fri, 08 Jan 2021 20:18:05 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base02/</guid>
+      <guid>http://localhost:1313/posts/java-base02/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Java 入门基础</title>
-      <link>https://hollyblog.github.io/posts/java-base01/</link>
-      <pubDate>Fri, 08 Jan 2021 15:20:00 +0800</pubDate>
+      <link>http://localhost:1313/posts/java-base01/</link>
+      <pubDate>Fri, 08 Jan 2021 15:21:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-base01/</guid>
+      <guid>http://localhost:1313/posts/java-base01/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>基础环境搭建</title>
-      <link>https://hollyblog.github.io/posts/java-env-base/</link>
+      <link>http://localhost:1313/posts/java-base00/</link>
       <pubDate>Fri, 08 Jan 2021 15:20:00 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/java-env-base/</guid>
+      <guid>http://localhost:1313/posts/java-base00/</guid>
       <description></description>
       
     </item>

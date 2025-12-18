@@ -2,29 +2,99 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据库基础 on 永远纯粹</title>
-    <link>https://hollyblog.github.io/categories/database/</link>
+    <link>http://localhost:1313/categories/database/</link>
     <description>Recent content in 数据库基础 on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2025 Holly</copyright>
-    <lastBuildDate>Mon, 24 Nov 2025 11:00:00 +0800</lastBuildDate><atom:link href="https://hollyblog.github.io/categories/database/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 22:47:08 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/database/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>MySQL 基础 - 01</title>
-      <link>https://hollyblog.github.io/posts/mysql01/</link>
-      <pubDate>Mon, 24 Nov 2025 11:00:00 +0800</pubDate>
+      <title>MySQL模块深度解析</title>
+      <link>http://localhost:1313/posts/mysql09/</link>
+      <pubDate>Sat, 04 Dec 2021 22:47:08 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/mysql01/</guid>
+      <guid>http://localhost:1313/posts/mysql09/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>MySQL 索引优化指南</title>
-      <link>https://hollyblog.github.io/posts/mysql02/</link>
-      <pubDate>Fri, 10 Jan 2025 11:00:00 +0800</pubDate>
+      <title>MySQL-复习</title>
+      <link>http://localhost:1313/posts/mysql08/</link>
+      <pubDate>Sat, 01 May 2021 00:16:23 +0800</pubDate>
       
-      <guid>https://hollyblog.github.io/posts/mysql02/</guid>
+      <guid>http://localhost:1313/posts/mysql08/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL运维与管理</title>
+      <link>http://localhost:1313/posts/mysql07/</link>
+      <pubDate>Fri, 12 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql07/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL函数与运算</title>
+      <link>http://localhost:1313/posts/mysql06/</link>
+      <pubDate>Thu, 11 Feb 2021 11:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL高级特性与优化</title>
+      <link>http://localhost:1313/posts/mysql05/</link>
+      <pubDate>Wed, 10 Feb 2021 10:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL高级查询与连接</title>
+      <link>http://localhost:1313/posts/mysql04/</link>
+      <pubDate>Tue, 09 Feb 2021 14:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL数据操作与查询</title>
+      <link>http://localhost:1313/posts/mysql03/</link>
+      <pubDate>Mon, 08 Feb 2021 13:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL数据库操作基础</title>
+      <link>http://localhost:1313/posts/mysql02/</link>
+      <pubDate>Sun, 07 Feb 2021 12:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MySQL 基础 - 入门</title>
+      <link>http://localhost:1313/posts/mysql01/</link>
+      <pubDate>Sun, 07 Feb 2021 11:00:00 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql01/</guid>
       <description></description>
       
     </item>

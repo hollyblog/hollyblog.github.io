@@ -2,12 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>线程池 on 永远纯粹</title>
-    <link>https://hollyblog.github.io/categories/threadpool/</link>
+    <link>http://localhost:1313/categories/threadpool/</link>
     <description>Recent content in 线程池 on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2025 Holly</copyright>
-    <atom:link href="https://hollyblog.github.io/categories/threadpool/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Jan 2021 16:44:13 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/threadpool/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>实战应用</title>
+      <link>http://localhost:1313/posts/thread05/</link>
+      <pubDate>Wed, 27 Jan 2021 16:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>性能优化与监控</title>
+      <link>http://localhost:1313/posts/thread04/</link>
+      <pubDate>Tue, 26 Jan 2021 15:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>线程池技术</title>
+      <link>http://localhost:1313/posts/thread03/</link>
+      <pubDate>Mon, 25 Jan 2021 14:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>同步机制</title>
+      <link>http://localhost:1313/posts/thread02/</link>
+      <pubDate>Sun, 24 Jan 2021 13:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>多线程基础</title>
+      <link>http://localhost:1313/posts/thread01/</link>
+      <pubDate>Sat, 23 Jan 2021 12:44:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/thread01/</guid>
+      <description></description>
+      
+    </item>
     
   </channel>
 </rss>

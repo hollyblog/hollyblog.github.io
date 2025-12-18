@@ -57,13 +57,7 @@
   </section>
 
   {{/* Article Grid */}}
-  {{/* Article Grid */}}
   {{ if gt .Pages 0 }}
-    <div class="relative">
-      <div class="absolute left-0 top-0 z-10">
-        <span class="inline-block bg-neutral-100 dark:bg-neutral-800 text-sm font-semibold text-neutral-800 dark:text-neutral-200 px-3 py-1 rounded">最新文章</span>
-      </div>
-      <div class="pt-8">
     {{ $cardView := .Params.cardView | default (site.Params.list.cardView | default false) }}
     {{ $cardViewScreenWidth := .Params.cardViewScreenWidth | default (site.Params.list.cardViewScreenWidth | default false) }}
     {{ $groupByYear := .Params.groupByYear | default (site.Params.list.groupByYear | default false) }}
@@ -152,14 +146,12 @@
       {{ end }}{{/* End of groupByYear */}}
     {{ end }}{{/* End of cardView */}}
   {{/* else: .Pages not greater to zero */}}
-    {{ else }}
+  {{ else }}
     <section class="mt-10 prose dark:prose-invert">
       <p class="py-8 border-t">
         <em>{{ i18n "list.no_articles" | emojify }}</em>
       </p>
     </section>
-      </div>
-    </div>
   {{ end }}
   {{ partial "pagination.html" . }}
 {{ end }}

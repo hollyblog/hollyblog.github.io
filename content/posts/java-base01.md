@@ -1,6 +1,6 @@
 ---
 title: "Java 入门基础"
-date: 2021-01-08T15:20:00+08:00
+date: 2021-01-08T15:21:00+08:00
 draft: false
 description: "Java 入门基础：Java 简介，JDK、JRE、JVM、Hello World 程序。"
 tags: ["Java", "入门基础"]

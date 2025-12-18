@@ -2,32 +2,28 @@ function css(name) {
   return "rgb(" + getComputedStyle(document.documentElement).getPropertyValue(name) + ")";
 }
 
-function initMermaidLight() {
+// 初始化Mermaid
+console.log("Mermaid.js loaded");
+if (typeof mermaid !== 'undefined') {
+  console.log("Mermaid library found");
+  
+  // 使用简单的配置
   mermaid.initialize({
-    theme: "base",
-    themeVariables: {
-      background: css("--color-neutral"),
-      primaryColor: css("--color-primary-200"),
-      secondaryColor: css("--color-secondary-200"),
-      tertiaryColor: css("--color-neutral-100"),
-      primaryBorderColor: css("--color-primary-400"),
-      secondaryBorderColor: css("--color-secondary-400"),
-      tertiaryBorderColor: css("--color-neutral-400"),
-      lineColor: css("--color-neutral-600"),
-      fontFamily:
-        "ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif",
-      fontSize: "16px",
-    },
+    startOnLoad: true,
+    theme: "default",
+    securityLevel: "loose"
   });
-}
-
-function initMermaidDark() {
-  mermaid.initialize({
-    theme: "dark",
-    themeVariables: {
-      fontFamily:
-        "ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif",
-      fontSize: "16px",
-    },
-  });
+  
+  console.log("Mermaid initialized with simple config");
+  
+  // 渲染所有Mermaid图表
+  console.log("Rendering Mermaid diagrams");
+  try {
+    mermaid.run();
+    console.log("Mermaid diagrams rendered successfully");
+  } catch (error) {
+    console.error("Error rendering Mermaid diagrams:", error);
+  }
+} else {
+  console.error("Mermaid library not found");
 }

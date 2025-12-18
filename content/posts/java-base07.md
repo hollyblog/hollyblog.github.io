@@ -1,6 +1,6 @@
 ---
 title: "Java 高级特性"
-date: 2021-01-09T22:19:05+08:00
+date: 2021-01-13T22:19:05+08:00
 draft: false
 description: "Java 高级特性：内部类和嵌套类、枚举类型（enum）、递归、反射、注解（annotation）、泛型（generics）。"
 tags: ["Java", "Java高级特性"]
