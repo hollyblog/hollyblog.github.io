@@ -6,7 +6,7 @@
     <description>Recent content in Categories on 永远纯粹</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>© 2025 Holly</copyright>
+    <copyright>© 2026 Holly</copyright>
     <lastBuildDate>Mon, 24 Nov 2025 14:30:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -15,6 +15,26 @@
       <pubDate>Mon, 24 Nov 2025 14:30:00 +0800</pubDate>
       
       <guid>http://localhost:1313/categories/resume/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>分布式系统</title>
+      <link>http://localhost:1313/categories/distributed/</link>
+      <pubDate>Mon, 03 Jan 2022 16:20:26 +0800</pubDate>
+      
+      <guid>http://localhost:1313/categories/distributed/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>JUC</title>
+      <link>http://localhost:1313/categories/juc/</link>
+      <pubDate>Sun, 02 Jan 2022 00:23:32 +0800</pubDate>
+      
+      <guid>http://localhost:1313/categories/juc/</guid>
       <description></description>
       
     </item>
@@ -60,21 +80,31 @@
     </item>
     
     <item>
-      <title>JUC</title>
-      <link>http://localhost:1313/categories/juc/</link>
-      <pubDate>Thu, 02 Dec 2021 00:23:32 +0800</pubDate>
-      
-      <guid>http://localhost:1313/categories/juc/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
       <title>Java基础</title>
       <link>http://localhost:1313/categories/java/</link>
       <pubDate>Wed, 01 Dec 2021 00:21:27 +0800</pubDate>
       
       <guid>http://localhost:1313/categories/java/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>系统架构</title>
+      <link>http://localhost:1313/categories/sa/</link>
+      <pubDate>Thu, 25 Feb 2021 16:40:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/categories/sa/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>框架应用</title>
+      <link>http://localhost:1313/categories/framework/</link>
+      <pubDate>Wed, 24 Feb 2021 15:40:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/categories/framework/</guid>
       <description></description>
       
     </item>
@@ -95,36 +125,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/categories/llm/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>分布式系统</title>
-      <link>http://localhost:1313/categories/distributed/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/categories/distributed/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>框架应用</title>
-      <link>http://localhost:1313/categories/framework/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/categories/framework/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>系统架构</title>
-      <link>http://localhost:1313/categories/sa/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/categories/sa/</guid>
       <description></description>
       
     </item>

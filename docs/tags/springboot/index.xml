@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SpringBoot on 永远纯粹</title>
+    <link>http://localhost:1313/tags/springboot/</link>
+    <description>Recent content in SpringBoot on 永远纯粹</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2026 Holly</copyright>
+    <lastBuildDate>Sat, 20 Feb 2021 19:29:39 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SpringBoot-企业级应用特性</title>
+      <link>http://localhost:1313/posts/spring06/</link>
+      <pubDate>Sat, 20 Feb 2021 19:29:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/spring06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot-测试与监控管理</title>
+      <link>http://localhost:1313/posts/spring05/</link>
+      <pubDate>Fri, 19 Feb 2021 19:29:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/spring05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot-高级特性与性能优化</title>
+      <link>http://localhost:1313/posts/spring04/</link>
+      <pubDate>Fri, 19 Feb 2021 18:29:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/spring04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot-数据库集成与容器管理</title>
+      <link>http://localhost:1313/posts/spring03/</link>
+      <pubDate>Fri, 19 Feb 2021 17:29:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/spring03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot-核心概念与配置管理</title>
+      <link>http://localhost:1313/posts/spring02/</link>
+      <pubDate>Thu, 18 Feb 2021 17:29:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/spring02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot-环境搭建与项目初始化</title>
+      <link>http://localhost:1313/posts/spring01/</link>
+      <pubDate>Wed, 17 Feb 2021 16:29:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/spring01/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

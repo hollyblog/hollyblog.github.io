@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MyBatis on 永远纯粹</title>
+    <link>http://localhost:1313/tags/mybatis/</link>
+    <description>Recent content in MyBatis on 永远纯粹</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>© 2026 Holly</copyright>
+    <lastBuildDate>Wed, 24 Feb 2021 15:40:39 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MyBatis-高级应用与实战</title>
+      <link>http://localhost:1313/posts/mybatis06/</link>
+      <pubDate>Wed, 24 Feb 2021 15:40:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mybatis06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MyBatis-分布式与微服务</title>
+      <link>http://localhost:1313/posts/mybatis05/</link>
+      <pubDate>Tue, 23 Feb 2021 15:40:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mybatis05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MyBatis-框架集成</title>
+      <link>http://localhost:1313/posts/mybatis04/</link>
+      <pubDate>Mon, 22 Feb 2021 15:40:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mybatis04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MyBatis-高级特性与缓存</title>
+      <link>http://localhost:1313/posts/mybatis03/</link>
+      <pubDate>Mon, 22 Feb 2021 15:30:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mybatis03/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MyBatis-映射文件与SQL操作</title>
+      <link>http://localhost:1313/posts/mybatis02/</link>
+      <pubDate>Sun, 21 Feb 2021 19:30:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mybatis02/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>MyBatis-基础入门</title>
+      <link>http://localhost:1313/posts/mybatis01/</link>
+      <pubDate>Sun, 21 Feb 2021 19:29:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mybatis01/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,3480 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="zh-CN">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>架构模式 &middot; 永远纯粹</title>
+    <meta name="title" content="架构模式 &middot; 永远纯粹">
+  
+
+  
+  
+    <meta name="description" content="架构模式：分层架构、面向服务架构（SOA）、微服务架构。">
+  
+  
+    <meta name="keywords" content="SA,架构模式,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/architecture02/">
+  
+
+  
+  
+    <meta name="author" content="Holly">
+  
+  
+    
+      
+        
+          <link href="https://github.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://gitee.com/hollyblog/" rel="me">
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/architecture02/">
+  <meta property="og:site_name" content="永远纯粹">
+  <meta property="og:title" content="架构模式">
+  <meta property="og:description" content="架构模式：分层架构、面向服务架构（SOA）、微服务架构。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-02-25T16:40:39+08:00">
+    <meta property="article:modified_time" content="2021-02-25T16:40:39+08:00">
+    <meta property="article:tag" content="SA">
+    <meta property="article:tag" content="架构模式">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="架构模式">
+  <meta name="twitter:description" content="架构模式：分层架构、面向服务架构（SOA）、微服务架构。">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.391ee07dafc20cca70c5cd4275104dda29a78c8787887fd66963f367c6564348c73c2d276e442aec635a38b762100dc76b354c4fb9abbb38127ea518b3bada36.css"
+    integrity="sha512-OR7gfa/CDMpwxc1CdRBN2imnjIeHiH/WaWPzZ8ZWQ0jHPC0nbkQq7GNaOLdiEA3HazVMT7mruzgSfqUYs7raNg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.9df4fc14d50efcc9aa4cfc2b6f348e365f421f5ad491278f8f48c0360cf2f93f08882fda6da162d7ace8e5add57c2df4ac46bd3861306b1d4c452cd31f448d64.js"
+      integrity="sha512-nfT8FNUO/MmqTPwrbzSONl9CH1rUkSePj0jANgzy&#43;T8IiC/abaFi16zo5a3VfC30rEa9OGEwax1MRSzTH0SNZA=="
+      data-copy=""
+      data-copied=""></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "全部文章",
+    "name": "架构模式",
+    "headline": "架构模式",
+    "description": "架构模式：分层架构、面向服务架构（SOA）、微服务架构。",
+    
+    "inLanguage": "zh-CN",
+    "url" : "http://localhost:1313/posts/architecture02/",
+    "author" : {
+      "@type": "Person",
+      "name": "Holly"
+    },
+    "copyrightYear": "2021",
+    "dateCreated": "2021-02-25T16:40:39\u002b08:00",
+    "datePublished": "2021-02-25T16:40:39\u002b08:00",
+    
+    "dateModified": "2021-02-25T16:40:39\u002b08:00",
+    
+    "keywords": ["SA","架构模式"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "7094"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+    
+
+
+  
+  <link rel="stylesheet" href="/css/custom.min.73bf6048d6126134a3a4d080eae4c7d7f266a34e211b8c064c369e863072b5f83301535ff631e803efa5c7fbfbfa9b5b52debdab6f1ca834f108f8cc7f432207.css" integrity="sha512-c79gSNYSYTSjpNCA6uTH1/Jmo04hG4wGTDaehjBytfgzAVNf9jHoA&#43;&#43;lx/v7&#43;ptbUt69q28cqDTxCPjMf0MiBw==" />
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+    
+    
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium">
+          永远纯粹
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="首页"
+  title="永远天真烂漫">
+  
+  
+    <p class="text-base font-medium">
+      首页
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="关于我"
+  title="关于我">
+  
+  
+    <p class="text-base font-medium">
+      关于我
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/distributed/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="分布式"
+  title="分布式系统">
+  
+  
+    <p class="text-base font-medium">
+      分布式
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/cloud/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="云计算"
+  title="云计算">
+  
+  
+    <p class="text-base font-medium">
+      云计算
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/categories/llm/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="大模型"
+  title="大模型">
+  
+  
+    <p class="text-base font-medium">
+      大模型
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="项目"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        项目
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="智能餐饮"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              智能餐饮
+            </p>
+          </a>
+        
+          <a
+            href="https://gitee.com/hollyblog/"
+            
+              target="_blank"
+            
+            aria-label="寻环小程序"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              寻环小程序
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="基础"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        基础
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/computer/"
+            
+            aria-label="计算机基础"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="计算机基础">
+              计算机基础
+            </p>
+          </a>
+        
+          <a
+            href="/categories/java/"
+            
+            aria-label="编程语言"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Java基础">
+              编程语言
+            </p>
+          </a>
+        
+          <a
+            href="/categories/database/"
+            
+            aria-label="数据存储"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="数据库基础">
+              数据存储
+            </p>
+          </a>
+        
+          <a
+            href="/categories/framework/"
+            
+            aria-label="框架应用"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="框架应用">
+              框架应用
+            </p>
+          </a>
+        
+          <a
+            href="/categories/middleware/"
+            
+            aria-label="中间件"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="中间件">
+              中间件
+            </p>
+          </a>
+        
+          <a
+            href="/categories/ops/"
+            
+            aria-label="运维部署"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="运维部署">
+              运维部署
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+      aria-label="进阶"
+      class="text-base font-medium hover:text-primary-600 dark:hover:text-primary-400"
+      title="">
+      <p>
+        进阶
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/categories/juc/"
+            
+            aria-label="JUC"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JUC">
+              JUC
+            </p>
+          </a>
+        
+          <a
+            href="/categories/threadpool/"
+            
+            aria-label="线程池"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="线程池">
+              线程池
+            </p>
+          </a>
+        
+          <a
+            href="/categories/jvm/"
+            
+            aria-label="JVM调优"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="JVM">
+              JVM调优
+            </p>
+          </a>
+        
+          <a
+            href="/categories/sa/"
+            
+            aria-label="系统架构"
+            class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="系统架构">
+              系统架构
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <a
+  href="/resume/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="我的简历"
+  title="个人简历">
+  
+  
+    <p class="text-base font-medium">
+      我的简历
+    </p>
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="首页"
+    title="永远天真烂漫">
+    
+    
+      <p class="text-bg font-bg">
+        首页
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="关于我"
+    title="关于我">
+    
+    
+      <p class="text-bg font-bg">
+        关于我
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/distributed/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="分布式"
+    title="分布式系统">
+    
+    
+      <p class="text-bg font-bg">
+        分布式
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/cloud/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="云计算"
+    title="云计算">
+    
+    
+      <p class="text-bg font-bg">
+        云计算
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/categories/llm/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="大模型"
+    title="大模型">
+    
+    
+      <p class="text-bg font-bg">
+        大模型
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="项目"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      项目
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="智能餐饮"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        智能餐饮
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="https://gitee.com/hollyblog/"
+      
+        target="_blank"
+      
+      aria-label="寻环小程序"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        寻环小程序
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="基础"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      基础
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/computer/"
+      
+      aria-label="计算机基础"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="计算机基础">
+        计算机基础
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/java/"
+      
+      aria-label="编程语言"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Java基础">
+        编程语言
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/database/"
+      
+      aria-label="数据存储"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="数据库基础">
+        数据存储
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/framework/"
+      
+      aria-label="框架应用"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="框架应用">
+        框架应用
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/middleware/"
+      
+      aria-label="中间件"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="中间件">
+        中间件
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/ops/"
+      
+      aria-label="运维部署"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="运维部署">
+        运维部署
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    aria-label="进阶"
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      进阶
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/juc/"
+      
+      aria-label="JUC"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JUC">
+        JUC
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/threadpool/"
+      
+      aria-label="线程池"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="线程池">
+        线程池
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/jvm/"
+      
+      aria-label="JVM调优"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="JVM">
+        JVM调优
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/categories/sa/"
+      
+      aria-label="系统架构"
+      class="flex items-center hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="系统架构">
+        系统架构
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/resume/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="我的简历"
+    title="个人简历">
+    
+    
+      <p class="text-bg font-bg">
+        我的简历
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+    
+    
+  
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/img/background_hu_de979b0156ba1693.jpg"
+      alt="架构模式"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+      integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/img/background_hu_de979b0156ba1693.jpg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        架构模式
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2021-02-25T16:40:39&#43;08:00">2021年2月25日</time><span class="px-2 text-primary-500">&middot;</span><span>7094 字</span><span class="px-2 text-primary-500">&middot;</span><span title="">15 分钟</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/categories/sa/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    系统架构
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+        
+      
+        
+          
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/sa/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    SA
+  </span>
+</span>
+
+              </a>
+            
+              <a class="relative mt-[0.5rem] me-2" href="/tags/%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F/">
+                <span class="flex cursor-pointer">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    架构模式
+  </span>
+</span>
+
+              </a>
+            
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Holly"
+        src="/img/avatar_hu_ac9fd040db4ac989.jpg"
+        data-zoom-src="/img/avatar_hu_7ab8791e041692ec.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Holly
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">专注于分布式系统设计、中间件性能优化、云计算和大模型应用相关领域的学习和分享。</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/hollyblog/"
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://gitee.com/hollyblog/"
+          target="_blank"
+          aria-label="Gitee"
+          title="Gitee"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.037a.594.594 0 0 1-.592-.593v-1.482a.594.594 0 0 1 .592-.593h6.815c.327 0 .593.266.593.593v3.408a4 4 0 0 1-4 4H5.926a.594.594 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/>
+</svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:2285549633@qq.com"
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://blog.csdn.net/super_Zhu0818?spm=1000.2115.3001.10640"
+          target="_blank"
+          aria-label="Csdn"
+          title="Csdn"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#分层架构">分层架构</a>
+      <ul>
+        <li><a href="#分层架构概述">分层架构概述</a>
+          <ul>
+            <li><a href="#分层架构的优势">分层架构的优势</a></li>
+            <li><a href="#分层架构的挑战">分层架构的挑战</a></li>
+          </ul>
+        </li>
+        <li><a href="#三层架构">三层架构</a>
+          <ul>
+            <li><a href="#各层职责详解">各层职责详解</a></li>
+            <li><a href="#实现示例">实现示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#mvc模式">MVC模式</a>
+          <ul>
+            <li><a href="#mvc架构示意图">MVC架构示意图</a></li>
+            <li><a href="#mvc组件详解">MVC组件详解</a></li>
+            <li><a href="#mvc的优势">MVC的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#mvp模式">MVP模式</a>
+          <ul>
+            <li><a href="#mvp与mvc的区别">MVP与MVC的区别</a></li>
+            <li><a href="#mvp实现示例">MVP实现示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#mvvm模式">MVVM模式</a>
+          <ul>
+            <li><a href="#mvvm的核心概念">MVVM的核心概念</a></li>
+            <li><a href="#mvvm的优势">MVVM的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#六边形架构">六边形架构</a>
+          <ul>
+            <li><a href="#六边形架构示意图">六边形架构示意图</a></li>
+            <li><a href="#核心概念">核心概念</a></li>
+            <li><a href="#六边形架构的优势">六边形架构的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#架构选择指南">架构选择指南</a>
+          <ul>
+            <li><a href="#三层架构-1">三层架构</a></li>
+            <li><a href="#mvcmvp">MVC/MVP</a></li>
+            <li><a href="#mvvm">MVVM</a></li>
+            <li><a href="#六边形架构-1">六边形架构</a></li>
+            <li><a href="#选择原则">选择原则</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#面向服务架构soa">面向服务架构（SOA）</a>
+      <ul>
+        <li><a href="#soa基本概念">SOA基本概念</a>
+          <ul>
+            <li><a href="#什么是面向服务架构soa">什么是面向服务架构（SOA）</a></li>
+            <li><a href="#soa的核心特征">SOA的核心特征</a></li>
+            <li><a href="#soa的优势">SOA的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#服务设计原则">服务设计原则</a>
+          <ul>
+            <li><a href="#服务设计的核心原则">服务设计的核心原则</a></li>
+            <li><a href="#服务粒度设计">服务粒度设计</a></li>
+          </ul>
+        </li>
+        <li><a href="#esb企业服务总线">ESB企业服务总线</a>
+          <ul>
+            <li><a href="#esb概述">ESB概述</a></li>
+            <li><a href="#esb的核心功能">ESB的核心功能</a></li>
+            <li><a href="#esb架构模式">ESB架构模式</a></li>
+          </ul>
+        </li>
+        <li><a href="#web-services">Web Services</a>
+          <ul>
+            <li></li>
+            <li><a href="#web-services技术栈">Web Services技术栈</a></li>
+            <li><a href="#soap消息示例">SOAP消息示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#restful-api设计">RESTful API设计</a>
+          <ul>
+            <li><a href="#rest设计原则">REST设计原则</a></li>
+            <li><a href="#restful-api设计最佳实践">RESTful API设计最佳实践</a></li>
+            <li><a href="#http方法使用">HTTP方法使用</a></li>
+            <li><a href="#状态码使用">状态码使用</a></li>
+          </ul>
+        </li>
+        <li><a href="#soa与微服务的关系">SOA与微服务的关系</a></li>
+      </ul>
+    </li>
+    <li><a href="#微服务架构">微服务架构</a>
+      <ul>
+        <li><a href="#微服务架构概述">微服务架构概述</a>
+          <ul>
+            <li><a href="#微服务的特征">微服务的特征</a></li>
+            <li><a href="#微服务-vs-单体架构">微服务 vs 单体架构</a></li>
+          </ul>
+        </li>
+        <li><a href="#微服务拆分策略">微服务拆分策略</a>
+          <ul>
+            <li><a href="#拆分原则">拆分原则</a></li>
+            <li><a href="#拆分方法">拆分方法</a></li>
+            <li><a href="#拆分注意事项">拆分注意事项</a></li>
+          </ul>
+        </li>
+        <li><a href="#服务间通信">服务间通信</a>
+          <ul>
+            <li><a href="#通信模式">通信模式</a></li>
+            <li><a href="#api网关">API网关</a></li>
+            <li><a href="#服务发现">服务发现</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据一致性">数据一致性</a>
+          <ul>
+            <li><a href="#一致性模型">一致性模型</a></li>
+            <li><a href="#分布式事务解决方案">分布式事务解决方案</a></li>
+            <li><a href="#事件溯源">事件溯源</a></li>
+          </ul>
+        </li>
+        <li><a href="#服务治理">服务治理</a>
+          <ul>
+            <li><a href="#配置管理">配置管理</a></li>
+            <li><a href="#监控和可观测性">监控和可观测性</a></li>
+            <li><a href="#容错和弹性">容错和弹性</a></li>
+            <li><a href="#安全治理">安全治理</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#分层架构">分层架构</a>
+      <ul>
+        <li><a href="#分层架构概述">分层架构概述</a>
+          <ul>
+            <li><a href="#分层架构的优势">分层架构的优势</a></li>
+            <li><a href="#分层架构的挑战">分层架构的挑战</a></li>
+          </ul>
+        </li>
+        <li><a href="#三层架构">三层架构</a>
+          <ul>
+            <li><a href="#各层职责详解">各层职责详解</a></li>
+            <li><a href="#实现示例">实现示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#mvc模式">MVC模式</a>
+          <ul>
+            <li><a href="#mvc架构示意图">MVC架构示意图</a></li>
+            <li><a href="#mvc组件详解">MVC组件详解</a></li>
+            <li><a href="#mvc的优势">MVC的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#mvp模式">MVP模式</a>
+          <ul>
+            <li><a href="#mvp与mvc的区别">MVP与MVC的区别</a></li>
+            <li><a href="#mvp实现示例">MVP实现示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#mvvm模式">MVVM模式</a>
+          <ul>
+            <li><a href="#mvvm的核心概念">MVVM的核心概念</a></li>
+            <li><a href="#mvvm的优势">MVVM的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#六边形架构">六边形架构</a>
+          <ul>
+            <li><a href="#六边形架构示意图">六边形架构示意图</a></li>
+            <li><a href="#核心概念">核心概念</a></li>
+            <li><a href="#六边形架构的优势">六边形架构的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#架构选择指南">架构选择指南</a>
+          <ul>
+            <li><a href="#三层架构-1">三层架构</a></li>
+            <li><a href="#mvcmvp">MVC/MVP</a></li>
+            <li><a href="#mvvm">MVVM</a></li>
+            <li><a href="#六边形架构-1">六边形架构</a></li>
+            <li><a href="#选择原则">选择原则</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#面向服务架构soa">面向服务架构（SOA）</a>
+      <ul>
+        <li><a href="#soa基本概念">SOA基本概念</a>
+          <ul>
+            <li><a href="#什么是面向服务架构soa">什么是面向服务架构（SOA）</a></li>
+            <li><a href="#soa的核心特征">SOA的核心特征</a></li>
+            <li><a href="#soa的优势">SOA的优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#服务设计原则">服务设计原则</a>
+          <ul>
+            <li><a href="#服务设计的核心原则">服务设计的核心原则</a></li>
+            <li><a href="#服务粒度设计">服务粒度设计</a></li>
+          </ul>
+        </li>
+        <li><a href="#esb企业服务总线">ESB企业服务总线</a>
+          <ul>
+            <li><a href="#esb概述">ESB概述</a></li>
+            <li><a href="#esb的核心功能">ESB的核心功能</a></li>
+            <li><a href="#esb架构模式">ESB架构模式</a></li>
+          </ul>
+        </li>
+        <li><a href="#web-services">Web Services</a>
+          <ul>
+            <li></li>
+            <li><a href="#web-services技术栈">Web Services技术栈</a></li>
+            <li><a href="#soap消息示例">SOAP消息示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#restful-api设计">RESTful API设计</a>
+          <ul>
+            <li><a href="#rest设计原则">REST设计原则</a></li>
+            <li><a href="#restful-api设计最佳实践">RESTful API设计最佳实践</a></li>
+            <li><a href="#http方法使用">HTTP方法使用</a></li>
+            <li><a href="#状态码使用">状态码使用</a></li>
+          </ul>
+        </li>
+        <li><a href="#soa与微服务的关系">SOA与微服务的关系</a></li>
+      </ul>
+    </li>
+    <li><a href="#微服务架构">微服务架构</a>
+      <ul>
+        <li><a href="#微服务架构概述">微服务架构概述</a>
+          <ul>
+            <li><a href="#微服务的特征">微服务的特征</a></li>
+            <li><a href="#微服务-vs-单体架构">微服务 vs 单体架构</a></li>
+          </ul>
+        </li>
+        <li><a href="#微服务拆分策略">微服务拆分策略</a>
+          <ul>
+            <li><a href="#拆分原则">拆分原则</a></li>
+            <li><a href="#拆分方法">拆分方法</a></li>
+            <li><a href="#拆分注意事项">拆分注意事项</a></li>
+          </ul>
+        </li>
+        <li><a href="#服务间通信">服务间通信</a>
+          <ul>
+            <li><a href="#通信模式">通信模式</a></li>
+            <li><a href="#api网关">API网关</a></li>
+            <li><a href="#服务发现">服务发现</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据一致性">数据一致性</a>
+          <ul>
+            <li><a href="#一致性模型">一致性模型</a></li>
+            <li><a href="#分布式事务解决方案">分布式事务解决方案</a></li>
+            <li><a href="#事件溯源">事件溯源</a></li>
+          </ul>
+        </li>
+        <li><a href="#服务治理">服务治理</a>
+          <ul>
+            <li><a href="#配置管理">配置管理</a></li>
+            <li><a href="#监控和可观测性">监控和可观测性</a></li>
+            <li><a href="#容错和弹性">容错和弹性</a></li>
+            <li><a href="#安全治理">安全治理</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h2 class="relative group">分层架构
+    <div id="分层架构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%88%86%e5%b1%82%e6%9e%b6%e6%9e%84" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">分层架构概述
+    <div id="分层架构概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%88%86%e5%b1%82%e6%9e%b6%e6%9e%84%e6%a6%82%e8%bf%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>分层架构（Layered Architecture）是软件架构中最常见和最基础的架构模式之一。它将系统按照功能职责划分为不同的层次，每一层只能与相邻的层进行交互，形成清晰的层次结构。这种架构模式有助于实现关注点分离、提高代码的可维护性和可测试性。</p>
+<blockquote>
+<p>核心理念
+分层架构的核心思想是&quot;分而治之&quot;，通过将复杂的系统分解为多个相对简单的层次，每个层次专注于特定的职责，从而降低系统的复杂度。</p>
+</blockquote>
+
+<h4 class="relative group">分层架构的优势
+    <div id="分层架构的优势" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%88%86%e5%b1%82%e6%9e%b6%e6%9e%84%e7%9a%84%e4%bc%98%e5%8a%bf" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>关注点分离：
+每一层专注于特定的业务逻辑，职责清晰</li>
+<li>可维护性：
+修改某一层的实现不会影响其他层</li>
+<li>可测试性：
+每一层可以独立进行单元测试</li>
+<li>可重用性：
+底层组件可以被多个上层组件复用</li>
+<li>团队协作：
+不同团队可以并行开发不同的层次</li>
+</ul>
+
+<h4 class="relative group">分层架构的挑战
+    <div id="分层架构的挑战" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%88%86%e5%b1%82%e6%9e%b6%e6%9e%84%e7%9a%84%e6%8c%91%e6%88%98" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>性能开销：
+层次间的调用可能带来性能损耗</li>
+<li>过度设计：
+简单系统可能不需要复杂的分层</li>
+<li>层次耦合：
+不当的设计可能导致层次间紧耦合</li>
+<li>数据传递：
+数据在层次间传递可能产生冗余</li>
+</ul>
+
+<h3 class="relative group">三层架构
+    <div id="三层架构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%b8%89%e5%b1%82%e6%9e%b6%e6%9e%84" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>三层架构（Three-tier Architecture）是最经典的分层架构模式，将应用程序分为表示层、业务逻辑层和数据访问层。这种架构模式在企业级应用开发中被广泛采用。</p>
+<p>三层架构示意图</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">表示层 (Presentation Layer)
+</span></span><span class="line"><span class="cl">↓
+</span></span><span class="line"><span class="cl">业务逻辑层 (Business Logic Layer)
+</span></span><span class="line"><span class="cl">↓
+</span></span><span class="line"><span class="cl">数据访问层 (Data Access Layer)
+</span></span></code></pre></div>
+<h4 class="relative group">各层职责详解
+    <div id="各层职责详解" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%90%84%e5%b1%82%e8%81%8c%e8%b4%a3%e8%af%a6%e8%a7%a3" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>表示层 (Presentation Layer)
+<ul>
+<li>用户界面展示</li>
+<li>用户输入处理</li>
+<li>数据格式化和验证</li>
+<li>与业务逻辑层交互</li>
+</ul>
+</li>
+<li>业务逻辑层 (Business Logic Layer)
+<ul>
+<li>核心业务规则实现</li>
+<li>业务流程控制</li>
+<li>数据处理和计算</li>
+<li>事务管理</li>
+</ul>
+</li>
+<li>数据访问层 (Data Access Layer)
+<ul>
+<li>数据库操作封装</li>
+<li>数据持久化</li>
+<li>数据查询和更新</li>
+<li>数据源抽象</li>
+</ul>
+</li>
+</ul>
+
+<h4 class="relative group">实现示例
+    <div id="实现示例" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ae%9e%e7%8e%b0%e7%a4%ba%e4%be%8b" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 数据访问层</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserRepository</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">User</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findAll</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 业务逻辑层</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="n">userRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="nf">getUserById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">createUser</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 业务规则验证</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">validateUser</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 表示层</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Controller</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="n">userService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/users/{id}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getUser</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userService</span><span class="p">.</span><span class="na">getUserById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">MVC模式
+    <div id="mvc模式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvc%e6%a8%a1%e5%bc%8f" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>MVC（Model-View-Controller）是一种经典的架构模式，将应用程序分为三个核心组件：模型（Model）、视图（View）和控制器（Controller）。这种模式特别适用于用户界面的设计。</p>
+
+<h4 class="relative group">MVC架构示意图
+    <div id="mvc架构示意图" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvc%e6%9e%b6%e6%9e%84%e7%a4%ba%e6%84%8f%e5%9b%be" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">View 视图-----Controller控制器-----Model模型
+</span></span></code></pre></div>
+<h4 class="relative group">MVC组件详解
+    <div id="mvc组件详解" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvc%e7%bb%84%e4%bb%b6%e8%af%a6%e8%a7%a3" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>View (视图)
+<ul>
+<li>负责数据的展示</li>
+<li>处理用户界面逻辑</li>
+<li>接收用户输入</li>
+<li>不包含业务逻辑</li>
+</ul>
+</li>
+<li>Controller (控制器)
+<ul>
+<li>处理用户请求</li>
+<li>协调Model和View</li>
+<li>控制应用流程</li>
+<li>处理用户交互</li>
+</ul>
+</li>
+<li>Model (模型)
+<ul>
+<li>管理应用数据</li>
+<li>实现业务逻辑</li>
+<li>数据状态管理</li>
+<li>通知视图更新</li>
+</ul>
+</li>
+</ul>
+
+<h4 class="relative group">MVC的优势
+    <div id="mvc的优势" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvc%e7%9a%84%e4%bc%98%e5%8a%bf" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>关注点分离：
+业务逻辑、数据和界面分离</li>
+<li>可维护性：
+各组件独立，易于维护和修改</li>
+<li>可测试性：
+业务逻辑可以独立测试</li>
+<li>并行开发：
+前端和后端可以并行开发</li>
+</ul>
+
+<h3 class="relative group">MVP模式
+    <div id="mvp模式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvp%e6%a8%a1%e5%bc%8f" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>MVP（Model-View-Presenter）是MVC模式的一个变种，主要区别在于Presenter替代了Controller的角色，并且View和Model之间没有直接的交互，所有的交互都通过Presenter进行。</p>
+
+<h4 class="relative group">MVP与MVC的区别
+    <div id="mvp与mvc的区别" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvp%e4%b8%8emvc%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>交互方式
+<ul>
+<li>MVC：View可以直接访问Model</li>
+<li>MVP：View通过Presenter访问Model</li>
+</ul>
+</li>
+<li>耦合度
+<ul>
+<li>MVC：View和Model存在耦合</li>
+<li>MVP：View和Model完全解耦</li>
+</ul>
+</li>
+<li>可测试性
+<ul>
+<li>MVP：更容易进行单元测试,因为View接口可以被模拟</li>
+</ul>
+</li>
+</ul>
+
+<h4 class="relative group">MVP实现示例
+    <div id="mvp实现示例" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvp%e5%ae%9e%e7%8e%b0%e7%a4%ba%e4%be%8b" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// View接口</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserView</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">showUser</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">showError</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">showLoading</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">hideLoading</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Presenter</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserPresenter</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UserView</span><span class="w"> </span><span class="n">view</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="n">userService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">UserPresenter</span><span class="p">(</span><span class="n">UserView</span><span class="w"> </span><span class="n">view</span><span class="p">,</span><span class="w"> </span><span class="n">UserService</span><span class="w"> </span><span class="n">userService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">view</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">userService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">loadUser</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">view</span><span class="p">.</span><span class="na">showLoading</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userService</span><span class="p">.</span><span class="na">getUserById</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">view</span><span class="p">.</span><span class="na">showUser</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">view</span><span class="p">.</span><span class="na">showError</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">view</span><span class="p">.</span><span class="na">hideLoading</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">MVVM模式
+    <div id="mvvm模式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvvm%e6%a8%a1%e5%bc%8f" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>MVVM（Model-View-ViewModel）是另一种架构模式，特别适用于支持数据绑定的平台。ViewModel作为View和Model之间的桥梁，通过数据绑定机制实现View的自动更新。</p>
+
+<h4 class="relative group">MVVM的核心概念
+    <div id="mvvm的核心概念" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvvm%e7%9a%84%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>数据绑定
+View和ViewModel之间通过数据绑定建立连接，当ViewModel中的数据发生变化时，View会自动更新。</li>
+<li>双向绑定
+支持双向数据绑定，用户在View中的输入会自动同步到ViewModel，反之亦然。</li>
+<li>变更通知
+ViewModel实现变更通知机制，当数据发生变化时通知View进行更新。</li>
+</ul>
+
+<h4 class="relative group">MVVM的优势
+    <div id="mvvm的优势" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvvm%e7%9a%84%e4%bc%98%e5%8a%bf" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>声明式UI：
+通过数据绑定实现声明式的用户界面</li>
+<li>自动同步：
+数据变化自动反映到界面上</li>
+<li>可测试性：
+ViewModel可以独立于View进行测试</li>
+<li>代码简洁：
+减少了手动更新UI的代码</li>
+</ul>
+
+<h3 class="relative group">六边形架构
+    <div id="六边形架构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%85%ad%e8%be%b9%e5%bd%a2%e6%9e%b6%e6%9e%84" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>六边形架构（Hexagonal Architecture），也称为端口和适配器架构（Ports and Adapters），是一种更加灵活的架构模式。它将应用程序的核心业务逻辑与外部系统隔离，通过端口和适配器实现与外部系统的交互。</p>
+
+<h4 class="relative group">六边形架构示意图
+    <div id="六边形架构示意图" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%85%ad%e8%be%b9%e5%bd%a2%e6%9e%b6%e6%9e%84%e7%a4%ba%e6%84%8f%e5%9b%be" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">🔌 适配器 → 🚪 端口 → 🏛️ 核心业务逻辑 → 🚪 端口 → 🔌 适配器
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">外部系统通过适配器和端口与核心业务逻辑交互
+</span></span></code></pre></div>
+<h4 class="relative group">核心概念
+    <div id="核心概念" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>端口 (Ports)
+定义应用程序与外部世界交互的接口，是业务逻辑对外部依赖的抽象。</li>
+<li>适配器 (Adapters)
+实现端口接口，负责将外部系统的调用转换为应用程序能够理解的格式。</li>
+<li>核心业务逻辑
+位于架构的中心，包含纯粹的业务规则，不依赖于任何外部技术。</li>
+</ul>
+
+<h4 class="relative group">六边形架构的优势
+    <div id="六边形架构的优势" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%85%ad%e8%be%b9%e5%bd%a2%e6%9e%b6%e6%9e%84%e7%9a%84%e4%bc%98%e5%8a%bf" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>技术无关性：
+核心业务逻辑不依赖具体技术</li>
+<li>易于测试：
+可以轻松模拟外部依赖</li>
+<li>灵活性：
+可以轻松替换外部系统</li>
+<li>可维护性：
+业务逻辑与技术实现分离</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 端口定义</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserRepository</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">User</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">NotificationService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">sendEmail</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">subject</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">content</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 核心业务逻辑</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="n">userRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">NotificationService</span><span class="w"> </span><span class="n">notificationService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">UserService</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">UserRepository</span><span class="w"> </span><span class="n">userRepository</span><span class="p">,</span><span class="n">NotificationService</span><span class="w"> </span><span class="n">notificationService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">notificationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notificationService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">registerUser</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 纯业务逻辑</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">validateUser</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">notificationService</span><span class="p">.</span><span class="na">sendEmail</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="na">getEmail</span><span class="p">(),</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;Welcome&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Welcome to our platform!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 适配器实现</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JpaUserRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// JPA实现</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EmailNotificationService</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">NotificationService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 邮件服务实现</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
+<h3 class="relative group">架构选择指南
+    <div id="架构选择指南" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9e%b6%e6%9e%84%e9%80%89%e6%8b%a9%e6%8c%87%e5%8d%97" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>选择合适的分层架构需要考虑项目的规模、复杂度、团队技能和业务需求等多个因素。以下是一些选择建议：</p>
+
+<h4 class="relative group">三层架构
+    <div id="三层架构-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%b8%89%e5%b1%82%e6%9e%b6%e6%9e%84-1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>适用场景：</p>
+<ul>
+<li>传统企业级应用</li>
+<li>数据驱动的应用</li>
+<li>团队对分层架构熟悉</li>
+<li>需要快速开发</li>
+</ul>
+
+<h4 class="relative group">MVC/MVP
+    <div id="mvcmvp" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvcmvp" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>适用场景：</p>
+<ul>
+<li>Web应用开发</li>
+<li>用户界面复杂</li>
+<li>需要良好的可测试性</li>
+<li>前后端分离项目</li>
+</ul>
+
+<h4 class="relative group">MVVM
+    <div id="mvvm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#mvvm" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>适用场景：</p>
+<ul>
+<li>支持数据绑定的平台</li>
+<li>富客户端应用</li>
+<li>移动应用开发</li>
+<li>实时数据更新需求</li>
+</ul>
+
+<h4 class="relative group">六边形架构
+    <div id="六边形架构-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%85%ad%e8%be%b9%e5%bd%a2%e6%9e%b6%e6%9e%84-1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>适用场景：</p>
+<ul>
+<li>复杂业务逻辑</li>
+<li>多种外部系统集成</li>
+<li>高可测试性要求</li>
+<li>长期维护的系统</li>
+</ul>
+
+<h4 class="relative group">选择原则
+    <div id="选择原则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%80%89%e6%8b%a9%e5%8e%9f%e5%88%99" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>简单优先：
+选择能满足需求的最简单架构</li>
+<li>团队能力：
+考虑团队对架构模式的熟悉程度</li>
+<li>业务复杂度：
+复杂业务选择更灵活的架构</li>
+<li>技术栈：
+选择与技术栈匹配的架构模式</li>
+<li>演进性：
+考虑架构的可演进性和扩展性</li>
+</ul>
+
+<h2 class="relative group">面向服务架构（SOA）
+    <div id="面向服务架构soa" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%9d%a2%e5%90%91%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84soa" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">SOA基本概念
+    <div id="soa基本概念" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#soa%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">什么是面向服务架构（SOA）
+    <div id="什么是面向服务架构soa" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%bb%80%e4%b9%88%e6%98%af%e9%9d%a2%e5%90%91%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84soa" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>面向服务架构（Service-Oriented Architecture，SOA）是一种软件架构设计模式，它将应用程序的不同功能单元（称为服务）通过这些服务之间定义良好的接口和契约联系起来。SOA强调将业务功能封装为可重用的服务，这些服务可以被不同的应用程序调用和组合。</p>
+<blockquote>
+<p>核心理念</p>
+<p>SOA的核心理念是&quot;服务化&quot;，即将复杂的业务逻辑分解为独立的、可重用的服务单元，通过标准化的接口进行交互，实现系统的松耦合和高内聚。</p>
+</blockquote>
+
+<h4 class="relative group">SOA的核心特征
+    <div id="soa的核心特征" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#soa%e7%9a%84%e6%a0%b8%e5%bf%83%e7%89%b9%e5%be%81" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>
+<p>服务封装
+将业务功能封装为独立的服务，隐藏内部实现细节，只暴露标准化的接口。</p>
+</li>
+<li>
+<p>服务重用
+服务可以被多个应用程序重复使用，提高开发效率和系统一致性。</p>
+</li>
+<li>
+<p>松耦合
+服务之间通过标准接口交互，减少相互依赖，提高系统的灵活性。</p>
+</li>
+<li>
+<p>服务发现
+提供服务注册和发现机制，支持动态的服务定位和调用。</p>
+</li>
+</ul>
+
+<h4 class="relative group">SOA的优势
+    <div id="soa的优势" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#soa%e7%9a%84%e4%bc%98%e5%8a%bf" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>提高重用性：
+服务可以被多个应用程序共享使用</li>
+<li>降低耦合度：
+通过标准接口实现系统间的松耦合</li>
+<li>增强灵活性：
+便于系统的扩展和修改</li>
+<li>促进集成：
+简化不同系统之间的集成工作</li>
+<li>支持异构：
+不同技术栈的系统可以通过服务进行交互</li>
+</ul>
+
+<h3 class="relative group">服务设计原则
+    <div id="服务设计原则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>良好的服务设计是SOA成功实施的关键。服务设计需要遵循一系列原则，确保服务的质量、可维护性和可重用性。</p>
+
+<h4 class="relative group">服务设计的核心原则
+    <div id="服务设计的核心原则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%8d%e5%8a%a1%e8%ae%be%e8%ae%a1%e7%9a%84%e6%a0%b8%e5%bf%83%e5%8e%9f%e5%88%99" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>
+<p>标准化服务契约
+服务通过标准化的契约进行描述，包括接口定义、数据格式、通信协议等。</p>
+</li>
+<li>
+<p>服务松耦合
+服务之间的依赖关系最小化，通过抽象接口进行交互。</p>
+</li>
+<li>
+<p>服务抽象
+隐藏服务的内部实现逻辑，只暴露必要的接口信息。</p>
+</li>
+<li>
+<p>服务重用性
+设计通用的、可重用的服务，避免重复开发。</p>
+</li>
+<li>
+<p>服务组合性
+服务可以组合成更复杂的业务流程和应用程序。</p>
+</li>
+<li>
+<p>服务自治性
+服务对其封装的逻辑具有高度的控制权。</p>
+</li>
+</ul>
+
+<h4 class="relative group">服务粒度设计
+    <div id="服务粒度设计" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%8d%e5%8a%a1%e7%b2%92%e5%ba%a6%e8%ae%be%e8%ae%a1" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>服务粒度是服务设计中的重要考虑因素，需要在功能完整性和复用性之间找到平衡：</p>
+<ul>
+<li>粗粒度服务：
+包含较多业务逻辑，减少网络调用，但重用性较低</li>
+<li>细粒度服务：
+功能单一，重用性高，但可能增加网络开销</li>
+<li>适中粒度：
+在业务完整性和技术效率之间找到平衡点</li>
+</ul>
+
+<h3 class="relative group">ESB企业服务总线
+    <div id="esb企业服务总线" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#esb%e4%bc%81%e4%b8%9a%e6%9c%8d%e5%8a%a1%e6%80%bb%e7%ba%bf" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h4 class="relative group">ESB概述
+    <div id="esb概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#esb%e6%a6%82%e8%bf%b0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>企业服务总线（Enterprise Service Bus，ESB）是SOA架构中的核心基础设施，它提供了一个统一的服务集成平台，支持不同服务之间的通信、路由、转换和管理。</p>
+<blockquote>
+<p>ESB的作用</p>
+<p>ESB充当服务之间的中介，提供统一的通信机制，简化服务集成的复杂性，支持服务的发现、路由、转换、监控和管理。</p>
+</blockquote>
+
+<h4 class="relative group">ESB的核心功能
+    <div id="esb的核心功能" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#esb%e7%9a%84%e6%a0%b8%e5%bf%83%e5%8a%9f%e8%83%bd" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>消息路由：
+根据消息内容或规则将消息路由到目标服务</li>
+<li>协议转换：
+支持不同通信协议之间的转换</li>
+<li>数据转换：
+提供消息格式和数据类型的转换</li>
+<li>服务编排：
+支持复杂业务流程的编排和执行</li>
+<li>安全管理：
+提供统一的安全认证和授权机制</li>
+<li>监控管理：
+提供服务调用的监控和管理功能</li>
+</ul>
+
+<h4 class="relative group">ESB架构模式
+    <div id="esb架构模式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#esb%e6%9e%b6%e6%9e%84%e6%a8%a1%e5%bc%8f" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+</span></span><span class="line"><span class="cl">│    服务A    │     │    服务B    │     │    服务C    │
+</span></span><span class="line"><span class="cl">└──────┬──────┘     └──────┬──────┘     └──────┬──────┘
+</span></span><span class="line"><span class="cl">       │                   │                   │
+</span></span><span class="line"><span class="cl">       └───────────────────┼───────────────────┘
+</span></span><span class="line"><span class="cl">                           │
+</span></span><span class="line"><span class="cl">                   ┌──────┴──────┐
+</span></span><span class="line"><span class="cl">                   │    ESB      │
+</span></span><span class="line"><span class="cl">                   │ 企业服务总线 │
+</span></span><span class="line"><span class="cl">                   └──────┬──────┘
+</span></span><span class="line"><span class="cl">                           │
+</span></span><span class="line"><span class="cl">       ┌───────────────────┼───────────────────┐
+</span></span><span class="line"><span class="cl">       │                   │                   │
+</span></span><span class="line"><span class="cl">┌──────┴──────┐     ┌──────┴──────┐     ┌──────┴──────┐
+</span></span><span class="line"><span class="cl">│    服务D    │     │    服务E    │     │    服务F    │
+</span></span><span class="line"><span class="cl">└─────────────┘     └─────────────┘     └─────────────┘
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">==================== ESB架构模式核心说明 ====================
+</span></span><span class="line"><span class="cl">1. 核心角色：ESB（企业服务总线）作为中间件，是所有服务的通信中枢
+</span></span><span class="line"><span class="cl">2. 通信方式：服务A/B/C ←→ ESB ←→ 服务D/E/F，所有服务间交互均通过ESB转发
+</span></span><span class="line"><span class="cl">3. 核心价值：解耦服务间直接依赖，统一协议/数据格式，便于服务治理和扩展
+</span></span></code></pre></div>
+<h3 class="relative group">Web Services
+    <div id="web-services" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#web-services" aria-label="">#</a>
+    </span>
+    
+</h3>
+
+<h5 class="relative group">Web Services概述
+    <div id="web-services概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#web-services%e6%a6%82%e8%bf%b0" aria-label="">#</a>
+    </span>
+    
+</h5>
+<p>Web Services是一种基于Web的服务架构，使用标准的Web协议（如HTTP、XML、SOAP）来实现不同应用程序之间的通信。它是SOA的重要实现技术之一。</p>
+
+<h4 class="relative group">Web Services技术栈
+    <div id="web-services技术栈" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#web-services%e6%8a%80%e6%9c%af%e6%a0%88" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>
+<p>WSDL
+Web Services Description Language，用于描述Web服务的接口和操作。</p>
+</li>
+<li>
+<p>SOAP
+Simple Object Access Protocol，基于XML的消息传递协议。</p>
+</li>
+<li>
+<p>UDDI
+Universal Description, Discovery and Integration，服务注册和发现机制。</p>
+</li>
+</ul>
+
+<h4 class="relative group">SOAP消息示例
+    <div id="soap消息示例" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#soap%e6%b6%88%e6%81%af%e7%a4%ba%e4%be%8b" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;soap:Envelope</span> <span class="na">xmlns:soap=</span><span class="s">&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;</span><span class="nt">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;soap:Header&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 可选的头部信息 --&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/soap:Header&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;soap:Body&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;getUserInfo</span> <span class="na">xmlns=</span><span class="s">&#34;http://example.com/userservice&#34;</span><span class="nt">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;userId&gt;</span>12345<span class="nt">&lt;/userId&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/getUserInfo&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/soap:Body&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/soap:Envelope&gt;</span>
+</span></span></code></pre></div>
+<h3 class="relative group">RESTful API设计
+    <div id="restful-api设计" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#restful-api%e8%ae%be%e8%ae%a1" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>REST架构风格
+REST（Representational State Transfer）是一种软件架构风格，强调使用标准的HTTP方法和状态码来设计Web服务。RESTful API是现代Web服务的主流设计方式。</p>
+
+<h4 class="relative group">REST设计原则
+    <div id="rest设计原则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#rest%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>统一接口：
+使用标准的HTTP方法（GET、POST、PUT、DELETE）</li>
+<li>无状态：
+每个请求都包含处理该请求所需的所有信息</li>
+<li>可缓存：
+响应应该明确标识是否可以缓存</li>
+<li>分层系统：
+客户端无需知道是否直接连接到最终服务器</li>
+<li>按需代码：
+服务器可以向客户端传输可执行代码（可选）</li>
+</ul>
+
+<h4 class="relative group">RESTful API设计最佳实践
+    <div id="restful-api设计最佳实践" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#restful-api%e8%ae%be%e8%ae%a1%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>URL设计规范</p>
+<ul>
+<li>使用名词而不是动词：/users 而不是 /getUsers</li>
+<li>使用复数形式：/users 而不是 /user</li>
+<li>使用层次结构：/users/123/orders</li>
+<li>使用小写字母和连字符：/user-profiles</li>
+</ul>
+
+<h4 class="relative group">HTTP方法使用
+    <div id="http方法使用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#http%e6%96%b9%e6%b3%95%e4%bd%bf%e7%94%a8" aria-label="">#</a>
+    </span>
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GET /users # 获取用户列表 
+</span></span><span class="line"><span class="cl">GET /users/123 # 获取特定用户 
+</span></span><span class="line"><span class="cl">POST /users # 创建新用户 
+</span></span><span class="line"><span class="cl">PUT /users/123 # 更新用户信息 
+</span></span><span class="line"><span class="cl">DELETE /users/123 # 删除用户 
+</span></span><span class="line"><span class="cl">PATCH /users/123 # 部分更新用户信息
+</span></span></code></pre></div>
+<h4 class="relative group">状态码使用
+    <div id="状态码使用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%8a%b6%e6%80%81%e7%a0%81%e4%bd%bf%e7%94%a8" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>200 OK：
+请求成功</li>
+<li>201 Created：
+资源创建成功</li>
+<li>400 Bad Request：
+请求参数错误</li>
+<li>401 Unauthorized：
+未授权</li>
+<li>404 Not Found：
+资源不存在</li>
+<li>500 Internal Server Error：
+服务器内部错误</li>
+</ul>
+
+<h3 class="relative group">SOA与微服务的关系
+    <div id="soa与微服务的关系" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#soa%e4%b8%8e%e5%be%ae%e6%9c%8d%e5%8a%a1%e7%9a%84%e5%85%b3%e7%b3%bb" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>微服务架构可以看作是SOA理念的现代化实现，它继承了SOA的核心思想，但在实现方式和技术选择上有所不同。</p>
+<p>相同点</p>
+<ul>
+<li>都强调服务化和模块化</li>
+<li>都追求松耦合和高内聚</li>
+<li>都支持服务重用和组合</li>
+<li>都关注业务能力的封装</li>
+</ul>
+<p>不同点</p>
+<ul>
+<li>
+<p>SOA
+企业级架构，通常使用ESB，服务粒度较粗，强调标准化和治理。</p>
+</li>
+<li>
+<p>微服务
+轻量级架构，去中心化，服务粒度较细，强调自治和敏捷。</p>
+</li>
+</ul>
+
+<h2 class="relative group">微服务架构
+    <div id="微服务架构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84" aria-label="">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">微服务架构概述
+    <div id="微服务架构概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84%e6%a6%82%e8%bf%b0" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>微服务架构（Microservices Architecture）是一种将单一应用程序开发为一组小型服务的方法，每个服务运行在自己的进程中，并使用轻量级机制（通常是HTTP API）进行通信。这些服务围绕业务功能构建，并且可以由全自动部署机制独立部署。</p>
+<blockquote>
+<p>核心理念</p>
+<p>微服务架构强调&quot;做一件事并做好&quot;的Unix哲学，通过服务的分解和组合来构建复杂的业务系统。</p>
+</blockquote>
+
+<h4 class="relative group">微服务的特征
+    <div id="微服务的特征" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%be%ae%e6%9c%8d%e5%8a%a1%e7%9a%84%e7%89%b9%e5%be%81" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>单一职责
+每个微服务专注于一个业务功能，具有明确的边界和职责。</li>
+<li>独立部署
+服务可以独立开发、测试、部署和扩展，不依赖其他服务。</li>
+<li>分布式通信
+服务间通过网络进行通信，通常使用REST API或消息队列。</li>
+<li>数据独立
+每个服务管理自己的数据，避免共享数据库的耦合。</li>
+</ul>
+
+<h4 class="relative group">微服务 vs 单体架构
+    <div id="微服务-vs-单体架构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%be%ae%e6%9c%8d%e5%8a%a1-vs-%e5%8d%95%e4%bd%93%e6%9e%b6%e6%9e%84" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>单体架构
+<ul>
+<li>所有功能在一个应用中</li>
+<li>统一部署和扩展</li>
+<li>开发简单，测试容易</li>
+<li>技术栈统一</li>
+</ul>
+</li>
+<li>微服务架构
+<ul>
+<li>功能分解为多个服务</li>
+<li>独立部署和扩展</li>
+<li>技术栈多样化</li>
+<li>团队自治</li>
+</ul>
+</li>
+</ul>
+
+<h3 class="relative group">微服务拆分策略
+    <div id="微服务拆分策略" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%8b%86%e5%88%86%e7%ad%96%e7%95%a5" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>微服务拆分是架构设计的关键环节，需要基于业务领域、数据模型、团队结构等多个维度进行综合考虑。合理的拆分策略能够最大化微服务架构的优势。</p>
+
+<h4 class="relative group">拆分原则
+    <div id="拆分原则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%8b%86%e5%88%86%e5%8e%9f%e5%88%99" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>领域驱动设计
+基于业务领域和限界上下文进行服务边界划分，确保高内聚低耦合。</li>
+<li>康威定律
+组织架构决定系统架构，服务边界应该与团队边界保持一致。</li>
+<li>业务能力
+围绕业务能力构建服务，每个服务负责完整的业务功能。</li>
+</ul>
+
+<h4 class="relative group">拆分方法
+    <div id="拆分方法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%8b%86%e5%88%86%e6%96%b9%e6%b3%95" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>按业务功能拆分：
+根据业务领域模型划分服务边界</li>
+<li>按数据模型拆分：
+基于数据的聚合根和实体关系进行拆分</li>
+<li>按团队结构拆分：
+确保每个团队能够独立维护一个或多个服务</li>
+<li>按技术特性拆分：
+将具有相似技术需求的功能组合在一起</li>
+<li>按变更频率拆分：
+将变更频率相似的功能放在同一个服务中</li>
+</ul>
+
+<h4 class="relative group">拆分注意事项
+    <div id="拆分注意事项" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%8b%86%e5%88%86%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>避免过度拆分，防止分布式系统复杂性</li>
+<li>考虑数据一致性和事务边界</li>
+<li>评估网络通信开销</li>
+<li>确保服务的可测试性和可监控性</li>
+</ul>
+
+<h3 class="relative group">服务间通信
+    <div id="服务间通信" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%8d%e5%8a%a1%e9%97%b4%e9%80%9a%e4%bf%a1" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>在微服务架构中，服务间通信是核心问题之一。选择合适的通信模式和协议对系统的性能、可靠性和可维护性都有重要影响。</p>
+
+<h4 class="relative group">通信模式
+    <div id="通信模式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%80%9a%e4%bf%a1%e6%a8%a1%e5%bc%8f" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>同步通信
+<ul>
+<li>REST API</li>
+<li>GraphQL</li>
+<li>gRPC</li>
+<li>实时响应，简单直观</li>
+</ul>
+</li>
+<li>异步通信
+<ul>
+<li>消息队列（RabbitMQ、Kafka）</li>
+<li>事件驱动架构</li>
+<li>发布订阅模式</li>
+<li>解耦性强，高可用</li>
+</ul>
+</li>
+</ul>
+
+<h4 class="relative group">API网关
+    <div id="api网关" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#api%e7%bd%91%e5%85%b3" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>API网关作为微服务架构的入口点，提供统一的访问接口，并处理横切关注点如认证、限流、监控等。</p>
+<ul>
+<li>安全控制
+统一的身份认证、授权和API密钥管理。</li>
+<li>流量控制
+请求限流、熔断器和负载均衡。</li>
+<li>监控分析
+请求日志、性能指标和错误追踪。</li>
+</ul>
+
+<h4 class="relative group">服务发现
+    <div id="服务发现" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%8d%e5%8a%a1%e5%8f%91%e7%8e%b0" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>在动态的微服务环境中，服务实例会频繁启动和停止，服务发现机制确保服务能够找到并连接到其依赖的服务。</p>
+<ul>
+<li>客户端发现：
+客户端负责查询服务注册表并选择可用实例</li>
+<li>服务端发现：
+通过负载均衡器进行服务发现和路由</li>
+<li>服务注册表：
+Consul、Eureka、Zookeeper等</li>
+<li>健康检查：
+定期检查服务实例的健康状态</li>
+</ul>
+
+<h3 class="relative group">数据一致性
+    <div id="数据一致性" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e6%8d%ae%e4%b8%80%e8%87%b4%e6%80%a7" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>微服务架构中每个服务拥有独立的数据存储，这带来了数据一致性的挑战。需要在数据一致性和系统可用性之间找到平衡。</p>
+
+<h4 class="relative group">一致性模型
+    <div id="一致性模型" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%b8%80%e8%87%b4%e6%80%a7%e6%a8%a1%e5%9e%8b" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>强一致性
+所有节点在同一时间看到相同的数据，通常通过分布式事务实现。</li>
+<li>最终一致性
+系统保证在没有新更新的情况下，最终所有节点都会达到一致状态。</li>
+<li>弱一致性
+系统不保证何时所有节点都能看到最新数据，适用于对一致性要求不高的场景。</li>
+</ul>
+
+<h4 class="relative group">分布式事务解决方案
+    <div id="分布式事务解决方案" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e4%ba%8b%e5%8a%a1%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="">#</a>
+    </span>
+    
+</h4>
+<blockquote>
+<p>Saga模式</p>
+<ul>
+<li>将长事务分解为一系列本地事务，每个本地事务都有对应的补偿操作，确保数据的最终一致性。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>编排模式</p>
+<ul>
+<li>由中央协调器控制事务流程，适合复杂的业务逻辑。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>编舞模式</p>
+<ul>
+<li>服务间通过事件进行协调，没有中央控制器，更加灵活。</li>
+</ul>
+</blockquote>
+
+<h4 class="relative group">事件溯源
+    <div id="事件溯源" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%ba%8b%e4%bb%b6%e6%ba%af%e6%ba%90" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>事件溯源（Event Sourcing）将所有状态变更存储为事件序列，通过重放事件来重建当前状态，天然支持审计和时间旅行。</p>
+<ul>
+<li>事件存储：
+将业务事件作为不可变的记录存储</li>
+<li>状态重建：
+通过重放事件序列重建聚合状态</li>
+<li>快照机制：
+定期创建状态快照以提高性能</li>
+<li>事件版本：
+处理事件结构的演进和兼容性</li>
+</ul>
+
+<h3 class="relative group">服务治理
+    <div id="服务治理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9c%8d%e5%8a%a1%e6%b2%bb%e7%90%86" aria-label="">#</a>
+    </span>
+    
+</h3>
+<p>随着微服务数量的增长，服务治理变得越来越重要。有效的治理策略能够确保系统的稳定性、可观测性和可维护性。</p>
+
+<h4 class="relative group">配置管理
+    <div id="配置管理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>集中配置
+使用配置中心统一管理所有服务的配置信息，支持动态更新。</li>
+<li>环境隔离
+为不同环境（开发、测试、生产）提供独立的配置管理。</li>
+<li>版本控制
+配置变更的版本管理和回滚机制。</li>
+</ul>
+
+<h4 class="relative group">监控和可观测性
+    <div id="监控和可观测性" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%9b%91%e6%8e%a7%e5%92%8c%e5%8f%af%e8%a7%82%e6%b5%8b%e6%80%a7" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>可观测性三大支柱</p>
+<ul>
+<li>日志（Logging）：
+记录系统运行时的详细信息</li>
+<li>指标（Metrics）：
+量化系统的性能和健康状况</li>
+<li>链路追踪（Tracing）：
+跟踪请求在分布式系统中的流转</li>
+</ul>
+
+<h5 class="relative group">健康检查
+    <div id="健康检查" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%81%a5%e5%ba%b7%e6%a3%80%e6%9f%a5" aria-label="">#</a>
+    </span>
+    
+</h5>
+<p>定期检查服务的健康状态，及时发现和处理故障。</p>
+
+<h5 class="relative group">告警机制
+    <div id="告警机制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%91%8a%e8%ad%a6%e6%9c%ba%e5%88%b6" aria-label="">#</a>
+    </span>
+    
+</h5>
+<p>基于指标和阈值的智能告警，减少误报和漏报。</p>
+
+<h5 class="relative group">性能分析
+    <div id="性能分析" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90" aria-label="">#</a>
+    </span>
+    
+</h5>
+<p>深入分析系统性能瓶颈和优化机会。</p>
+
+<h4 class="relative group">容错和弹性
+    <div id="容错和弹性" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ae%b9%e9%94%99%e5%92%8c%e5%bc%b9%e6%80%a7" aria-label="">#</a>
+    </span>
+    
+</h4>
+<p>在分布式环境中，故障是常态。需要设计容错机制来提高系统的弹性和可用性。</p>
+<ul>
+<li>熔断器模式：
+防止故障服务影响整个系统</li>
+<li>重试机制：
+处理临时性故障，提高成功率</li>
+<li>超时控制：
+避免长时间等待导致的资源耗尽</li>
+<li>降级策略：
+在系统压力过大时提供基本功能</li>
+<li>限流控制：
+保护系统免受突发流量冲击</li>
+</ul>
+
+<h4 class="relative group">安全治理
+    <div id="安全治理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ae%89%e5%85%a8%e6%b2%bb%e7%90%86" aria-label="">#</a>
+    </span>
+    
+</h4>
+<ul>
+<li>身份认证
+统一的身份认证和单点登录（SSO）机制。</li>
+<li>授权控制
+基于角色的访问控制（RBAC）和细粒度权限管理。</li>
+<li>数据加密
+传输加密和存储加密，保护敏感数据安全。</li>
+</ul>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts/architecture02.md"
+          data-oid-likes="likes_posts/architecture02.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/architecture01/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;架构基础
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-02-25T15:40:39&#43;08:00">2021年2月25日</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/mysql08/">
+              <span class="leading-6">
+                MySQL-复习&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2021-05-01T00:16:23&#43;08:00">2021年5月1日</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+            <div class="pt-3">
+              
+
+<div class="pt-8 mt-8 border-t border-neutral-200 dark:border-neutral-700">
+  <h3 class="text-2xl font-bold mb-4">评论</h3>
+  <script src="https://giscus.app/client.js"
+    data-repo="hollyblog/hollyblog.github.io"
+    data-repo-id="R_kgDOQbMzVg"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQbMzVs4Cyz-f"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label=""
+    title="">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Holly
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+    
+
+
+  
+  <script defer src="/js/custom.min.4ebb3e0a94262e65bb85593d7e41cefff82843a5373a842f3b91d2baace5f117b01e818abc9a9539776763aff333e6b43cee59a442a6d46e0dd43e1338f769a0.js" integrity="sha512-Trs&#43;CpQmLmW7hVk9fkHO//goQ6U3OoQvO5HSuqzl8RewHoGKvJqVOXdnY6/zM&#43;a0PO5ZpEKm1G4N1D4TOPdpoA=="></script>
+
+
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder=""
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

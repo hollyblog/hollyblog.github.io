@@ -1,5 +1,5 @@
 ---
-title: "线程池技术"
+title: "线程池-线程池技术"
 date: 2021-01-25T14:44:13+08:00
 draft: false
 description: "线程池技术：线程池基础、ThreadPoolExecutor详解、Executors框架、定时任务线程池。"
