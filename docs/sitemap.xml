@@ -93,6 +93,54 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://localhost:1313/posts/ops01/</loc>
+    <lastmod>2021-03-03T18:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/architecture09/</loc>
+    <lastmod>2021-03-02T18:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/architecture08/</loc>
+    <lastmod>2021-03-01T18:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/architecture07/</loc>
+    <lastmod>2021-02-28T18:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/architecture06/</loc>
+    <lastmod>2021-02-27T18:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/architecture05/</loc>
+    <lastmod>2021-02-26T18:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/architecture04/</loc>
+    <lastmod>2021-02-26T17:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/architecture03/</loc>
+    <lastmod>2021-02-26T16:40:39+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:1313/posts/architecture02/</loc>
     <lastmod>2021-02-25T16:40:39+08:00</lastmod>
     <changefreq>daily</changefreq>
